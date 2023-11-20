@@ -1,0 +1,307 @@
+fileFormatVersion: 2
+guid: 75706315b740fcd4385fa45700b7de3d
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'LeftUpperLeg' not found\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: Enemy_02_Run(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Armature
+      parentName: Enemy_02_Run(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Root
+      parentName: Armature
+      position: {x: -0.00016392251, y: 0.0012189351, z: 0.0029443176}
+      rotation: {x: 0.6733308, y: 0.00000080466276, z: -0.3346468, w: 0.6592703}
+      scale: {x: 1, y: 0.99999994, z: 0.9999999}
+    - name: LegA.L.001
+      parentName: Root
+      position: {x: -0.0013620266, y: -0.00008083246, z: 0.0015695625}
+      rotation: {x: 0.80114025, y: -0.55998784, z: -0.11277066, w: 0.17852393}
+      scale: {x: 1.0000001, y: 0.9999997, z: 1.0000005}
+    - name: LegB.L.001
+      parentName: LegA.L.001
+      position: {x: -5.5297277e-11, y: 0.0009056053, z: 4.1909514e-11}
+      rotation: {x: -0.001908764, y: -0.14448284, z: 0.07485586, w: -0.9866701}
+      scale: {x: 0.9999998, y: 0.9999997, z: 1}
+    - name: LegC.L.001
+      parentName: LegB.L.001
+      position: {x: 7.4505804e-11, y: 0.00142111, z: -2.6077032e-10}
+      rotation: {x: -0.01361298, y: -0.4293712, z: -0.00024845, w: 0.9030255}
+      scale: {x: 1.0000006, y: 1.0000002, z: 1.0000007}
+    - name: LegC.L.001_end
+      parentName: LegC.L.001
+      position: {x: -0, y: 0.0023871888, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LegA.L.002
+      parentName: Root
+      position: {x: -0.0011961915, y: 0.002356543, z: 0.0014879998}
+      rotation: {x: -0.4305622, y: 0.8643354, z: 0.16095534, w: 0.20404366}
+      scale: {x: 1.0000011, y: 1.0000013, z: 1.0000002}
+    - name: LegB.L.002
+      parentName: LegA.L.002
+      position: {x: 7.4505804e-11, y: 0.0009502641, z: 1.11758706e-10}
+      rotation: {x: 0.28444356, y: 0.032583177, z: -0.14548448, w: 0.94702935}
+      scale: {x: 1.0000002, y: 0.99999994, z: 0.9999998}
+    - name: LegC.L.002
+      parentName: LegB.L.002
+      position: {x: -1.839362e-10, y: 0.0013339871, z: 2.2351741e-10}
+      rotation: {x: -0.72989994, y: 0.14385788, z: 0.25497568, w: 0.61768794}
+      scale: {x: 1.0000002, y: 1.0000002, z: 0.9999997}
+    - name: LegC.L.002_end
+      parentName: LegC.L.002
+      position: {x: -0, y: 0.0023903283, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rau.L.001
+      parentName: Root
+      position: {x: -0.001460363, y: 0.0032412866, z: -0.0014974696}
+      rotation: {x: -0.6282083, y: -0.13164984, z: 0.6385885, w: 0.424532}
+      scale: {x: 1.0000004, y: 1.0000005, z: 1}
+    - name: Rau.L.001_end
+      parentName: Rau.L.001
+      position: {x: -0, y: 0.001685399, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LegA.R.001
+      parentName: Root
+      position: {x: 0.0013620198, y: -0.000080832455, z: 0.0015695688}
+      rotation: {x: 0.58437705, y: 0.79983574, z: -0.12872718, w: -0.04685723}
+      scale: {x: 1.0000007, y: 1.0000001, z: 1.0000002}
+    - name: LegB.R.001
+      parentName: LegA.R.001
+      position: {x: 3.7252902e-11, y: 0.00090560556, z: -1.862645e-10}
+      rotation: {x: -0.11275442, y: 0.042849656, z: 0.110146806, w: -0.9865688}
+      scale: {x: 1.0000002, y: 0.9999997, z: 0.99999976}
+    - name: LegC.R.001
+      parentName: LegB.R.001
+      position: {x: 2.0489097e-10, y: 0.0014211101, z: -3.352761e-10}
+      rotation: {x: 0.019370994, y: -0.42219436, z: 0.007381021, w: -0.90626836}
+      scale: {x: 1.0000006, y: 1.0000002, z: 0.99999994}
+    - name: LegC.R.001_end
+      parentName: LegC.R.001
+      position: {x: -0, y: 0.0023871888, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LegA.R.002
+      parentName: Root
+      position: {x: 0.001196185, y: 0.0023565432, z: 0.0014880052}
+      rotation: {x: -0.59250665, y: -0.7560816, z: -0.20673862, w: 0.18583745}
+      scale: {x: 1.000001, y: 1.0000002, z: 1.0000006}
+    - name: LegB.R.002
+      parentName: LegA.R.002
+      position: {x: -0, y: 0.0009502645, z: 7.4505804e-11}
+      rotation: {x: 0.28444344, y: -0.032583177, z: 0.14548427, w: 0.94702935}
+      scale: {x: 1, y: 0.9999998, z: 1.0000002}
+    - name: LegC.R.002
+      parentName: LegB.R.002
+      position: {x: 1.3038516e-10, y: 0.0013339878, z: 1.6763806e-10}
+      rotation: {x: 0.7298998, y: 0.14385784, z: 0.25497553, w: -0.6176882}
+      scale: {x: 1.0000001, y: 0.9999999, z: 0.9999994}
+    - name: LegC.R.002_end
+      parentName: LegC.R.002
+      position: {x: -0, y: 0.0023903283, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rau.R.001
+      parentName: Root
+      position: {x: 0.0014603699, y: 0.0032412861, z: -0.0014974626}
+      rotation: {x: -0.62820673, y: 0.13164906, z: -0.6385899, w: 0.42453247}
+      scale: {x: 1.0000005, y: 1.0000004, z: 1.0000001}
+    - name: Rau.R.001_end
+      parentName: Rau.R.001
+      position: {x: -0, y: 0.001685399, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: IKPole.L.001
+      parentName: Armature
+      position: {x: -0.0031902497, y: 0.00183959, z: 0.00590093}
+      rotation: {x: 0.65019935, y: 0.2779222, z: 0.2779222, w: 0.6501994}
+      scale: {x: 0.99999994, y: 1.0000001, z: 0.9999999}
+    - name: IKPole.L.001_end
+      parentName: IKPole.L.001
+      position: {x: -0, y: 0.0017641305, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: IKTarget.L.001
+      parentName: Armature
+      position: {x: -0.0042537544, y: 0.001298807, z: 0.000023559927}
+      rotation: {x: 0.705815, y: 0.04272216, z: 0.04272216, w: 0.705815}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: IKTarget.L.001_end
+      parentName: IKTarget.L.001
+      position: {x: -0, y: 0.0024013233, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: IKPole.L.002
+      parentName: Armature
+      position: {x: -0.003218987, y: -0.0016186467, z: 0.005861502}
+      rotation: {x: 0.65019935, y: 0.2779222, z: 0.2779222, w: 0.6501994}
+      scale: {x: 0.99999994, y: 1.0000001, z: 0.9999999}
+    - name: IKPole.L.002_end
+      parentName: IKPole.L.002
+      position: {x: -0, y: 0.00176413, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: IKTarget.L.002
+      parentName: Armature
+      position: {x: -0.0034668182, y: -0.0035306655, z: 0.000023559927}
+      rotation: {x: 0.6966091, y: 0.12139101, z: 0.12139101, w: 0.6966091}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: IKTarget.L.002_end
+      parentName: IKTarget.L.002
+      position: {x: -0, y: 0.0024013233, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: IKPole.R.001
+      parentName: Armature
+      position: {x: 0.0031902497, y: 0.00183959, z: 0.00590093}
+      rotation: {x: 0.65019935, y: -0.2779222, z: -0.2779222, w: 0.6501994}
+      scale: {x: 0.99999994, y: 1.0000001, z: 0.9999999}
+    - name: IKPole.R.001_end
+      parentName: IKPole.R.001
+      position: {x: -0, y: 0.0017641305, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: IKTarget.R.001
+      parentName: Armature
+      position: {x: 0.0035980644, y: 0.0029249182, z: 0.000023559927}
+      rotation: {x: 0.705815, y: -0.04272216, z: -0.04272216, w: 0.705815}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: IKTarget.R.001_end
+      parentName: IKTarget.R.001
+      position: {x: -0, y: 0.0024013233, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: IKPole.R.002
+      parentName: Armature
+      position: {x: 0.003218987, y: -0.0016186467, z: 0.005861502}
+      rotation: {x: 0.65019935, y: -0.2779222, z: -0.2779222, w: 0.6501994}
+      scale: {x: 0.99999994, y: 1.0000001, z: 0.9999999}
+    - name: IKPole.R.002_end
+      parentName: IKPole.R.002
+      position: {x: -0, y: 0.00176413, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: IKTarget.R.002
+      parentName: Armature
+      position: {x: 0.0040438254, y: -0.0021668305, z: 0.000023559927}
+      rotation: {x: 0.6966091, y: -0.12139101, z: -0.12139101, w: 0.6966091}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: IKTarget.R.002_end
+      parentName: IKTarget.R.002
+      position: {x: -0, y: 0.0024013233, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Enemy_03
+      parentName: Enemy_02_Run(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
