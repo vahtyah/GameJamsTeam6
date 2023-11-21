@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyNormalAttackState : IEnemyState
 {
-    [SerializeField] float attackTime = 2f;
-    [SerializeField] float attackTimer = 0f;
+    [SerializeField] protected float attackTime = 2f;
+    [SerializeField] protected float attackTimer = 0f;
     public EnemyAnimState enemyState => EnemyAnimState.Attack;
 
     protected IEnemy enemy;
@@ -20,7 +20,7 @@ public class EnemyNormalAttackState : IEnemyState
         
     }
 
-    public EnemyAnimState OnUpdate()
+    public virtual EnemyAnimState OnUpdate()
     {
 
         attackTimer += Time.deltaTime;

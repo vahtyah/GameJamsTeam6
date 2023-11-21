@@ -36,6 +36,14 @@ public class EnemyNav
         agent.SetDestination(IngameManager.instance.player.position);
     }
 
+    public void MoveToPosition(Vector3 position)
+    {
+        agent.velocity = Vector3.zero;
+        animController.PlayAnim(EnemyAnimState.Move);
+        agent.speed = stableSpeed;
+        agent.SetDestination(position);
+    }
+
     public void Idle()
     {
         animController.PlayAnim(EnemyAnimState.Idle);

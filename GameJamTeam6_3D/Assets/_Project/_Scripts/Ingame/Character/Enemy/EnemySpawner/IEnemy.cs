@@ -13,6 +13,7 @@ public interface IEnemy
     public EnemyNav GetEnemyNav();
     public int GetDamage();
     public int GetWave();
+    EnemyStateHandler GetEnemyStateHandler();
 }
 
 public enum EnemyAnimState

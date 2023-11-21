@@ -65,4 +65,5 @@ public class RangeEnemy : MonoBehaviour, IEnemy
 
     int IEnemy.GetDamage() { return damage;}
     int IEnemy.GetWave() { return atWave;}
+    public EnemyStateHandler GetEnemyStateHandler() { return enemyStateHandler; }
 }

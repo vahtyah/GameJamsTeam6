@@ -68,6 +68,7 @@ public class ExampleEnemy : MonoBehaviour, IEnemy
 
     public int GetDamage() { throw new System.NotImplementedException(); }
     public int GetWave() { return atWave;}
+    public EnemyStateHandler GetEnemyStateHandler() { return enemyStateHandler; }
 }
 
 

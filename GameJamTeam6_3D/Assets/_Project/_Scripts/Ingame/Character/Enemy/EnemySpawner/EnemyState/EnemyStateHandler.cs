@@ -33,11 +33,14 @@ public class EnemyStateHandler : SerializedMonoBehaviour
         EnemyAnimState state = currentState.OnUpdate();
         if (currentState.enemyState != state)
         {
+            ColorDebug.DebugRed(state);
             currentState.OnExit();
             currentState = enemyStates[state];
             currentState.OnEnter();
         }
     }
+    
+    public IEnemyState GetState(EnemyAnimState state) { return enemyStates[state]; }
 }
 
 

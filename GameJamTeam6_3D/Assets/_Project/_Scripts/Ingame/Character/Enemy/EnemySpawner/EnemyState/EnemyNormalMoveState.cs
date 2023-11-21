@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EnemyNormalMoveState : IEnemyState
 {
-    [SerializeField] float rangeAttack = 6f;
+    [SerializeField] protected float rangeAttack = 6f;
     public EnemyAnimState enemyState => EnemyAnimState.Move;
 
-    IEnemy enemy;
+    protected IEnemy enemy;
 
     public void OnEnter()
     {
@@ -38,4 +38,5 @@ public class EnemyNormalMoveState : IEnemyState
         enemy = _enemy;
     }
 
+    public float GetRangeAttack => rangeAttack;
 }
