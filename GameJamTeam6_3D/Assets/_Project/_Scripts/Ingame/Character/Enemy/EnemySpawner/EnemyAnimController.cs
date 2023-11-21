@@ -5,13 +5,10 @@ using UnityEngine;
 
 public class EnemyAnimController 
 {
-    const string move = "Move";
-    const string idle = "Idle";
-    const string attack = "Attack";
-
-    readonly Dictionary<EnemyAnimState, string> animNames = new Dictionary<EnemyAnimState, string>()
+    readonly static Dictionary<EnemyAnimState, string> animNames = new Dictionary<EnemyAnimState, string>()
     {
-        {EnemyAnimState.Idle, idle}, {EnemyAnimState.Attack, attack}, {EnemyAnimState.Move, move}
+        {EnemyAnimState.Idle, "Idle"}, {EnemyAnimState.Attack, "Attack"}, 
+        {EnemyAnimState.Move, "Move"}
     };
 
     Animator animator;

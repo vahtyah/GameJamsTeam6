@@ -8,7 +8,6 @@ public static class GlobalString
     public const string enemyTagAndLayer = "Enemy";
     public const string floorTagAndLayer = "Floor";
     public const string obstacleTagAndLayer = "Obstacle";
-
 }
 
 
