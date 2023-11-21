@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyNormalDieState : IEnemyState
 {
-    public EnemyState enemyState => EnemyState.Die;
+    public EnemyAnimState enemyState => EnemyAnimState.Die;
 
     public void OnEnter()
     {
@@ -16,7 +16,7 @@ public class EnemyNormalDieState : IEnemyState
         
     }
 
-    public EnemyState OnUpdate()
+    public EnemyAnimState OnUpdate()
     {
         return enemyState;
     }

@@ -6,7 +6,7 @@ public class EnemyNormalAttackState : IEnemyState
 {
     [SerializeField] float attackTime = 2f;
     [SerializeField] float attackTimer = 0f;
-    public EnemyState enemyState => EnemyState.Attack;
+    public EnemyAnimState enemyState => EnemyAnimState.Attack;
 
     protected IEnemy enemy;
 
@@ -20,7 +20,7 @@ public class EnemyNormalAttackState : IEnemyState
         
     }
 
-    public EnemyState OnUpdate()
+    public EnemyAnimState OnUpdate()
     {
 
         attackTimer += Time.deltaTime;
@@ -30,7 +30,7 @@ public class EnemyNormalAttackState : IEnemyState
                 DoAttack();
             }
             else
-                return EnemyState.Move;
+                return EnemyAnimState.Move;
         }
         return enemyState;
     }

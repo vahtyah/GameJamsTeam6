@@ -31,33 +31,33 @@ public class EnemyNav
 
     public void Move()
     {
-        animController.PlayAnim(EnemyState.Move);
+        animController.PlayAnim(EnemyAnimState.Move);
         agent.speed = stableSpeed;
         agent.SetDestination(IngameManager.instance.player.position);
     }
 
     public void Idle()
     {
-        animController.PlayAnim(EnemyState.Idle);
+        animController.PlayAnim(EnemyAnimState.Idle);
         Stop();
     }
 
     public void Attack()
     {
         Stop();
-        animController.PlayAnim(EnemyState.Attack);
+        animController.PlayAnim(EnemyAnimState.Attack);
     }
 
     public void AttackWithSlip(float slipFactor)
     {
         Slip(slipFactor);
-        animController.PlayAnim(EnemyState.Attack);
+        animController.PlayAnim(EnemyAnimState.Attack);
     }
 
     public void Die()
     {
         Stop();
-        animController.PlayAnim(EnemyState.Die);
+        animController.PlayAnim(EnemyAnimState.Die);
     }
     void Stop()
     {
