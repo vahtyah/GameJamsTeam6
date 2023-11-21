@@ -15,7 +15,7 @@ public interface IEnemy
     public int GetWave();
 }
 
-public enum EnemyState
+public enum EnemyAnimState
 {
     Idle, Move, Attack, Die
 }

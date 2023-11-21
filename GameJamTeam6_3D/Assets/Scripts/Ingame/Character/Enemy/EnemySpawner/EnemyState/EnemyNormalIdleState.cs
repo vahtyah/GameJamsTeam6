@@ -6,7 +6,7 @@ public class EnemyNormalIdleState :  IEnemyState
 {
     [SerializeField] float waitTimer = 1f;
     float timer = 0;
-    public EnemyState enemyState => EnemyState.Idle;
+    public EnemyAnimState enemyState => EnemyAnimState.Idle;
     IEnemy enemy;
 
 
@@ -21,12 +21,12 @@ public class EnemyNormalIdleState :  IEnemyState
         
     }
 
-    public EnemyState OnUpdate()
+    public EnemyAnimState OnUpdate()
     {
         timer += Time.deltaTime;
         if (timer > waitTimer)
         {
-            return EnemyState.Move;
+            return EnemyAnimState.Move;
         }
         return enemyState;
     }

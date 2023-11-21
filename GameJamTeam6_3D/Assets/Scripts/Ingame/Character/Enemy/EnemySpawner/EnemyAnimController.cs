@@ -9,9 +9,9 @@ public class EnemyAnimController
     const string idle = "Idle";
     const string attack = "Attack";
 
-    readonly Dictionary<EnemyState, string> animNames = new Dictionary<EnemyState, string>()
+    readonly Dictionary<EnemyAnimState, string> animNames = new Dictionary<EnemyAnimState, string>()
     {
-        {EnemyState.Idle, idle}, {EnemyState.Attack, attack}, {EnemyState.Move, move}
+        {EnemyAnimState.Idle, idle}, {EnemyAnimState.Attack, attack}, {EnemyAnimState.Move, move}
     };
 
     Animator animator;
@@ -23,7 +23,7 @@ public class EnemyAnimController
         return this;
     }
 
-    public void PlayAnim(EnemyState _state)
+    public void PlayAnim(EnemyAnimState _state)
     {
         if (currentAnim == animNames[_state]) return;
         animator.Play(animNames[_state]);

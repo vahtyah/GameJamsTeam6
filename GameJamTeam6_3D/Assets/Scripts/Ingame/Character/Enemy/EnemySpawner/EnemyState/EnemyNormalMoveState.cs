@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyNormalMoveState : IEnemyState
 {
     [SerializeField] float rangeAttack = 6f;
-    public EnemyState enemyState => EnemyState.Move;
+    public EnemyAnimState enemyState => EnemyAnimState.Move;
 
     IEnemy enemy;
 
@@ -19,14 +19,14 @@ public class EnemyNormalMoveState : IEnemyState
         
     }
 
-    public EnemyState OnUpdate()
+    public EnemyAnimState OnUpdate()
     {
         //ColorDebug.DebugGreen(enemy.GetGameObject().name = Vector3.Distance(IngameManager.instance.player.position, enemy.GetGameObject().transform.position).ToString());
         //ColorDebug.DebugYellow( Vector3.Distance(IngameManager.instance.player.position, enemy.GetGameObject().transform.position) < rangeAttack);
         //ColorDebug.DebugRed(rangeAttack);
         if (Vector3.Distance( IngameManager.instance.player.position, enemy.GetGameObject().transform.position) < rangeAttack)
         {
-            return EnemyState.Attack;
+            return EnemyAnimState.Attack;
         }
         enemy.GetGameObject().transform.LookAt(IngameManager.instance.player.position);
         enemy.GetEnemyNav().Move();

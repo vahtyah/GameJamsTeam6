@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class EnemyStateHandler : SerializedMonoBehaviour
 {
-    [SerializeField] Dictionary<EnemyState, IEnemyState> enemyStates;
+    [SerializeField] Dictionary<EnemyAnimState, IEnemyState> enemyStates;
     [SerializeField] IEnemy enemy;
     IEnemyState currentState;
     [Header("For Debug")]
-    [SerializeField] EnemyState debug;
+    [SerializeField] EnemyAnimState debug;
 
     private void Awake()
     {
-        currentState = enemyStates[EnemyState.Idle];
+        currentState = enemyStates[EnemyAnimState.Idle];
         foreach (var keyValue in enemyStates)
         {
             keyValue.Value.SetEnemy(enemy);
@@ -23,14 +23,14 @@ public class EnemyStateHandler : SerializedMonoBehaviour
     {
         debug = currentState.enemyState;
     }
-    public void SetState(EnemyState _state)
+    public void SetState(EnemyAnimState _state)
     {
         currentState = enemyStates[_state];
     }
 
     public void OnUpdate()
     {
-        EnemyState state = currentState.OnUpdate();
+        EnemyAnimState state = currentState.OnUpdate();
         if (currentState.enemyState != state)
         {
             currentState.OnExit();
@@ -43,9 +43,9 @@ public class EnemyStateHandler : SerializedMonoBehaviour
 
 public interface IEnemyState
 {
-    EnemyState enemyState { get; }
+    EnemyAnimState enemyState { get; }
     public void SetEnemy(IEnemy _enemy);
     public void OnEnter();
     public void OnExit();
-    public EnemyState OnUpdate();
+    public EnemyAnimState OnUpdate();
 }
