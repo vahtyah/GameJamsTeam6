@@ -11,7 +11,7 @@ public class IngameManager : SerializedMonoBehaviour
     public MapScene mapScene;
 
     public GameState gameState = GameState.Prepare;
-    List<IGameSignal> signals = new List<IGameSignal>();
+    [SerializeField] List<IGameSignal> signals = new List<IGameSignal>();
 
     private void Awake()
     {
