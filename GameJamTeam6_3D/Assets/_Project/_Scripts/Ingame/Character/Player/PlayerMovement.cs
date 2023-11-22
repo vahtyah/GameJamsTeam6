@@ -31,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Look()
     {
-
         Vector3 mousePos = Camera.main.ScreenToViewportPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cameraDistance));
         Vector3 lookDir = mousePos - Player.instance.transform.position;
         Vector3 lookRotation = Quaternion.LookRotation(lookDir).eulerAngles;

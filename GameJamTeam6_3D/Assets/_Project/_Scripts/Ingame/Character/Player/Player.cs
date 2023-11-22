@@ -10,6 +10,8 @@ public class Player : MonoBehaviour, IGameSignal
     public Rigidbody GetRb() => rb;
     [SerializeField] IWeapon weapon;
     [SerializeField] PlayerMovement movement;
+    [SerializeField] PlayerAnimControl anim;
+    public PlayerAnimControl GetAnimControl() => anim;
 
     private void Awake()
     {
