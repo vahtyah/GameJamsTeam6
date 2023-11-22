@@ -7,10 +7,9 @@ public class EnemyRangeAttackState : EnemyNormalAttackState
     protected float rangeAttack;
     public override void OnEnter()
     {
-        base.OnEnter();
         enemyID = LevelConfig.instance.GetCurrentLevel().GetWaveData(enemy.GetWave()).enemyId;
         rangeAttack = ((EnemyNormalMoveState)enemy.GetEnemyStateHandler().GetState(EnemyAnimState.Move)).GetRangeAttack;
-        Debug.Log(rangeAttack);
+        base.OnEnter();
     }
 
     public override EnemyAnimState OnUpdate()

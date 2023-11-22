@@ -5,17 +5,7 @@ namespace Ingame.Character.Enemy.EnemySpawner.EnemyState.EnemyRangeHitAndRunStat
 {
     public class EnemyRangeHitAndRunAttackState : EnemyRangeAttackState
     {
-        private bool isMoving = false;
         private Vector3 randomPosition;
-        [SerializeField] private GameObject spawn;
-
-        public override void OnEnter()
-        {
-            rangeAttack = ((EnemyNormalMoveState)enemy.GetEnemyStateHandler().GetState(EnemyAnimState.Move))
-                .GetRangeAttack;
-            DoAttack();
-        }
-
         public override EnemyAnimState OnUpdate()
         {
             attackTimer += Time.deltaTime;
