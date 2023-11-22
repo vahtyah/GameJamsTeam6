@@ -17,23 +17,34 @@ public class PlayerMovement : MonoBehaviour
 
     public void Iterate()
     {
-        Move();
-        Look();
-    }
-
-    void Move()
-    {
-        Vector3 normalizedMoveInput = new Vector3(InputHandler.instance.HorizontalMovement(), InputHandler.instance.VerticalMovement());
-        float moveSpeed = speed * Time.fixedDeltaTime;
-        Player.instance.GetRb().velocity =
-            new Vector3(normalizedMoveInput.x * moveSpeed, 0, normalizedMoveInput.z * moveSpeed);
-    }
-
-    void Look()
-    {
+        Vector2 normalizedMoveInput = new Vector3(InputHandler.instance.HorizontalMovement(), InputHandler.instance.VerticalMovement());
         Vector3 mousePos = Camera.main.ScreenToViewportPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cameraDistance));
         Vector3 lookDir = mousePos - Player.instance.transform.position;
-        Vector3 lookRotation = Quaternion.LookRotation(lookDir).eulerAngles;
+        Vector2 lookDirNormal = new Vector2(lookDir.x, lookDir.z).normalized;
+        Move(normalizedMoveInput);
+        Look(lookDir);
+        //float angleDeg = Vector2.Angle(normalizedMoveInput, lookDirNormal);
+        Player.instance.GetAnimControl().SetMovementBlend(lookDirNormal.x, lookDirNormal.y);
+        //if (angleDeg > 160f)
+        //{
+        //    Player.instance.GetAnimControl().SetMovementBlend(lookDirNormal.x, lookDirNormal.y);
+        //}
+        //else
+        //{
+
+        //}
+    }
+
+    void Move(Vector2 _normalized)
+    {
+        float moveSpeed = speed * Time.fixedDeltaTime;
+        Player.instance.GetRb().velocity =
+            new Vector3(_normalized.x * moveSpeed, 0, _normalized.y * moveSpeed);
+    }
+
+    void Look(Vector3 _lookDir)
+    {
+        Vector3 lookRotation = Quaternion.LookRotation(_lookDir).eulerAngles;
         Player.instance.transform.rotation = Quaternion.Euler(0f, lookRotation.y, 0f);
     }
 

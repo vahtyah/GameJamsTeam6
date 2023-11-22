@@ -1,8 +1,9 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IGameSignal
+public class Player : SerializedMonoBehaviour, IGameSignal
 {
     public static Player instance;
 
@@ -26,14 +27,15 @@ public class Player : MonoBehaviour, IGameSignal
     // Update is called once per frame
     void Update()
     {
-        if (weapon.CanAttack()) weapon.DoAttack();
         movement.Iterate();
+        if (weapon.CanAttack()) weapon.DoAttack();
         
     }
 
     public void Prepare()
     {
         movement.Setup(10);
+        weapon.Setup();
     }
 
     public void StartGame()
