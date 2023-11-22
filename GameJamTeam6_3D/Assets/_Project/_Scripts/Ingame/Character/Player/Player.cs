@@ -12,6 +12,8 @@ public class Player : SerializedMonoBehaviour, IGameSignal
     [SerializeField] IWeapon weapon;
     [SerializeField] PlayerMovement movement;
     [SerializeField] PlayerAnimControl anim;
+    [SerializeField] Transform model;
+    public Transform GetModel() => model;
     public PlayerAnimControl GetAnimControl() => anim;
 
     private void Awake()
@@ -29,12 +31,12 @@ public class Player : SerializedMonoBehaviour, IGameSignal
     {
         movement.Iterate();
         if (weapon.CanAttack()) weapon.DoAttack();
-        
+        anim.PlayAnim(PlayerAnimState.Move);
     }
 
     public void Prepare()
     {
-        movement.Setup(10);
+        movement.Setup(200);
         weapon.Setup();
     }
 

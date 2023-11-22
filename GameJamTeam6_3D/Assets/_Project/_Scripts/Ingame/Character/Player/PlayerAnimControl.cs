@@ -8,7 +8,7 @@ public class PlayerAnimControl : MonoBehaviour
         //{PlayerAnimState.Idle, "Idle"},
         //{PlayerAnimState.Walk, "Walk" },
         //{PlayerAnimState.NormalAttack, "NormalAttack" },
-        {PlayerAnimState.Move, "Run" },
+        {PlayerAnimState.Move, "Move" },
         {PlayerAnimState.Die, "Die" }
     };
 

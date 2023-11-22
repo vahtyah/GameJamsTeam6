@@ -32,15 +32,15 @@ public class InputHandler : MonoBehaviour
 
     bool PressLeft()
     {
-        return Input.GetKeyDown(KeyCode.A);
+        return Input.GetKey(KeyCode.A);
     }
     bool PressRight()
     {
-        return Input.GetKeyDown(KeyCode.D);
+        return Input.GetKey(KeyCode.D);
     }
     bool PressForward()
     {
-        return Input.GetKeyDown(KeyCode.W);
+        return Input.GetKey(KeyCode.W);
     }
 
     bool PressFallBack()

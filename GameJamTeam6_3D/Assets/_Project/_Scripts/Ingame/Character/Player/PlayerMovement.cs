@@ -18,21 +18,19 @@ public class PlayerMovement : MonoBehaviour
     public void Iterate()
     {
         Vector2 normalizedMoveInput = new Vector3(InputHandler.instance.HorizontalMovement(), InputHandler.instance.VerticalMovement());
-        Vector3 mousePos = Camera.main.ScreenToViewportPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cameraDistance));
-        Vector3 lookDir = mousePos - Player.instance.transform.position;
-        Vector2 lookDirNormal = new Vector2(lookDir.x, lookDir.z).normalized;
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cameraDistance));
         Move(normalizedMoveInput);
-        Look(lookDir);
-        //float angleDeg = Vector2.Angle(normalizedMoveInput, lookDirNormal);
-        Player.instance.GetAnimControl().SetMovementBlend(lookDirNormal.x, lookDirNormal.y);
-        //if (angleDeg > 160f)
-        //{
-        //    Player.instance.GetAnimControl().SetMovementBlend(lookDirNormal.x, lookDirNormal.y);
-        //}
-        //else
-        //{
+        Look(mousePos);
+        BlenAnim(mousePos, normalizedMoveInput);
+        //Vector3 lookDir = mousePos - Player.instance.transform.position;
+        //lookDir = new Vector3(lookDir.x, 0, lookDir.z);
+        //Vector2 lookDirNormal = new Vector2(lookDir.x, lookDir.z).normalized;
 
-        //}
+        //float angle = Vector2.SignedAngle(normalizedMoveInput, lookDirNormal);
+        //Vector2 blendValue = new Vector2( Quaternion.AngleAxis(angle, Vector2.up).eulerAngles.x, Quaternion.AngleAxis(angle, Vector2.up).eulerAngles.z);
+
+        //Player.instance.GetAnimControl().SetMovementBlend(blendValue.x, blendValue.y);
+        
     }
 
     void Move(Vector2 _normalized)
@@ -42,10 +40,31 @@ public class PlayerMovement : MonoBehaviour
             new Vector3(_normalized.x * moveSpeed, 0, _normalized.y * moveSpeed);
     }
 
-    void Look(Vector3 _lookDir)
+    void Look(Vector3 _mousePos)
     {
-        Vector3 lookRotation = Quaternion.LookRotation(_lookDir).eulerAngles;
-        Player.instance.transform.rotation = Quaternion.Euler(0f, lookRotation.y, 0f);
+        _mousePos = new Vector3(_mousePos.x, 0, _mousePos.z);   
+        Player.instance.GetModel().LookAt(_mousePos);
+        Player.instance.GetModel().eulerAngles = new Vector3(0, Player.instance.GetModel().eulerAngles.y, 0);
+    }
+
+    void BlenAnim(Vector3 mousePos, Vector2 normalizedMoveInput)
+    {
+        Vector3 lookDir = mousePos - Player.instance.transform.position;
+        lookDir = new Vector3(lookDir.x, 0, lookDir.z);
+        Vector2 lookDirNormal = new Vector2(lookDir.x, lookDir.z).normalized;
+        float angle = Vector2.Angle(normalizedMoveInput, lookDirNormal);
+        ColorDebug.DebugGreen(angle);
+
+        Quaternion rotation = Quaternion.Euler(0, angle, 0);
+        ColorDebug.DebugOrange("rotation " + rotation); ;
+        Vector3 rotatedMoveInput = rotation * new Vector3(normalizedMoveInput.x, 0, normalizedMoveInput.y);
+        ColorDebug.DebugRed("rotatedMoveInput " + rotatedMoveInput); ;
+        Vector2 blendValue = new Vector2( rotatedMoveInput.x , rotatedMoveInput.z);
+        ColorDebug.DebugRed(blendValue);
+        //ColorDebug.DebugRed((normalAngleDir.x * blendValue.x) + " " + (normalAngleDir.y * blendValue.y));  
+
+        Player.instance.GetAnimControl().SetMovementBlend(blendValue.x, blendValue.y);
+        
     }
 
 }
