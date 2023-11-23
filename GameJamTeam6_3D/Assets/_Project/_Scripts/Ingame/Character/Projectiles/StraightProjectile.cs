@@ -10,11 +10,16 @@ public class StraightProjectile : MonoBehaviour, IProjectile
     float timeExist = 5f;
     float timer = 0;
     int damage = 5;
+    bool isPlayer;
+    void OnEnable()
+    {
+        timer = 0;
+    }
 
     void Update()
     {
         timer += Time.deltaTime;
-        rb.velocity = Vector3.forward * speed;
+        rb.velocity = transform.forward * speed;
         if (timer > timeExist)
         {
             ProjectilePooling.instance.DeactivateProjectile(this);
@@ -23,10 +28,22 @@ public class StraightProjectile : MonoBehaviour, IProjectile
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag(GlobalString.tagPlayer))
+        if (isPlayer == false)
         {
-            Player.instance.AddHealth(- damage);
-        }   
+            if (other.gameObject.CompareTag(GlobalString.tagPlayer))
+            {
+                ProjectilePooling.instance.DeactivateProjectile(this);
+                Player.instance.AddHealth(-damage);
+            }
+        }
+        else
+        {
+            if (other.gameObject.CompareTag(GlobalString.enemyTagAndLayer))
+            {
+                ProjectilePooling.instance.DeactivateProjectile(this);
+                other.GetComponent<IEnemy>().AddHealth(-damage);
+            }
+        }
     }
 
     public GameObject GetGameObject()
@@ -44,15 +61,15 @@ public class StraightProjectile : MonoBehaviour, IProjectile
         id = _id;
     }
 
-    public IProjectile SetPosition(Vector3 _pos)
-    {
-        transform.position = _pos;
-        return this;
-    }
-
     public IProjectile SetDamage(int _damage)
     {
         damage = _damage;
+        return this;
+    }
+
+    public IProjectile SetPossession(bool _isPlayer)
+    {
+        isPlayer = _isPlayer;
         return this;
     }
 }

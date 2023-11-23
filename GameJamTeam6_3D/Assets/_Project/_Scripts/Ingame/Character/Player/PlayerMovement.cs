@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     //[SerializeField] Transform model;
     int speed = 10;
     float cameraDistance = 10f;
-
+    [SerializeField] LayerMask mask;
     public void Setup(int _speed)
     {
         speed = _speed;
@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
         //Vector2 blendValue = new Vector2( Quaternion.AngleAxis(angle, Vector2.up).eulerAngles.x, Quaternion.AngleAxis(angle, Vector2.up).eulerAngles.z);
 
         //Player.instance.GetAnimControl().SetMovementBlend(blendValue.x, blendValue.y);
-        
+
     }
 
     void Move(Vector2 _normalized)
@@ -42,9 +42,25 @@ public class PlayerMovement : MonoBehaviour
 
     void Look(Vector3 _mousePos)
     {
-        _mousePos = new Vector3(_mousePos.x, 0, _mousePos.z);   
-        Player.instance.GetModel().LookAt(_mousePos);
-        Player.instance.GetModel().eulerAngles = new Vector3(0, Player.instance.GetModel().eulerAngles.y, 0);
+        //Player.instance.GetModel().LookAt(_mousePos);
+        //Player.instance.GetModel().eulerAngles = new Vector3(0, Player.instance.GetModel().eulerAngles.y, 0);
+        //return;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); 
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
+        {
+            Vector3 hitPoint = hit.point;
+            Debug.Log("at: " + hitPoint);
+            // Now you can use hitPoint for further actions
+            Player.instance.GetModel().LookAt(hitPoint);
+            Player.instance.GetModel().eulerAngles = new Vector3(0, Player.instance.GetModel().eulerAngles.y, 0);
+        }
+        else
+        {
+            Player.instance.GetModel().LookAt(_mousePos);
+            Player.instance.GetModel().eulerAngles = new Vector3(0, Player.instance.GetModel().eulerAngles.y, 0);
+        }
+        
     }
     const float addedThresholdAngle = 90;
     void BlenAnim(Vector3 mousePos, Vector2 normalizedMoveInput)
@@ -52,12 +68,12 @@ public class PlayerMovement : MonoBehaviour
         Vector3 lookDir = mousePos - Player.instance.transform.position;
         lookDir = new Vector3(lookDir.x, 0, lookDir.z);
         Vector2 lookDirNormal = new Vector2(lookDir.x, lookDir.z).normalized;
-        float angle =( Vector2.Angle(lookDirNormal, normalizedMoveInput) + addedThresholdAngle) * Mathf.Deg2Rad;
+        float angle = (Vector2.Angle(lookDirNormal, normalizedMoveInput) + addedThresholdAngle) * Mathf.Deg2Rad;
         Vector2 value = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
         if ((angle - Mathf.Deg2Rad * addedThresholdAngle) == 0) value = Vector2.zero;
 
         Player.instance.GetAnimControl().SetMovementBlend(value.x, value.y);
-        
+
     }
 
 }

@@ -9,7 +9,7 @@ public static class GlobalString
     public const string floorTagAndLayer = "Floor";
     public const string obstacleTagAndLayer = "Obstacle";
     public const string tagPlayer = "Player";
-
+    
 }
 
 

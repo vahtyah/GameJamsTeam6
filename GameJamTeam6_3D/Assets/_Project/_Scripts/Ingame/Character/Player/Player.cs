@@ -35,7 +35,6 @@ public class Player : SerializedMonoBehaviour, IGameSignal
     void Update()
     {
         movement.Iterate();
-        if (InputHandler.instance.IsNormalAttackHoldDown())
             if (weapon.CanAttack()) weapon.Shoot();
         
         

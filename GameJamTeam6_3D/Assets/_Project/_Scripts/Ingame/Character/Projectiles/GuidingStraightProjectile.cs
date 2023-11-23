@@ -9,7 +9,7 @@ public class GuidingStraightProjectile : MonoBehaviour, IProjectile
     private Transform target;
     private float timer;
     private int id;
-
+    bool isPlayer;
     private void OnEnable()
     {
         timer = 0f;
@@ -58,12 +58,6 @@ public class GuidingStraightProjectile : MonoBehaviour, IProjectile
     {
         ProjectilePooling.instance.DeactivateProjectile(this);
     }
-
-    IProjectile IProjectile.SetPosition(Vector3 _pos)
-    {
-        transform.position = _pos;
-        return this;
-    }
     int damage = 5;
     public IProjectile SetDamage(int _damage)
     {
@@ -71,16 +65,28 @@ public class GuidingStraightProjectile : MonoBehaviour, IProjectile
         return this;
     }
 
-
-
-
-    //Player still doesn't have collider
-
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     if (other.CompareTag(/*tag*/))
-    //     {
-    //         ProjectilePooling.instance.DeactivateProjectile(gameObject);
-    //     }
-    // }
+    private void OnTriggerEnter(Collider other)
+    {
+        if ( isPlayer == false)
+        {
+            if (other.gameObject.CompareTag(GlobalString.tagPlayer))
+            {
+                ProjectilePooling.instance.DeactivateProjectile(this);
+                Player.instance.AddHealth(-damage);
+            }
+        }
+        else
+        {
+            if (other.gameObject.CompareTag(GlobalString.enemyTagAndLayer))
+            {
+                ProjectilePooling.instance.DeactivateProjectile(this);
+                other.GetComponent<IEnemy>().AddHealth(-damage);
+            }
+        }
+    }
+    public IProjectile SetPossession(bool _isPlayer)
+    {
+        isPlayer = _isPlayer;
+        return this;
+    }
 }

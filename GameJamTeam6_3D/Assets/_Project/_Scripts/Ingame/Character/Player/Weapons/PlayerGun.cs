@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Gun : MonoBehaviour, IWeapon
+public class PlayerGun : MonoBehaviour, IWeapon
 {
     [SerializeField] WeaponData data;
     [SerializeField] Transform shootPos;
@@ -22,20 +22,22 @@ public class Gun : MonoBehaviour, IWeapon
     public bool CanAttack()
     {
         cooldown -= Time.deltaTime;
-        if (cooldown < 0)
+        if (cooldown < 0 && InputHandler.instance.IsNormalAttackHoldDown())
         {
             canAttack = true;
         }
         else canAttack = false;
-
         return canAttack;
     }
 
     public void Shoot()
     {
-        cooldown = data.GetCoolDown();
-        ProjectilePooling.instance.ActivateProjectile(data.GetBulletID()).SetDamage(damage).SetPosition(shootPos.position);
         canAttack = false;
+        cooldown = data.GetCoolDown();
+        var bullet = ProjectilePooling.instance.ActivateProjectile(data.GetBulletID()).SetDamage(damage);
+        bullet.SetPossession(_isPlayer: true);
+        bullet.GetGameObject().transform.position = shootPos.position;
+        bullet.GetGameObject().transform.rotation = Player.instance.GetModel().transform.rotation;
     }
 
     public int GetDamage()

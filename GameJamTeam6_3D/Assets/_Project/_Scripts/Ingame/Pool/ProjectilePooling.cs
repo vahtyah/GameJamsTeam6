@@ -19,7 +19,9 @@ public class ProjectilePooling : SerializedMonoBehaviour
             pooledProjectiles.Add(keyValue.Key, new Queue<GameObject>());
             for (int i = 0; i < 5; i++)
             {
-                pooledProjectiles[keyValue.Key].Enqueue(Instantiate(prefabs[keyValue.Key].GetGameObject(), transform));
+                GameObject obj = Instantiate(prefabs[keyValue.Key].GetGameObject(), transform);
+                obj.gameObject.SetActive(false);
+                pooledProjectiles[keyValue.Key].Enqueue(obj);
             }
         }
     }

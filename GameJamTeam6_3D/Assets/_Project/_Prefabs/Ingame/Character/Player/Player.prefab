@@ -281,6 +281,9 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
+    - Name: onHealthChange
+      Entry: 6
+      Data: 
     - Name: weapon
       Entry: 10
       Data: 0

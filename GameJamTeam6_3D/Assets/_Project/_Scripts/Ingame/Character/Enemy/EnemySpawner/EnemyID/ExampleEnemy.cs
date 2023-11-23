@@ -31,8 +31,14 @@ public class ExampleEnemy : MonoBehaviour, IEnemy
         });
         characterHealth.AddSignalOnDead(() =>
         {
+            gameObject.SetActive(false);
             EnemySpawner.instance.OnEnemyDie(atWave);
         });
+    }
+
+    void OnEnable()
+    {
+        characterHealth.Setup(curEnemyData.hp, curEnemyData.hp);
     }
 
     void Update()

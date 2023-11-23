@@ -78,7 +78,11 @@ public class IngameManager : SerializedMonoBehaviour
     public void StartGame()
     {
         gameState = GameState.StartGame;
+        
+        
         //EnemySpawner.instance.StartSpawning();
+
+
         foreach (var signal in signals)
         {
             signal.StartGame();
