@@ -4,12 +4,13 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent (typeof(Rigidbody))]
 [RequireComponent (typeof(BoxCollider))]
-public class RangeEnemy : MonoBehaviour, IEnemy
+public class RangeEnemy : MonoBehaviour, IRangeEnemy
 {
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Animator animator;
     [SerializeField] EnemyStateHandler enemyStateHandler;
-    [SerializeField] private int damage;
+    [SerializeField] EnemyData enemyData;
+    EnemyData curEnemyData;
     EnemyNav enemyNav = new EnemyNav();
     CharacterHealth characterHealth = new CharacterHealth();
     EnemyAnimController anim = new EnemyAnimController();
@@ -17,6 +18,7 @@ public class RangeEnemy : MonoBehaviour, IEnemy
 
     void Awake()
     {
+        curEnemyData = enemyData;
         tag = GlobalString.enemyTagAndLayer;
         gameObject.layer = LayerMask.NameToLayer(tag);
         agent = GetComponent<NavMeshAgent>();
@@ -39,7 +41,7 @@ public class RangeEnemy : MonoBehaviour, IEnemy
         return gameObject;
     }
 
-    public void OnBeaten(int _inputDamage)
+    public void AddHealth(int _inputDamage)
     {
         characterHealth.AddHealth(-_inputDamage);
     }
@@ -62,8 +64,15 @@ public class RangeEnemy : MonoBehaviour, IEnemy
     {
         return enemyNav;
     }
-
-    int IEnemy.GetDamage() { return damage;}
     int IEnemy.GetWave() { return atWave;}
-    public EnemyStateHandler GetEnemyStateHandler() { return enemyStateHandler; }
+
+    public EnemyData GetEnemyData()
+    {
+        return curEnemyData;
+    }
+    [SerializeField] Transform shootPlace;
+    public Transform GetShootTransform()
+    {
+        return shootPlace;
+    }
 }

@@ -1,14 +1,14 @@
 ﻿using System;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class GuidingStraightProjectile : MonoBehaviour, IProjectile
 {
     [SerializeField] private float speed = 10f;
     [SerializeField] private float lifeTime = 5f;
     
     private Transform target;
     private float timer;
-    private EnemyID enemyID;
+    private int id;
 
     private void OnEnable()
     {
@@ -22,11 +22,9 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
-        if(!gameObject.activeSelf) return;
-        
         timer += Time.deltaTime;
         if (timer > lifeTime)
-            ProjectilePooling.instance.DeactivateProjectile(gameObject);
+            ProjectilePooling.instance.DeactivateProjectile(this);
         else
         {
             var dir = target.position - transform.position;
@@ -41,24 +39,43 @@ public class Projectile : MonoBehaviour
         }
     }
     
-    public Projectile SetPosition(Vector3 _position)
+    public GuidingStraightProjectile SetPosition(Vector3 _position)
     {
         transform.position = _position;
         return this;
     }
     
-    public void SetEnemyID(EnemyID _id) => enemyID = _id;
+    public void SetID(int _id) => id = _id;
 
-    public EnemyID GetEnemyID() => enemyID;
+    public int GetID() => id;
+
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
 
     private void HitTarget()
     {
-        ProjectilePooling.instance.DeactivateProjectile(gameObject);
+        ProjectilePooling.instance.DeactivateProjectile(this);
     }
-    
-    
+
+    IProjectile IProjectile.SetPosition(Vector3 _pos)
+    {
+        transform.position = _pos;
+        return this;
+    }
+    int damage = 5;
+    public IProjectile SetDamage(int _damage)
+    {
+        damage = _damage;
+        return this;
+    }
+
+
+
+
     //Player still doesn't have collider
-    
+
     // private void OnTriggerEnter(Collider other)
     // {
     //     if (other.CompareTag(/*tag*/))

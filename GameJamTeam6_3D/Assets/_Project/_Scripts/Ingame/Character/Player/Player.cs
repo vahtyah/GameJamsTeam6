@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine;
 public class Player : SerializedMonoBehaviour, IGameSignal
 {
     public static Player instance;
+
+    public Action<int> onHealthChange;
 
     [SerializeField] Rigidbody rb;
     public Rigidbody GetRb() => rb;
@@ -15,6 +18,8 @@ public class Player : SerializedMonoBehaviour, IGameSignal
     [SerializeField] Transform model;
     public Transform GetModel() => model;
     public PlayerAnimControl GetAnimControl() => anim;
+
+    int hp = 0;
 
     private void Awake()
     {
@@ -30,8 +35,17 @@ public class Player : SerializedMonoBehaviour, IGameSignal
     void Update()
     {
         movement.Iterate();
-        if (weapon.CanAttack()) weapon.DoAttack();
-        anim.PlayAnim(PlayerAnimState.Move);
+        if (InputHandler.instance.IsNormalAttackHoldDown())
+            if (weapon.CanAttack()) weapon.Shoot();
+        
+        
+        anim.PlayAnim(PlayerAnimState.NormalMovement);
+    }
+
+    public void AddHealth(int _input)
+    {
+        hp += _input;
+        onHealthChange?.Invoke(hp);
     }
 
     public void Prepare()

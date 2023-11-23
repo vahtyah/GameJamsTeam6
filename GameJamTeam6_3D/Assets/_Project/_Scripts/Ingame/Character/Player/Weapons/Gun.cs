@@ -6,8 +6,9 @@ using UnityEngine;
 public class Gun : MonoBehaviour, IWeapon
 {
     [SerializeField] WeaponData data;
+    [SerializeField] Transform shootPos;
     float cooldown;
-    float damage;
+    int damage;
     //float roundBullets;
 
     bool canAttack = false;
@@ -30,21 +31,20 @@ public class Gun : MonoBehaviour, IWeapon
         return canAttack;
     }
 
-    public void DoAttack()
+    public void Shoot()
     {
         cooldown = data.GetCoolDown();
+        ProjectilePooling.instance.ActivateProjectile(data.GetBulletID()).SetDamage(damage).SetPosition(shootPos.position);
         canAttack = false;
     }
 
     public int GetDamage()
     {
-        //throw new System.NotImplementedException();
-        return 10;
+        return damage;
     }
 
     public GameObject GetObject()
     {
-        //throw new System.NotImplementedException();
         return gameObject;
     }
 

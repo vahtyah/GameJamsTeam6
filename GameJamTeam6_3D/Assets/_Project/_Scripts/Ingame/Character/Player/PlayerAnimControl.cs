@@ -8,7 +8,7 @@ public class PlayerAnimControl : MonoBehaviour
         //{PlayerAnimState.Idle, "Idle"},
         //{PlayerAnimState.Walk, "Walk" },
         //{PlayerAnimState.NormalAttack, "NormalAttack" },
-        {PlayerAnimState.Move, "Move" },
+        {PlayerAnimState.NormalMovement, "Move" },
         {PlayerAnimState.Die, "Die" }
     };
 
@@ -31,17 +31,17 @@ public class PlayerAnimControl : MonoBehaviour
         animator.SetFloat(moveBlendAnimY, _blendY);
     }
 
-    public void SetAnimSpeed(float _speed)
-    {
+    //public void SetAnimSpeed(float _speed)
+    //{
         
-    }
+    //}
 
 }
 
 public enum PlayerAnimState
 {
     //Idle,
-    Move,
+    NormalMovement,
     Die,
     //Walk,
     //NormalAttack,

@@ -61,12 +61,12 @@ MonoBehaviour:
     SerializationNodes:
     - Name: enemyStates
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[EnemyState, Assembly-CSharp],[IEnemyState,
+      Data: 0|System.Collections.Generic.Dictionary`2[[EnemyAnimState, Assembly-CSharp],[IEnemyState,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[EnemyState, Assembly-CSharp]],
-        mscorlib
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[EnemyAnimState,
+        Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -175,6 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 7832614591336046450}
   animator: {fileID: 102121997370173079}
+  enemyData: {fileID: 11400000, guid: ede01f58e7aba8d44b20f289a7364e05, type: 2}
   enemyStateHandler: {fileID: 5859960635592870068}
 --- !u!195 &7832614591336046450
 NavMeshAgent:

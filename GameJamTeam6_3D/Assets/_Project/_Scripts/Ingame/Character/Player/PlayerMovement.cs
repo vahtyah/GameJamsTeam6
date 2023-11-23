@@ -53,9 +53,7 @@ public class PlayerMovement : MonoBehaviour
         lookDir = new Vector3(lookDir.x, 0, lookDir.z);
         Vector2 lookDirNormal = new Vector2(lookDir.x, lookDir.z).normalized;
         float angle =( Vector2.Angle(lookDirNormal, normalizedMoveInput) + addedThresholdAngle) * Mathf.Deg2Rad;
-        ColorDebug.DebugRed(angle);
         Vector2 value = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-        ColorDebug.DebugOrange(value);
         if ((angle - Mathf.Deg2Rad * addedThresholdAngle) == 0) value = Vector2.zero;
 
         Player.instance.GetAnimControl().SetMovementBlend(value.x, value.y);
