@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class IngameManager : SerializedMonoBehaviour
 {
+    public Transform ___test;
+
     public static IngameManager instance;
 
     public Transform player;
@@ -20,6 +22,7 @@ public class IngameManager : SerializedMonoBehaviour
 
     private void Start()
     {
+        player = Player.instance.transform;
         Prepare();
         StartGame();
     }

@@ -50,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
         {
             Vector3 hitPoint = hit.point;
+            IngameManager.instance.___test.position = hitPoint;
             Debug.Log("at: " + hitPoint);
             // Now you can use hitPoint for further actions
             Player.instance.GetModel().LookAt(hitPoint);
