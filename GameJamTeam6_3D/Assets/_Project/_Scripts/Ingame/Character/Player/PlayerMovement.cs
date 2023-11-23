@@ -46,24 +46,19 @@ public class PlayerMovement : MonoBehaviour
         Player.instance.GetModel().LookAt(_mousePos);
         Player.instance.GetModel().eulerAngles = new Vector3(0, Player.instance.GetModel().eulerAngles.y, 0);
     }
-
+    const float addedThresholdAngle = 90;
     void BlenAnim(Vector3 mousePos, Vector2 normalizedMoveInput)
     {
         Vector3 lookDir = mousePos - Player.instance.transform.position;
         lookDir = new Vector3(lookDir.x, 0, lookDir.z);
         Vector2 lookDirNormal = new Vector2(lookDir.x, lookDir.z).normalized;
-        float angle = Vector2.Angle(normalizedMoveInput, lookDirNormal);
-        ColorDebug.DebugGreen(angle);
+        float angle =( Vector2.Angle(lookDirNormal, normalizedMoveInput) + addedThresholdAngle) * Mathf.Deg2Rad;
+        ColorDebug.DebugRed(angle);
+        Vector2 value = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+        ColorDebug.DebugOrange(value);
+        if ((angle - Mathf.Deg2Rad * addedThresholdAngle) == 0) value = Vector2.zero;
 
-        Quaternion rotation = Quaternion.Euler(0, angle, 0);
-        ColorDebug.DebugOrange("rotation " + rotation); ;
-        Vector3 rotatedMoveInput = rotation * new Vector3(normalizedMoveInput.x, 0, normalizedMoveInput.y);
-        ColorDebug.DebugRed("rotatedMoveInput " + rotatedMoveInput); ;
-        Vector2 blendValue = new Vector2( rotatedMoveInput.x , rotatedMoveInput.z);
-        ColorDebug.DebugRed(blendValue);
-        //ColorDebug.DebugRed((normalAngleDir.x * blendValue.x) + " " + (normalAngleDir.y * blendValue.y));  
-
-        Player.instance.GetAnimControl().SetMovementBlend(blendValue.x, blendValue.y);
+        Player.instance.GetAnimControl().SetMovementBlend(value.x, value.y);
         
     }
 
