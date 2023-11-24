@@ -22,15 +22,6 @@ public class PlayerMovement : MonoBehaviour
         Move(normalizedMoveInput);
         Look(mousePos);
         BlenAnim(mousePos, normalizedMoveInput);
-        //Vector3 lookDir = mousePos - Player.instance.transform.position;
-        //lookDir = new Vector3(lookDir.x, 0, lookDir.z);
-        //Vector2 lookDirNormal = new Vector2(lookDir.x, lookDir.z).normalized;
-
-        //float angle = Vector2.SignedAngle(normalizedMoveInput, lookDirNormal);
-        //Vector2 blendValue = new Vector2( Quaternion.AngleAxis(angle, Vector2.up).eulerAngles.x, Quaternion.AngleAxis(angle, Vector2.up).eulerAngles.z);
-
-        //Player.instance.GetAnimControl().SetMovementBlend(blendValue.x, blendValue.y);
-
     }
 
     void Move(Vector2 _normalized)
@@ -42,9 +33,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Look(Vector3 _mousePos)
     {
-        //Player.instance.GetModel().LookAt(_mousePos);
-        //Player.instance.GetModel().eulerAngles = new Vector3(0, Player.instance.GetModel().eulerAngles.y, 0);
-        //return;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); 
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
@@ -52,7 +40,6 @@ public class PlayerMovement : MonoBehaviour
             Vector3 hitPoint = hit.point;
             IngameManager.instance.___test.position = hitPoint;
             Debug.Log("at: " + hitPoint);
-            // Now you can use hitPoint for further actions
             Player.instance.GetModel().LookAt(hitPoint);
             Player.instance.GetModel().eulerAngles = new Vector3(0, Player.instance.GetModel().eulerAngles.y, 0);
         }

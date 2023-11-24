@@ -49,7 +49,7 @@ public class Player : SerializedMonoBehaviour, IGameSignal
 
     public void Prepare()
     {
-        movement.Setup(200);
+        movement.Setup(250);
         weapon.Setup();
     }
 

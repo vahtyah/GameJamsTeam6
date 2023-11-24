@@ -28,8 +28,16 @@ public class ProjectilePooling : SerializedMonoBehaviour
 
     public IProjectile ActivateProjectile(int _id)
     {
-        if (!pooledProjectiles.ContainsKey(_id)) return null;
-        
+        //if (!pooledProjectiles.ContainsKey(_id))
+        //{
+        //    pooledProjectiles.Add(_id, new Queue<GameObject>());
+        //    var obj = Instantiate(prefabs[_id].GetGameObject(), transform);
+        //    obj.gameObject.SetActive(true);
+        //    pooledProjectiles[_id].Enqueue(obj);
+        //    var script = obj.GetComponent<IProjectile>();
+        //    script.SetID(_id);
+        //    return script;
+        //}
         var objectPool = pooledProjectiles[_id];
         var projectile = objectPool.Count > 0 ? objectPool.Dequeue() : Instantiate(prefabs[_id].GetGameObject(), transform);
         var projectileScript = projectile.GetComponent<IProjectile>();
@@ -40,8 +48,7 @@ public class ProjectilePooling : SerializedMonoBehaviour
 
     public void DeactivateProjectile(IProjectile _projectile)
     {
-        var objectPool = pooledProjectiles[_projectile.GetID()];
         _projectile.GetGameObject().SetActive(false);
-        objectPool.Enqueue(_projectile.GetGameObject());
+        pooledProjectiles[_projectile.GetID()].Enqueue(_projectile.GetGameObject());
     }
 }

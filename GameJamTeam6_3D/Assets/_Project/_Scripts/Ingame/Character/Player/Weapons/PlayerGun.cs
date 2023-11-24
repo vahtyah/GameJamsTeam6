@@ -10,7 +10,6 @@ public class PlayerGun : MonoBehaviour, IWeapon
     [SerializeField] WeaponData data;
     [SerializeField] Transform shootPos;
     [SerializeField] ParticleSystem muzzle;
-    [SerializeField] GameObject muzzleLight;
     float cooldown;
     int damage;
     //float roundBullets;
@@ -38,7 +37,6 @@ public class PlayerGun : MonoBehaviour, IWeapon
     {
         canAttack = false;
         muzzle.Play();
-        //muzzleLight.SetActive(true);
         cooldown = data.GetCoolDown();
         var bullet = ProjectilePooling.instance.ActivateProjectile(data.GetBulletID()).SetDamage(damage);
         bullet.SetPossession(_isPlayer: true);
