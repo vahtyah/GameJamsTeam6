@@ -38,7 +38,10 @@ public class EnemyPooling : SerializedMonoBehaviour
         return newEnemy;
     }
 
-
+    public IEnemy GetIEnemy(EnemyID enemyID)
+    {
+        return prefabs.ContainsKey(enemyID) ? prefabs[enemyID] : null;
+    }
 }
 
 
