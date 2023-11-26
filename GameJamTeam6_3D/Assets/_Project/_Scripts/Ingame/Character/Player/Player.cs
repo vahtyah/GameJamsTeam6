@@ -15,9 +15,11 @@ public class Player : SerializedMonoBehaviour, IGameSignal
     [SerializeField] IWeapon weapon;
     [SerializeField] PlayerMovement movement;
     [SerializeField] PlayerAnimControl anim;
+    public PlayerAnimControl GetAnimControl() => anim;
     [SerializeField] Transform model;
     public Transform GetModel() => model;
-    public PlayerAnimControl GetAnimControl() => anim;
+    [SerializeField] Transform modelRightHand;
+
 
     int hp = 0;
 

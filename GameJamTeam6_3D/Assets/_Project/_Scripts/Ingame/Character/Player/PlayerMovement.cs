@@ -39,7 +39,6 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector3 hitPoint = hit.point;
             IngameManager.instance.___test.position = hitPoint;
-            Debug.Log("at: " + hitPoint);
             Player.instance.GetModel().LookAt(hitPoint);
             Player.instance.GetModel().eulerAngles = new Vector3(0, Player.instance.GetModel().eulerAngles.y, 0);
         }

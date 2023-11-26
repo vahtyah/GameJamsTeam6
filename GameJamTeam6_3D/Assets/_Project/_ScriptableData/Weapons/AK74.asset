@@ -15,4 +15,4 @@ MonoBehaviour:
   bulletID: 1
   cooldown: 0.2
   magazine: 0
-  damage: 10
+  damage: 35

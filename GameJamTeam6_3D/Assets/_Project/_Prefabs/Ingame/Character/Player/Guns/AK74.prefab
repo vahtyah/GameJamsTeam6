@@ -104,7 +104,6 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: d88d934f8e4aa2f4c938cb9ffe7f25ff, type: 2}
   shootPos: {fileID: 8410917114097007450}
   muzzle: {fileID: 8641974351078460494}
-  muzzleLight: {fileID: 0}
 --- !u!1 &2589363912336599786
 GameObject:
   m_ObjectHideFlags: 0
@@ -5387,7 +5386,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
+      scalar: 1.4
       minScalar: 1.5
       maxCurve:
         serializedVersion: 2
@@ -5440,7 +5439,7 @@ ParticleSystem:
     startSizeY:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
+      scalar: 1.72
       minScalar: 1.5
       maxCurve:
         serializedVersion: 2
@@ -5493,7 +5492,7 @@ ParticleSystem:
     startSizeZ:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 4
+      scalar: 5.44
       minScalar: 6
       maxCurve:
         serializedVersion: 2
@@ -10171,7 +10170,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 7.68e-43, y: 1.237e-42, z: 0, w: 2.785722e+23}
+  m_BoundingSphereOverride: {x: 0, y: 10, z: 9, w: -11}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -15494,7 +15493,7 @@ ParticleSystem:
     startSizeY:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.7
+      scalar: 1.19
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -15547,7 +15546,7 @@ ParticleSystem:
     startSizeZ:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 3.72
       minScalar: 1
       maxCurve:
         serializedVersion: 2
