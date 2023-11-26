@@ -79,7 +79,6 @@ public class EnemySpawner : SerializedMonoBehaviour
         if (enemyWaveRecord[_atWave] == 0 )
         {
             countWaveSpawned--;
-            enemyWaveRecord.Remove(_atWave);
             StartSpawning();
         }
     }

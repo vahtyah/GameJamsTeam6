@@ -8,13 +8,20 @@ public interface IEnemy
     public GameObject GetGameObject();
     public IEnemy SetThisEnemyFromWave(int _wave);
 
-    public void OnBeaten(int _inputDamage);
+    public void AddHealth(int _input);
 
     public EnemyNav GetEnemyNav();
-    public int GetDamage();
     public int GetWave();
-    EnemyStateHandler GetEnemyStateHandler();
+    public EnemyData GetEnemyData();
+    
 }
+
+public interface IRangeEnemy : IEnemy
+{
+    public Transform GetShootTransform();
+}
+
+
 
 public enum EnemyAnimState
 {

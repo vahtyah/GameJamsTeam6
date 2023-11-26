@@ -11,7 +11,8 @@ public class ExampleEnemy : MonoBehaviour, IEnemy
 {
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Animator animator;
-
+    [SerializeField] EnemyData enemyData;
+    EnemyData curEnemyData;
     [SerializeField] EnemyStateHandler enemyStateHandler;
     EnemyNav enemyNav = new EnemyNav();
     CharacterHealth characterHealth = new CharacterHealth();
@@ -20,16 +21,24 @@ public class ExampleEnemy : MonoBehaviour, IEnemy
 
     void Awake()
     {
+        curEnemyData = enemyData;
         tag = GlobalString.enemyTagAndLayer;
         gameObject.layer = LayerMask.NameToLayer(tag);
         agent = GetComponent<NavMeshAgent>();
         characterHealth.AddSignalHealthChange((curHealth) =>
         {
+
         });
         characterHealth.AddSignalOnDead(() =>
         {
+            gameObject.SetActive(false);
             EnemySpawner.instance.OnEnemyDie(atWave);
         });
+    }
+
+    void OnEnable()
+    {
+        characterHealth.Setup(curEnemyData.hp, curEnemyData.hp);
     }
 
     void Update()
@@ -42,9 +51,9 @@ public class ExampleEnemy : MonoBehaviour, IEnemy
         return gameObject;
     }
 
-    public void OnBeaten(int _inputDamage)
+    public void AddHealth(int _input)
     {
-        characterHealth.AddHealth(-_inputDamage);
+        characterHealth.AddHealth(_input);
     }
 
     public IEnemy SetThisEnemyFromWave(int _wave)
@@ -55,7 +64,7 @@ public class ExampleEnemy : MonoBehaviour, IEnemy
 
     public IEnemy Setup()
     {
-        characterHealth.Setup(100);
+        characterHealth.Setup(enemyData.hp);
         anim.SetAnimator(animator);
         enemyNav.SetAnimController(anim).SetSpeed(8).SetAgent(agent);
         return this;
@@ -68,7 +77,11 @@ public class ExampleEnemy : MonoBehaviour, IEnemy
 
     public int GetDamage() { throw new System.NotImplementedException(); }
     public int GetWave() { return atWave;}
-    public EnemyStateHandler GetEnemyStateHandler() { return enemyStateHandler; }
+
+    public EnemyData GetEnemyData()
+    {
+        return curEnemyData;
+    }
 }
 
 

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a710b397388364bb0fd0ba0f9475ac, type: 3}
   m_Name: AK74
   m_EditorClassIdentifier: 
+  bulletID: 1
   cooldown: 0.2
   magazine: 0
-  damage: 0
+  damage: 10

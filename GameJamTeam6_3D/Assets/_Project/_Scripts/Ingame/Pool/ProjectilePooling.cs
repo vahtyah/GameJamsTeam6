@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class ProjectilePooling : SerializedMonoBehaviour
 {
     public static ProjectilePooling instance { get; private set; }
-    [SerializeField] private Dictionary<EnemyID, GameObject> prefabs;
-    private readonly Dictionary<EnemyID, Queue<GameObject>> pooledProjectiles = new();
+    [SerializeField] private Dictionary<int, IProjectile> prefabs;
+    private readonly Dictionary<int, Queue<GameObject>> pooledProjectiles = new();
 
     private void Awake()
     {
@@ -16,31 +17,38 @@ public class ProjectilePooling : SerializedMonoBehaviour
         foreach (var keyValue in prefabs)
         {
             pooledProjectiles.Add(keyValue.Key, new Queue<GameObject>());
+            for (int i = 0; i < 5; i++)
+            {
+                GameObject obj = Instantiate(prefabs[keyValue.Key].GetGameObject(), transform);
+                obj.gameObject.SetActive(false);
+                pooledProjectiles[keyValue.Key].Enqueue(obj);
+            }
         }
     }
 
-    private IEnumerator IEDestroyAfterDeactivate(float _time, Queue<GameObject> _objectPool)
+    public IProjectile ActivateProjectile(int _id)
     {
-        yield return new WaitForSeconds(_time);
-        Destroy(_objectPool.Dequeue());
-    }
-
-    public Projectile ActivateProjectile(EnemyID _id)
-    {
-        if (!pooledProjectiles.ContainsKey(_id)) return null;
-        
+        //if (!pooledProjectiles.ContainsKey(_id))
+        //{
+        //    pooledProjectiles.Add(_id, new Queue<GameObject>());
+        //    var obj = Instantiate(prefabs[_id].GetGameObject(), transform);
+        //    obj.gameObject.SetActive(true);
+        //    pooledProjectiles[_id].Enqueue(obj);
+        //    var script = obj.GetComponent<IProjectile>();
+        //    script.SetID(_id);
+        //    return script;
+        //}
         var objectPool = pooledProjectiles[_id];
-        var projectile = objectPool.Count > 0 ? objectPool.Dequeue() : Instantiate(prefabs[_id], transform);
-        var projectileScript = projectile.GetComponent<Projectile>();
-        projectileScript.SetEnemyID(_id);
+        var projectile = objectPool.Count > 0 ? objectPool.Dequeue() : Instantiate(prefabs[_id].GetGameObject(), transform);
+        var projectileScript = projectile.GetComponent<IProjectile>();
+        projectileScript.SetID(_id);
         projectile.SetActive(true);
         return projectileScript;
     }
 
-    public void DeactivateProjectile(GameObject _projectile)
+    public void DeactivateProjectile(IProjectile _projectile)
     {
-        var objectPool = pooledProjectiles[_projectile.GetComponent<Projectile>().GetEnemyID()];
-        _projectile.SetActive(false);
-        objectPool.Enqueue(_projectile);
+        _projectile.GetGameObject().SetActive(false);
+        pooledProjectiles[_projectile.GetID()].Enqueue(_projectile.GetGameObject());
     }
 }

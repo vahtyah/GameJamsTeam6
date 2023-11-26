@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class EnemyRangeAttackState : EnemyNormalAttackState
 {
-    private EnemyID enemyID;
+    //private EnemyID enemyID;
     protected float rangeAttack;
     public override void OnEnter()
     {
-        enemyID = LevelConfig.instance.GetCurrentLevel().GetWaveData(enemy.GetWave()).enemyId;
-        rangeAttack = ((EnemyNormalMoveState)enemy.GetEnemyStateHandler().GetState(EnemyAnimState.Move)).GetRangeAttack;
+        //enemyID = LevelConfig.instance.GetCurrentLevel().GetWaveData(enemy.GetWave()).enemyId;
+        rangeAttack = enemy.GetEnemyData().rangeAttack;
         base.OnEnter();
     }
 
@@ -34,9 +34,8 @@ public class EnemyRangeAttackState : EnemyNormalAttackState
 
     private void DoDamage()
     {
-        var enemyGo = enemy.GetGameObject();
-        //Activate projectile
-        var projectile = ProjectilePooling.instance.ActivateProjectile(enemyID);
-        if (projectile != null) projectile.SetPosition(enemyGo.transform.position);
+        var projectile = ProjectilePooling.instance.ActivateProjectile(0).SetDamage(enemy.GetEnemyData().damage);
+        projectile.SetPossession(_isPlayer: false);
+        projectile.GetGameObject().transform.position = (enemy as IRangeEnemy).GetShootTransform().position;
     }
 }

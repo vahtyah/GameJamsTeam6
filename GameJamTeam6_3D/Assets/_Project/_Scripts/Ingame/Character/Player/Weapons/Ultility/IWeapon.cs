@@ -6,7 +6,7 @@ public interface IWeapon
 {
     public void Setup();
 
-    public void DoAttack();
+    public void Shoot();
 
     public int GetDamage();
 
