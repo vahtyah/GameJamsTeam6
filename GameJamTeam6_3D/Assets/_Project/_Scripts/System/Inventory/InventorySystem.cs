@@ -7,21 +7,13 @@ public class InventorySystem : SerializedMonoBehaviour
 {
     public static InventorySystem instance;
 
-    const int inventoryFirstCapSize = 50;
-
     [SerializeField] Dictionary<ItemType, List<IItem>> itemHolders;
-    [Space]
-    [SerializeField] Dictionary<ItemType, IItem> itemEquipment;
-    [Space]
-    [SerializeField] List<IItem> itemInventory;
+    [Space][SerializeField] Dictionary<ItemType, IItem> itemEquipment;
+    [Space][SerializeField] List<IItem> itemInventory;
 
     private void Awake()
     {
         instance = this;
-        //for (int i = 0; i < inventoryFirstCapSize; i++)
-        //{
-        //    itemInventory.Add(null);
-        //}
         foreach (var keyValue in itemHolders)
         {
             for (int i = 0; i < keyValue.Value.Count; i++)
@@ -29,6 +21,11 @@ public class InventorySystem : SerializedMonoBehaviour
                 keyValue.Value[i].SetItemID(i);
             }
         }
+    }
+
+    public IItem GetItemInfo(ItemType _type, int _id)
+    {
+        return itemHolders[_type][_id];
     }
 
     public void SwapItem(int _inventoryIndexSlot, ItemType _type, int _id)
@@ -47,6 +44,7 @@ public class InventorySystem : SerializedMonoBehaviour
             if (itemInventory[i] == null)
             {
                 itemInventory[i] = itemHolders[_type][_id];
+                return;
             }
         }
 
