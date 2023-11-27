@@ -53,7 +53,7 @@ public class PlayerGun : MonoBehaviour, IWeapon
         return damage;
     }
 
-    public GameObject GetObject()
+    public GameObject GetGameObject()
     {
         return gameObject;
     }

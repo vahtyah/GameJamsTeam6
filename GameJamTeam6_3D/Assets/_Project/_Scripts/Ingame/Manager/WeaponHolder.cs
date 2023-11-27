@@ -5,7 +5,16 @@ using UnityEngine;
 
 public class WeaponHolder : SerializedMonoBehaviour
 {
+    public static WeaponHolder instance;
+
     [SerializeField] Dictionary<WeaponID, WeaponHolderData> weaponData;
+
+    private void Awake()
+    {
+        instance = this;
+
+
+    }
 
     public WeaponHolderData GetWeapon(WeaponID _id)
     {
