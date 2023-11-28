@@ -26,12 +26,11 @@ public class ProjectileImpactPooling : SerializedMonoBehaviour
 
     public ParticleSystem Activate(int _id)
     {
-        ParticleSystem target = null;
         var objectPool = pool[_id];
         var projectile = objectPool.Count > 0 ? objectPool.Dequeue() : Instantiate(prefabs[_id], transform);
         projectile.gameObject.SetActive(true);
         projectile.Play();
-        return target;
+        return projectile;
     }
 
     public void Deactive(int _id, ParticleSystem _obj)

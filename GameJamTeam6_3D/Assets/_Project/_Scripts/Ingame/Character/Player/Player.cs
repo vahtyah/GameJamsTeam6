@@ -13,11 +13,14 @@ public class Player : SerializedMonoBehaviour, IGameSignal
     [SerializeField] Rigidbody rb;
     public Rigidbody GetRb() => rb;
     [SerializeField] IWeapon weapon;
+    public IWeapon GetWeapon() => weapon;
     [SerializeField] PlayerMovement movement;
     [SerializeField] PlayerAnimControl anim;
+    public PlayerAnimControl GetAnimControl() => anim;
     [SerializeField] Transform model;
     public Transform GetModel() => model;
-    public PlayerAnimControl GetAnimControl() => anim;
+    [SerializeField] Transform modelRightHand;
+    public Transform GetModelRightHand() => modelRightHand;
 
     int hp = 0;
 
@@ -31,7 +34,6 @@ public class Player : SerializedMonoBehaviour, IGameSignal
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         movement.Iterate();
@@ -45,6 +47,11 @@ public class Player : SerializedMonoBehaviour, IGameSignal
     {
         hp += _input;
         onHealthChange?.Invoke(hp);
+    }
+
+    public void SetNewWeapon(IWeapon _weapon)
+    {
+        weapon = _weapon;
     }
 
     public void Prepare()

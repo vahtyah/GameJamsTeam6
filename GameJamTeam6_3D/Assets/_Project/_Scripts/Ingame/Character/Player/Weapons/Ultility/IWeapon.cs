@@ -12,7 +12,7 @@ public interface IWeapon
 
     public bool CanAttack();
 
-    public GameObject GetObject();
+    public GameObject GetGameObject();
 
 
 

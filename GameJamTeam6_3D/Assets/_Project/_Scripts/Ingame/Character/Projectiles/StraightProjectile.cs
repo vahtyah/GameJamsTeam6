@@ -28,22 +28,24 @@ public class StraightProjectile : MonoBehaviour, IProjectile
 
     private void OnTriggerEnter(Collider other)
     {
+        bool pop = false;
         if (isPlayer == false)
         {
             if (other.gameObject.CompareTag(GlobalString.tagPlayer))
             {
-                ProjectilePooling.instance.DeactivateProjectile(this);
                 Player.instance.AddHealth(-damage);
+                pop = true;
             }
+            return;
         }
-        else
+        if (other.gameObject.CompareTag(GlobalString.enemyTagAndLayer))
         {
-            if (other.gameObject.CompareTag(GlobalString.enemyTagAndLayer))
-            {
-                ProjectilePooling.instance.DeactivateProjectile(this);
-                other.GetComponent<IEnemy>().AddHealth(-damage);
-            }
+            other.GetComponent<IEnemy>().AddHealth(-damage);
+            pop = true;
         }
+        if (pop == false) return;
+        ProjectileImpactPooling.instance.Activate(id).gameObject.transform.position = transform.position;
+        ProjectilePooling.instance.DeactivateProjectile(this);
     }
 
     public GameObject GetGameObject()
