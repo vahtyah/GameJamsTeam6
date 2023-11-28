@@ -11,11 +11,14 @@ public interface IItem
 
     public ItemType GetItemType();
 
+    public Sprite GetItemIcon();
+
+
 }
 
 public enum ItemType
 {
-    Weapon, Armour, Gloves, Belt, Head, Shoes, Consumable, Material
+    Weapon, Armour, Gloves, Belt, Helmet, Shoes, Consumable, Material
 }
 
 public interface IWeaponItem : IItem

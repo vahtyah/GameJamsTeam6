@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu (fileName = "WeaponData", menuName = "WeaponData")]
 public class WeaponData : ScriptableObject, IItem
 {
+    [SerializeField] Sprite itemIcon;
     [SerializeField] string itemName;
     [SerializeField] string description;
     [SerializeField] int bulletID;
@@ -42,4 +43,8 @@ public class WeaponData : ScriptableObject, IItem
         throw new System.NotImplementedException();
     }
 
+    public Sprite GetItemIcon()
+    {
+        throw new System.NotImplementedException();
+    }
 }

@@ -9,6 +9,11 @@ public class ItemData : IItem
         throw new System.NotImplementedException();
     }
 
+    public Sprite GetItemIcon()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public int GetItemID()
     {
         throw new System.NotImplementedException();
