@@ -55,7 +55,6 @@ namespace _Project._Scripts.Ingame.Manager
 
         private IEnumerator IEWaitForSound(float seconds, float duration)
         {
-            print("Wait for sound");
             yield return new WaitForSeconds(seconds);
             musicSource.DOFade(0, duration).onComplete += () =>
             {
