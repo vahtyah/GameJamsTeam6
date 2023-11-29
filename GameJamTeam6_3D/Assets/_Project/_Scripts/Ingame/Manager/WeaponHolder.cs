@@ -35,5 +35,5 @@ public class WeaponHolder : SerializedMonoBehaviour
 
 public enum WeaponID
 {
-    AK74
+    AK74, Scar
 }
