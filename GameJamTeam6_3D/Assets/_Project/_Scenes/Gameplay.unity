@@ -2302,6 +2302,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 575791892356864236, guid: 7288216098f0994498f29d18793ac37d, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 575791892356864236, guid: 7288216098f0994498f29d18793ac37d, type: 3}
+    - target: {fileID: 3038683758875384157, guid: 7288216098f0994498f29d18793ac37d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3038683758875384157, guid: 7288216098f0994498f29d18793ac37d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3038683758875384157, guid: 7288216098f0994498f29d18793ac37d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3038683758875384157, guid: 7288216098f0994498f29d18793ac37d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8125211689493485179, guid: 7288216098f0994498f29d18793ac37d, type: 3}
       propertyPath: m_Name
       value: GamePanel

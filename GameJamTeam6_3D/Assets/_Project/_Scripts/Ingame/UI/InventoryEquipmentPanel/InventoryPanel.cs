@@ -44,8 +44,15 @@ public class InventoryPanel : MonoBehaviour, IEnhancedScrollerDelegate
                 data.Add(temp);
             }
             temp.rows[countItemInRow].inventoryIndex = i;
-            temp.rows[countItemInRow].itemID = InventorySystem.instance.GetItemInventory()[i].GetItemID();
-            temp.rows[countItemInRow].itemType = InventorySystem.instance.GetItemInventory()[i].GetItemType();
+            if (InventorySystem.instance.GetItemInventory()[i] == null)
+            {
+                temp.rows[countItemInRow].itemID = -1;
+            }
+            else
+            {
+                temp.rows[countItemInRow].itemID = InventorySystem.instance.GetItemInventory()[i].GetItemID();
+                temp.rows[countItemInRow].itemType = InventorySystem.instance.GetItemInventory()[i].GetItemType();
+            }
             countItemInRow++;
             if (countItemInRow == totalItemInRow) countItemInRow = 0;
         }
@@ -77,6 +84,7 @@ public class EquipmentDataRowUI
 
 public class EquipmentDataCellUI
 {
+
     public int inventoryIndex;
     public ItemType itemType;
     public int itemID;

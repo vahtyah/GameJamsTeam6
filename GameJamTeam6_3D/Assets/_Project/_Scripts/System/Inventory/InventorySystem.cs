@@ -78,6 +78,7 @@ public class InventorySystem : SerializedMonoBehaviour
     public void AddItemToInventory(int _inventoryIndexSlot, ItemType _type, int _id)
     {
         itemInventory[_inventoryIndexSlot] = itemHolders[_type][_id];
+        onAddedItemInventory?.Invoke(_inventoryIndexSlot, _type, _id);
     }
 
 }
