@@ -15,7 +15,7 @@ MonoBehaviour:
   itemIcon: {fileID: 0}
   itemName: 
   description: 
-  bulletID: 0
-  cooldown: 0
+  bulletID: 2
+  cooldown: 0.15
   magazine: 0
-  damage: 0
+  damage: 30

@@ -48,6 +48,12 @@ public class Player : SerializedMonoBehaviour, IGameSignal
         hp += _input;
         onHealthChange?.Invoke(hp);
     }
+    
+    public float GetHealthAmountNormalized()
+    {
+        //TODO: health max instead of 100
+        return (float)hp / 100;
+    }
 
     public void SetNewWeapon(IWeapon _weapon)
     {

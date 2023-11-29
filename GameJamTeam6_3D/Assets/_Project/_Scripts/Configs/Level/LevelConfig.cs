@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class LevelConfig : MonoBehaviour
     string savedCurrentLevel;
     [SerializeField] Level[] levels;
     int currentLevel = 0;
+    
+    public Action<int> onLevelChange;
 
     private void Awake()
     {
@@ -21,6 +24,7 @@ public class LevelConfig : MonoBehaviour
     {
         currentLevel++;
         IOHandler.SaveData<int>(currentLevel, savedCurrentLevel);
+        onLevelChange?.Invoke(currentLevel);
     }
 
     public Level GetCurrentLevel()
