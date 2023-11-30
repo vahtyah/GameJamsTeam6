@@ -11,22 +11,22 @@ public class ArmorData : ScriptableObject, IItemEquipmentData
     [SerializeField] string description;
     public string GetItemDescription()
     {
-       
+        return description;
     }
 
     public Sprite GetItemIcon()
     {
         return itemIcon;
     }
-
+    int id = -1;
     public int GetItemID()
     {
-        
+        return id;
     }
 
     public string GetItemName()
     {
-        
+        return itemName;
     }
 
     public ItemType GetItemType()
@@ -46,6 +46,6 @@ public class ArmorData : ScriptableObject, IItemEquipmentData
 
     public void SetItemID(int _id)
     {
-        
+        id = _id;
     }
 }

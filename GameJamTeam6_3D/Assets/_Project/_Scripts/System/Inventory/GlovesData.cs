@@ -10,53 +10,41 @@ public class GlovesData : ScriptableObject, IItemEquipmentData
     [SerializeField] string description;
     public string GetItemDescription()
     {
-        
+        return description;
     }
 
     public Sprite GetItemIcon()
     {
         return itemIcon;
     }
-
+    int id = -1;
     public int GetItemID()
     {
-        
+        return id;
     }
 
     public string GetItemName()
     {
-        
+        return itemName;
     }
-
+    [SerializeField] ItemType type;
     public ItemType GetItemType()
     {
-        
+        return type;
     }
 
     public void OnEquip()
     {
-        
+
     }
 
     public void OnUnEquip()
     {
-       
+
     }
 
     public void SetItemID(int _id)
     {
-       
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        id = _id;
     }
 }

@@ -20,7 +20,7 @@ public class WeaponData : ScriptableObject, IItemEquipmentData
 
     public string GetItemDescription()
     {
-        
+        return description;
     }
 
     int id = -2;
@@ -31,12 +31,12 @@ public class WeaponData : ScriptableObject, IItemEquipmentData
 
     public string GetItemName()
     {
-        
+        return itemName;
     }
-
+    [SerializeField] ItemType type;
     public ItemType GetItemType()
     {
-        
+        return type;
     }
 
 
