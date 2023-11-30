@@ -6,6 +6,7 @@ using UnityEngine;
 public class LevelConfig : MonoBehaviour
 {
     public static LevelConfig instance;
+    const string currentLevelSaveString = "/save_current_level.txt";
 
     string savedCurrentLevel;
     [SerializeField] Level[] levels;
@@ -15,7 +16,7 @@ public class LevelConfig : MonoBehaviour
 
     private void Awake()
     {
-        savedCurrentLevel = Application.persistentDataPath + "/save_current_level.txt";
+        savedCurrentLevel = Application.persistentDataPath + currentLevelSaveString;
         if (instance == null) instance = this;
         currentLevel = GetCurrentLevelIndex();
     }
@@ -28,7 +29,7 @@ public class LevelConfig : MonoBehaviour
     public void GoNextLevel()
     {
         currentLevel++;
-        IOHandler.SaveData<int>(currentLevel, savedCurrentLevel);
+        IOSystemic.SaveData<int>(currentLevel, savedCurrentLevel);
         onLevelChange?.Invoke(currentLevel);
     }
 
@@ -39,9 +40,9 @@ public class LevelConfig : MonoBehaviour
 
     int GetCurrentLevelIndex()
     {
-        if (IOHandler.CheckFileExist(savedCurrentLevel))
+        if (IOSystemic.CheckFileExist(savedCurrentLevel))
         {
-            return IOHandler.LoadData<int>(savedCurrentLevel); 
+            return IOSystemic.LoadData<int>(savedCurrentLevel); 
         }
         return 0;
     }

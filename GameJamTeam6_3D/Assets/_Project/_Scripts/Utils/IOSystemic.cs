@@ -5,10 +5,10 @@ using System.IO;
 using Newtonsoft.Json;
 using System;
 
-public static class IOHandler 
+public static class IOSystemic 
 {
-    
-    public static void SaveData(object _obj, string _filePath)
+
+    public static void SaveData<T>(T _obj, string _filePath)
     {
         string data = JsonConvert.SerializeObject(_obj);
         byte[] encrypt = EncryptionUtil.instance.EncryptStringToBytes_Aes(data);
@@ -18,7 +18,7 @@ public static class IOHandler
         }).Start();
     }
 
-    public static void SaveData<T>(T _obj, string _filePath)
+    public static void SaveData(object _obj, string _filePath)
     {
         string data = JsonConvert.SerializeObject(_obj);
         byte[] encrypt = EncryptionUtil.instance.EncryptStringToBytes_Aes(data);
@@ -34,6 +34,7 @@ public static class IOHandler
         string decrypt = EncryptionUtil.instance.DecryptStringFromBytes_Aes(encryptContent);
         return JsonConvert.DeserializeObject<T>(decrypt);
     }
+
     public static object LoadDataObject(string _filePath)
     {
         byte[] encryptContent = File.ReadAllBytes(_filePath);
@@ -42,7 +43,6 @@ public static class IOHandler
     }
     public static bool CheckFileExist(string _filePath)
     {
-        
         return File.Exists(_filePath);
     }
     public static void ResetData(string _filePath)

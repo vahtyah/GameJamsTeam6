@@ -47,15 +47,31 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: d88d934f8e4aa2f4c938cb9ffe7f25ff, type: 2}
+    - {fileID: 11400000, guid: 41f53322a5e7bc841b19cf5a066d43fc, type: 2}
+    - {fileID: 11400000, guid: ab3a0a7f1acb30040b781650b002be9a, type: 2}
+    - {fileID: 11400000, guid: 88f0693ccdbe5dc43895023617dd9753, type: 2}
+    - {fileID: 11400000, guid: f68eb8dbe04a9d447ab54aad7e3059ec, type: 2}
+    - {fileID: 11400000, guid: e3802341cc4bfb348b55f01b847a61fd, type: 2}
+    - {fileID: 11400000, guid: 5a9920e4806b8b347b554c6424841562, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
+    - Name: onEquip
+      Entry: 6
+      Data: 
+    - Name: onAddedItemInventory
+      Entry: 6
+      Data: 
+    - Name: onRemoveItemInventory
+      Entry: 6
+      Data: 
     - Name: itemHolders
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[ItemType, Assembly-CSharp],[System.Collections.Generic.List`1[[IItem,
+      Data: 0|System.Collections.Generic.Dictionary`2[[ItemType, Assembly-CSharp],[System.Collections.Generic.List`1[[IItemData,
         Assembly-CSharp]], mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
@@ -80,7 +96,19 @@ MonoBehaviour:
       Entry: 3
       Data: 0
     - Name: $v
-      Entry: 6
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[IItemData, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
     - Name: 
       Entry: 8
@@ -92,7 +120,19 @@ MonoBehaviour:
       Entry: 3
       Data: 1
     - Name: $v
-      Entry: 6
+      Entry: 7
+      Data: 3|System.Collections.Generic.List`1[[IItemData, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
     - Name: 
       Entry: 8
@@ -104,7 +144,19 @@ MonoBehaviour:
       Entry: 3
       Data: 2
     - Name: $v
-      Entry: 6
+      Entry: 7
+      Data: 4|System.Collections.Generic.List`1[[IItemData, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
     - Name: 
       Entry: 8
@@ -116,7 +168,19 @@ MonoBehaviour:
       Entry: 3
       Data: 3
     - Name: $v
-      Entry: 6
+      Entry: 7
+      Data: 5|System.Collections.Generic.List`1[[IItemData, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
     - Name: 
       Entry: 8
@@ -128,7 +192,19 @@ MonoBehaviour:
       Entry: 3
       Data: 4
     - Name: $v
-      Entry: 6
+      Entry: 7
+      Data: 6|System.Collections.Generic.List`1[[IItemData, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 4
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
     - Name: 
       Entry: 8
@@ -140,7 +216,19 @@ MonoBehaviour:
       Entry: 3
       Data: 5
     - Name: $v
-      Entry: 6
+      Entry: 7
+      Data: 7|System.Collections.Generic.List`1[[IItemData, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 5
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
     - Name: 
       Entry: 8
@@ -153,11 +241,21 @@ MonoBehaviour:
       Data: 
     - Name: itemEquipment
       Entry: 7
-      Data: 2|System.Collections.Generic.Dictionary`2[[ItemType, Assembly-CSharp],[IItem,
+      Data: 8|System.Collections.Generic.Dictionary`2[[ItemType, Assembly-CSharp],[IItemEquipmentData,
         Assembly-CSharp]], mscorlib
     - Name: comparer
-      Entry: 9
-      Data: 1
+      Entry: 7
+      Data: 9|System.Collections.Generic.EnumEqualityComparer`1[[ItemType, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 12
       Data: 6
@@ -168,8 +266,8 @@ MonoBehaviour:
       Entry: 3
       Data: 0
     - Name: $v
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -202,7 +300,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 3
+      Data: 4
     - Name: $v
       Entry: 6
       Data: 
@@ -214,7 +312,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 4
+      Data: 3
     - Name: $v
       Entry: 6
       Data: 
@@ -241,16 +339,16 @@ MonoBehaviour:
       Data: 
     - Name: itemInventory
       Entry: 7
-      Data: 3|System.Collections.Generic.List`1[[IItem, Assembly-CSharp]], mscorlib
+      Data: 10|System.Collections.Generic.List`1[[IItemData, Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 30
     - Name: 
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 6
     - Name: 
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 0
     - Name: 
       Entry: 6
       Data: 
@@ -754,6 +852,7 @@ Transform:
   - {fileID: 2086449350746154128}
   - {fileID: 2440375875663794045}
   - {fileID: 7669363636328027089}
+  - {fileID: 4115715721477619978}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -813,3 +912,150 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f531ec2c573fee4cb0a05c0e9e5305d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4974232012104333075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4115715721477619978}
+  - component: {fileID: 906242809240529097}
+  m_Layer: 0
+  m_Name: WeaponHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4115715721477619978
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4974232012104333075}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2440375874579732097}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &906242809240529097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4974232012104333075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70efcff5bec3fa643a0ac59687c8c466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 1996311588262804385, guid: 085a96a8f6f86354ea2044fdec94c41f, type: 3}
+    - {fileID: 7832936108614912041, guid: 3636a2a39abf3ed4a99bb69fd32f591d, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: weaponData
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[WeaponID, Assembly-CSharp],[WeaponHolderData,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[WeaponID, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: 2|WeaponHolderData, Assembly-CSharp
+    - Name: weapon
+      Entry: 10
+      Data: 0
+    - Name: modelOnHandPos
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: 3|WeaponHolderData, Assembly-CSharp
+    - Name: weapon
+      Entry: 10
+      Data: 1
+    - Name: modelOnHandPos
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 

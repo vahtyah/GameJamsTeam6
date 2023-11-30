@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu (fileName = "WeaponData", menuName = "WeaponData")]
-public class WeaponData : ScriptableObject, IItem
+[CreateAssetMenu (fileName = "WeaponData", menuName = GlobalString.ItemData + "WeaponData")]
+public class WeaponData : ScriptableObject, IItemEquipmentData
 {
     [SerializeField] Sprite itemIcon;
     [SerializeField] string itemName;
@@ -20,31 +20,43 @@ public class WeaponData : ScriptableObject, IItem
 
     public string GetItemDescription()
     {
-        throw new System.NotImplementedException();
+        
     }
 
+    int id = -2;
     public int GetItemID()
     {
-        throw new System.NotImplementedException();
+        return id;
     }
 
     public string GetItemName()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public ItemType GetItemType()
     {
-        throw new System.NotImplementedException();
+        
     }
+
 
     public void SetItemID(int _id)
     {
-        throw new System.NotImplementedException();
+        id = _id;
     }
 
     public Sprite GetItemIcon()
     {
-        throw new System.NotImplementedException();
+        return itemIcon;
+    }
+
+    public void OnEquip()
+    {
+        
+    }
+
+    public void OnUnEquip()
+    {
+        
     }
 }

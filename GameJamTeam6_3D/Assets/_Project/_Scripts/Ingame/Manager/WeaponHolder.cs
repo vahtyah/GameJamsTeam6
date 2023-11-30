@@ -12,8 +12,6 @@ public class WeaponHolder : SerializedMonoBehaviour
     private void Awake()
     {
         instance = this;
-
-
     }
 
     public WeaponHolderData GetWeapon(WeaponID _id)
@@ -28,12 +26,12 @@ public class WeaponHolder : SerializedMonoBehaviour
 
     public Vector3 GetWeaponLocalPositionOnHand(WeaponID _id)
     {
-        return weaponData[_id].posOnModelHand;
+        return weaponData[_id].modelOnHandPos;
     }
 
 }
 
 public enum WeaponID
 {
-    AK74, ScarL
+    AK74 = 0, ScarL = 1
 }

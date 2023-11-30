@@ -19,9 +19,14 @@ public class InventoryPanel : MonoBehaviour, IEnhancedScrollerDelegate
 
     void Start()
     {
-        InventorySystem.instance.onAddedItemInventory = OnAddingItem;
+        InventorySystem.instance.onAddedItemInventory += OnAddingItem;
         activePanel.SetActive(false);
         SetData();
+    }
+
+    void OnDestroy()
+    {
+        InventorySystem.instance.onAddedItemInventory -= OnAddingItem;
     }
 
     void OnAddingItem(int _inventoryIndex, ItemType _type, int _id)

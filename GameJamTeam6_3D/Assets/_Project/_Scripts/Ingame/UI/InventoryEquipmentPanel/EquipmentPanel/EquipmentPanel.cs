@@ -16,8 +16,13 @@ public class EquipmentPanel : SerializedMonoBehaviour
 
     private void Start()
     {
-        InventorySystem.instance.onEquip = Equip;
+        InventorySystem.instance.onEquip += Equip;
         
+    }
+
+    private void OnDestroy()
+    {
+        InventorySystem.instance.onEquip -= Equip;
     }
 
     public void Equip(ItemType _type, int id)

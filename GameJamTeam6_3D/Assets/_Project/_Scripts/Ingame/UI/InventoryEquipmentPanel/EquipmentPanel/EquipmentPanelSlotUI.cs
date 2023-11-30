@@ -8,26 +8,26 @@ public class EquipmentPanelSlotUI : MonoBehaviour, IPointerDownHandler, IPointer
 {
     public void OnDrag(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+       
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        
     }
 }

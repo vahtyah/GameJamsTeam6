@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IItem 
+/// <summary>
+/// item data
+/// </summary>
+public interface IItemData 
 {
     public void SetItemID(int _id);
     public int GetItemID();
@@ -13,7 +16,6 @@ public interface IItem
 
     public Sprite GetItemIcon();
 
-
 }
 
 public enum ItemType
@@ -21,9 +23,10 @@ public enum ItemType
     Weapon, Armour, Gloves, Belt, Helmet, Shoes, Consumable, Material
 }
 
-public interface IWeaponItem : IItem
+public interface IItemEquipmentData : IItemData
 {
-    public WeaponData GetWeaponData(); 
+    public void OnEquip();
+    public void OnUnEquip();
 }
 
 
