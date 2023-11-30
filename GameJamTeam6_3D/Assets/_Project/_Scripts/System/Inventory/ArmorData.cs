@@ -5,10 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ArmorData", menuName = GlobalString.ItemData + "ArmorData")]
 public class ArmorData : ScriptableObject, IItemEquipmentData
 {
+    [SerializeField] int defValue;
+
     [SerializeField] ItemType itemType;
     [SerializeField] Sprite itemIcon;
     [SerializeField] string itemName;
     [SerializeField] string description;
+
     public string GetItemDescription()
     {
         return description;

@@ -764,7 +764,7 @@ PrefabInstance:
       objectReference: {fileID: 2788799115064254723, guid: a29df85813c9ac54a9d330ac6c08b3f2, type: 3}
     - target: {fileID: 2788799115064254723, guid: a29df85813c9ac54a9d330ac6c08b3f2, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2788799115064254723, guid: a29df85813c9ac54a9d330ac6c08b3f2, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[0]
@@ -792,7 +792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2788799115064254723, guid: a29df85813c9ac54a9d330ac6c08b3f2, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2788799115064254723, guid: a29df85813c9ac54a9d330ac6c08b3f2, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
