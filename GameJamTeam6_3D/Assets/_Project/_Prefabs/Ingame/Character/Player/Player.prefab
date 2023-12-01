@@ -289,6 +289,7 @@ MonoBehaviour:
       Entry: 10
       Data: 0
   rb: {fileID: 9032745830095465880}
+  playerData: {fileID: 0}
   movement: {fileID: 2689792283021721513}
   anim: {fileID: 7525476780835889718}
   model: {fileID: 1691654543742456564}
@@ -1838,6 +1839,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6339440037941592195}
   - component: {fileID: 2829930625814045597}
+  - component: {fileID: 3844294993692359241}
   m_Layer: 0
   m_Name: Info
   m_TagString: Untagged
@@ -1872,6 +1874,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d047326250b4a17409aeab6f788a5a1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3844294993692359241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6262823808370534738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a131c1ceb3950a44b9f140a03df57573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed:
+    value: 10
+  def:
+    value: 2
+  maxHp:
+    value: 100
+  critChance:
+    value: 0
+  critDamgPercent:
+    value: 50
 --- !u!1 &6309728016633873432
 GameObject:
   m_ObjectHideFlags: 0
@@ -3154,7 +3178,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2111225971467536402, guid: 085a96a8f6f86354ea2044fdec94c41f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6704580162927427675, guid: 085a96a8f6f86354ea2044fdec94c41f, type: 3}
       propertyPath: m_IsActive

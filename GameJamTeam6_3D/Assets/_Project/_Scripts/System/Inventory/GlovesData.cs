@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GlovesData", menuName = GlobalString.ItemData + "GlovesData")]
 public class GlovesData : ScriptableObject, IItemEquipmentData
 {
+    [SerializeField] int addCrit;
+
     [SerializeField] Sprite itemIcon;
     [SerializeField] string itemName;
     [SerializeField] string description;
@@ -35,12 +37,12 @@ public class GlovesData : ScriptableObject, IItemEquipmentData
 
     public void OnEquip()
     {
-
+        Player.instance.GetPlayerData().critChance.AddValue(addCrit);
     }
 
     public void OnUnEquip()
     {
-
+        Player.instance.GetPlayerData().critChance.AddValue(-addCrit);
     }
 
     public void SetItemID(int _id)

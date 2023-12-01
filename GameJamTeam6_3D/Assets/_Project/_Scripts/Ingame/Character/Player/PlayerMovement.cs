@@ -6,12 +6,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     //[SerializeField] Transform model;
-    int speed = 10;
     float cameraDistance = 10f;
     [SerializeField] LayerMask mask;
-    public void Setup(int _speed)
+    public void Setup()
     {
-        speed = _speed;
         cameraDistance = Camera.main.transform.position.magnitude;
     }
 
@@ -26,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Move(Vector2 _normalized)
     {
-        float moveSpeed = speed * Time.fixedDeltaTime;
+        float moveSpeed = Player.instance.GetPlayerData().speed.value * Time.fixedDeltaTime;
         Player.instance.GetRb().velocity =
             new Vector3(_normalized.x * moveSpeed, 0, _normalized.y * moveSpeed);
     }

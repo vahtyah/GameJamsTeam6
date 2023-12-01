@@ -4,6 +4,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ShoesData", menuName = GlobalString.ItemData + "ShoesData")]
 public class ShoesData : ScriptableObject, IItemEquipmentData
 {
+    [SerializeField] int addSpeed;
+
     [SerializeField] Sprite itemIcon;
     [SerializeField] string itemName;
     [SerializeField] string description;
@@ -35,12 +37,12 @@ public class ShoesData : ScriptableObject, IItemEquipmentData
 
     public void OnEquip()
     {
-        
+        Player.instance.GetPlayerData().speed.AddValue(addSpeed);
     }
 
     public void OnUnEquip()
     {
-       
+        Player.instance.GetPlayerData().speed.AddValue(-addSpeed);
     }
 
     public void SetItemID(int _id)

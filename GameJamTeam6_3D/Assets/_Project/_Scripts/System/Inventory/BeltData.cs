@@ -5,9 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "BeltData", menuName = GlobalString.ItemData + "BeltData")]
 public class BeltData : ScriptableObject, IItemEquipmentData
 {
+    [SerializeField] int addCritDamgPercent;
+
     [SerializeField] Sprite itemIcon;
     [SerializeField] string itemName;
     [SerializeField] string description;
+
     public string GetItemDescription()
     {
         return description;
@@ -27,6 +30,7 @@ public class BeltData : ScriptableObject, IItemEquipmentData
     {
         return itemName;
     }
+
     [SerializeField] ItemType type;
     public ItemType GetItemType()
     {
@@ -35,12 +39,12 @@ public class BeltData : ScriptableObject, IItemEquipmentData
 
     public void OnEquip()
     {
-        
+        Player.instance.GetPlayerData().critDamgPercent.AddValue(addCritDamgPercent);
     }
 
     public void OnUnEquip()
     {
-        
+        Player.instance.GetPlayerData().critDamgPercent.AddValue(-addCritDamgPercent);
     }
 
     public void SetItemID(int _id)

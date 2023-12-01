@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ArmorData", menuName = GlobalString.ItemData + "ArmorData")]
 public class ArmorData : ScriptableObject, IItemEquipmentData
 {
-    [SerializeField] int defValue;
+    [SerializeField] int addDefValue;
 
     [SerializeField] ItemType itemType;
     [SerializeField] Sprite itemIcon;
@@ -39,12 +39,12 @@ public class ArmorData : ScriptableObject, IItemEquipmentData
 
     public void OnEquip()
     {
-        
+        Player.instance.GetPlayerData().def.AddValue(addDefValue);
     }
 
     public void OnUnEquip()
     {
-        
+        Player.instance.GetPlayerData().def.AddValue(-addDefValue);
     }
 
     public void SetItemID(int _id)
