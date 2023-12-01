@@ -82,6 +82,8 @@ public class ExampleEnemy : MonoBehaviour, IEnemy
     {
         return curEnemyData;
     }
+
+    public CharacterHealth GetCharacterHealth() => characterHealth;
 }
 
 

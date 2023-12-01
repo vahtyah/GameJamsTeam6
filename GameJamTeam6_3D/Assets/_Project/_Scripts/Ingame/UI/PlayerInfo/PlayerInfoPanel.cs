@@ -13,7 +13,7 @@ namespace _Project._Scripts.Ingame.UI.PlayerInfo
         [SerializeField] private float smoothTime = 0.5f;
         private Player player;
 
-        private void Awake()
+        private void Start()
         {
             player = Player.instance;
             player.onHealthChange += UpdateHealthBar;

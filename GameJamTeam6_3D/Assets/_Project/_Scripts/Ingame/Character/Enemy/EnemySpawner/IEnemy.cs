@@ -14,6 +14,8 @@ public interface IEnemy
     public int GetWave();
     public EnemyData GetEnemyData();
     
+    public CharacterHealth GetCharacterHealth();
+    
 }
 
 public interface IRangeEnemy : IEnemy
