@@ -6,20 +6,28 @@ using UnityEngine;
 public class PlayerWeaponController : MonoBehaviour
 {
 
+    private void Start()
+    {
+        ChangeGun((WeaponID) InventorySystem.instance.GetItemEquipment()[ItemType.Weapon].GetItemID());
+    }
+
     [Button(ButtonHeight = 50)]
     public void ChangeGun(WeaponID _id)
     {
         GameObject newObj = Instantiate(WeaponHolder.instance.GetIWeapon(_id).GetGameObject(), Player.instance.GetModelRightHand());
         IWeapon weapon = newObj.GetComponent<IWeapon>();
-        weapon.Setup();
+        EquipGun(weapon);
+    }
+
+    void EquipGun(IWeapon _weapon)
+    {
+        _weapon.Setup();
         if (Player.instance.GetWeapon() != null)
         {
             Destroy(Player.instance.GetWeapon().GetGameObject());
         }
-        Player.instance.SetNewWeapon(weapon);
+        Player.instance.SetNewWeapon(_weapon);
     }
-
-
 
 
 

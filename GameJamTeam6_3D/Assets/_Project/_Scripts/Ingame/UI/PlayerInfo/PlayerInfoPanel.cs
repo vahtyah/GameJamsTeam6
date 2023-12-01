@@ -15,6 +15,7 @@ namespace _Project._Scripts.Ingame.UI.PlayerInfo
 
         private void Start()
         {
+            return;
             player = Player.instance;
             player.onHealthChange += UpdateHealthBar;
             LevelConfig.instance.onLevelChange += UpdateLevelText;

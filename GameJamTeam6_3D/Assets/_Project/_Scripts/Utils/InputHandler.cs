@@ -6,6 +6,8 @@ public class InputHandler : MonoBehaviour
 {
     public static InputHandler instance;
 
+
+
     private void Awake()
     {
         instance = this;
@@ -54,8 +56,15 @@ public class InputHandler : MonoBehaviour
         return Input.GetKey(KeyCode.S);
     }
 
-
+    public bool PressInventory()
+    {
+        return Input.GetKey(KeyCode.B);
+    }
 
 
 
 }
+
+
+
+

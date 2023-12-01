@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class InventoryItemUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
     , IPointerEnterHandler, IPointerExitHandler
 {
+    [SerializeField] GameObject active;
     [SerializeField] Image itemIcon;
 
     int itemID;
@@ -20,6 +21,8 @@ public class InventoryItemUI : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (itemID <= -1) return;
+        active.SetActive(false);
         DraggableEquipmentItem.instance.SetVisual(type, itemID, _fromEquipment: false, inventoryIndex);
     }
 
@@ -48,9 +51,14 @@ public class InventoryItemUI : MonoBehaviour, IPointerDownHandler, IPointerUpHan
             //show infopanel
             return;
         }
-
         if (DraggableEquipmentItem.instance.FromEquipment)
         {
+            if (itemID <= -1)
+            {
+                InventorySystem.instance.onEquip?.Invoke(type, -1);
+                InventorySystem.instance.AddItemToInventory(inventoryIndex, type, itemID);
+                return;
+            }
             InventorySystem.instance.SwapItemEquipmentInventory(inventoryIndex
                 , DraggableEquipmentItem.instance.Type
                 , DraggableEquipmentItem.instance.ItemID);
