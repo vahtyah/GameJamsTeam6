@@ -70,6 +70,9 @@ public class RangeEnemy : MonoBehaviour, IRangeEnemy
     {
         return curEnemyData;
     }
+
+    public CharacterHealth GetCharacterHealth() => characterHealth;
+
     [SerializeField] Transform shootPlace;
     public Transform GetShootTransform()
     {

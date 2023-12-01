@@ -26,6 +26,11 @@ public class CharacterHealth
         onCurHealthChange?.Invoke(curHealth);
         if (IsDead()) onDead?.Invoke();
     }
+    
+    public float GetHealthAmountNormalized()
+    {
+        return (float)curHealth / maxHealth;
+    }
 
     public void AddSignalHealthChange(Action<int> _call)
     {
