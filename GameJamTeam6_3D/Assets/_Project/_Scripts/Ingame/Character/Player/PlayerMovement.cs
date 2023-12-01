@@ -45,8 +45,8 @@ public class PlayerMovement : MonoBehaviour
             Player.instance.GetModel().LookAt(_mousePos);
             Player.instance.GetModel().eulerAngles = new Vector3(0, Player.instance.GetModel().eulerAngles.y, 0);
         }
-        
     }
+
     const float addedThresholdAngle = 90;
     void BlenAnim(Vector3 mousePos, Vector2 normalizedMoveInput)
     {

@@ -18,11 +18,13 @@ public class Player : SerializedMonoBehaviour, IGameSignal
     public IWeapon GetWeapon() => weapon;
     [SerializeField] PlayerMovement movement;
     [SerializeField] PlayerAnimControl anim;
+    public PlayerAnimControl GetAnim()=> anim;
     public PlayerAnimControl GetAnimControl() => anim;
     [SerializeField] Transform model;
     public Transform GetModel() => model;
     [SerializeField] Transform modelRightHand;
     public Transform GetModelRightHand() => modelRightHand;
+    public GameObject inventoryCam;
 
     int hp = 0;
 
