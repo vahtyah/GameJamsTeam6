@@ -7,14 +7,14 @@ public class MapScene : MonoBehaviour
     public static MapScene instance;
     [SerializeField] Transform playerStartPos;
     [SerializeField] MapEnemySpawnData mapEnemySpawnData;
-    [SerializeField] MapTransfer previousMap;
-    [SerializeField] MapTransfer nextMap;
+    [SerializeField] MapTransfer previousMapCheckPoint;
+    [SerializeField] MapTransfer nextMapCheckpoint;
     [SerializeField] Transform spawnPointHolder;
 
     List<Transform> spawnPoints = new List<Transform>();
 
-    public MapTransfer GetPreviousMap() => previousMap;
-    public MapTransfer GetNextMap() => nextMap;
+    //public MapTransfer GetPreviousMap() => previousMapCheckPoint;
+    //public MapTransfer GetNextMap() => nextMapCheckpoint;
     public MapEnemySpawnData GetSpawnData() { return mapEnemySpawnData; }
     public List<Transform> GetSpawnPoints() { return spawnPoints; }
 
@@ -30,8 +30,8 @@ public class MapScene : MonoBehaviour
     private void Start()
     {
         Player.instance.transform.position = playerStartPos.position;
-        previousMap.TurnOn();
-        nextMap.TurnOn();
+        previousMapCheckPoint.TurnOn();
+        nextMapCheckpoint.TurnOn();
     }
 
 

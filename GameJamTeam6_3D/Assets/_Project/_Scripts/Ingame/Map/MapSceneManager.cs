@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,9 +8,9 @@ public class MapSceneManager : MonoBehaviour
     public static MapSceneManager instance;
     const string playerProgressSaveTxt = "/playerMapProgress.txt";
     string playerProgressSave;
-
+    [ListDrawerSettings(ShowIndexLabels = true)]
     [SerializeField] MapScene[] mapScenePrefabs;
-    MapScene currentMap;
+    [Header("Debug")][SerializeField] MapScene currentMap;
     public MapScene GetCurrentMap() { return currentMap; }
     int currentMapID = 0;
 

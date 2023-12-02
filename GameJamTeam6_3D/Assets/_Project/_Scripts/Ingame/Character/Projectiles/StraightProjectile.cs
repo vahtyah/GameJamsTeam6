@@ -29,6 +29,10 @@ public class StraightProjectile : MonoBehaviour, IProjectile
     private void OnTriggerEnter(Collider other)
     {
         bool pop = false;
+        if (other.gameObject.CompareTag(GlobalString.obstacleTagAndLayer))
+        {
+            pop = true;
+        }
         if (isPlayer == false)
         {
             if (other.gameObject.CompareTag(GlobalString.tagPlayer))

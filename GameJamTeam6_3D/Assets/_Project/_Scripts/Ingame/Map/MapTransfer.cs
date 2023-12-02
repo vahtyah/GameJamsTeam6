@@ -20,6 +20,7 @@ public class MapTransfer : MonoBehaviour
     {
         if (other.CompareTag(GlobalString.tagPlayer))
         {
+            StartCoroutine(LoadingPanel.instance.IELoading());
             MapSceneManager.instance.LoadScene(nextMapID);
         }
     }

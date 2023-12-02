@@ -5,12 +5,10 @@ using UnityEngine;
 
 public class IngameManager : SerializedMonoBehaviour
 {
-
     public static IngameManager instance;
 
     public Transform mousePointer;
     public Transform player;
-    public MapScene mapScene;
 
     public GameState gameState = GameState.Prepare;
     [SerializeField] List<IGameSignal> signals = new List<IGameSignal>();

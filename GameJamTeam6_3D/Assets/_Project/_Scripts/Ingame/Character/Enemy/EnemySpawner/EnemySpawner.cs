@@ -26,7 +26,7 @@ public class EnemySpawner : SerializedMonoBehaviour
     public void StartSetup()
     {
         totalWaveMax = MapScene.instance.GetSpawnData().GetTotalWaveMax();
-        spawnMarkers = IngameManager.instance.mapScene.GetSpawnPoints();
+        spawnMarkers = MapSceneManager.instance.GetCurrentMap().GetSpawnPoints();
     }
 
     public void StartSpawning()
