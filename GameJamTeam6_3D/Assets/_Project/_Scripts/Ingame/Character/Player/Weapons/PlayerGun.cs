@@ -38,7 +38,7 @@ public class PlayerGun : MonoBehaviour, IWeapon
         canAttack = false;
         muzzle.Play();
         cooldown = data.GetCoolDown();
-        var bullet = ProjectilePooling.instance.ActivateProjectile(data.GetBulletID()).SetDamage(damage);
+        var bullet = ProjectilePooling.instance.ActivateProjectile(data.GetBulletID()).SetDamage(DamageHelper.GetPlayerDamage(damage));
         bullet.SetPossession(_isPlayer: true);
         bullet.GetGameObject().transform.position = shootPos.position;
         bullet.GetGameObject().transform.rotation = Player.instance.GetModel().transform.rotation;

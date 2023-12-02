@@ -14,12 +14,21 @@ public class GamePanel : MonoBehaviour
 
     private void Update()
     {
-        if (InputHandler.instance.PressInventory())
-        {
-            inventoryEquipment.SetActive(inventoryEquipment.gameObject.activeSelf == false);
-        }
+        if (InputHandler.instance.PressInventory()) ActiveInventory();
     }
 
+    public void ActiveInventory()
+    {
+        inventoryEquipment.SetActive(inventoryEquipment.gameObject.activeSelf == false);
+        if (inventoryEquipment.gameObject.activeSelf == false)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
 
 
 }

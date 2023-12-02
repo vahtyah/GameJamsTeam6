@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "HelmetData", menuName = GlobalString.ItemData + "HelmetData")]
 public class HelmetData : ScriptableObject, IItemEquipmentData
 {
+    [SerializeField] int addMaxHp;
+
     [SerializeField] Sprite itemIcon;
     [SerializeField] string itemName;
     [SerializeField] string description;
@@ -35,12 +37,12 @@ public class HelmetData : ScriptableObject, IItemEquipmentData
 
     public void OnEquip()
     {
-        
+        Player.instance.GetPlayerData().maxHp.AddValue(addMaxHp);
     }
 
     public void OnUnEquip()
     {
-       
+        Player.instance.GetPlayerData().maxHp.AddValue(-addMaxHp);
     }
 
     public void SetItemID(int _id)
