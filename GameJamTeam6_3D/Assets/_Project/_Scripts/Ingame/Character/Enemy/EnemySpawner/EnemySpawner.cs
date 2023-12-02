@@ -12,11 +12,11 @@ public class EnemySpawner : SerializedMonoBehaviour
     /// <summary>
     /// key : wave, value : qty enemy
     /// </summary>
-    Dictionary<int , int> enemyWaveRecord = new Dictionary<int , int>();
+    [SerializeField] Dictionary<int, int> enemyWaveRecord = new Dictionary<int, int>();
     List<IEnemy> enemySpawned = new List<IEnemy>();
     List<int> wavesActive = new List<int>();
     int totalWaveMax;
-    int countWaveSpawned;
+    int countWaveSpawned = 0;
 
     private void Awake()
     {
@@ -25,7 +25,7 @@ public class EnemySpawner : SerializedMonoBehaviour
 
     public void StartSetup()
     {
-        totalWaveMax = LevelConfig.instance.GetCurrentLevel().GetTotalWaveMax();
+        totalWaveMax = MapScene.instance.GetSpawnData().GetTotalWaveMax();
         spawnMarkers = IngameManager.instance.mapScene.GetSpawnPoints();
     }
 
@@ -41,9 +41,9 @@ public class EnemySpawner : SerializedMonoBehaviour
             if (IsEnoughtWave()) yield break;
             if (wavesActive.Contains(waveId)) continue;
             wavesActive.Add(waveId);
-            int ranEnemyWaveType = UnityEngine.Random.Range(0, LevelConfig.instance.GetCurrentLevel().GetTotalAvailableWaves());
-            int totalEnemiesInWave = LevelConfig.instance.GetCurrentLevel().GetWaveData(ranEnemyWaveType).amount;
-            EnemyID currentEnemyID = LevelConfig.instance.GetCurrentLevel().GetWaveData(ranEnemyWaveType).enemyId;
+            int ranEnemyWaveType = UnityEngine.Random.Range(0, MapScene.instance.GetSpawnData().GetTotalAvailableWaves());
+            int totalEnemiesInWave = MapScene.instance.GetSpawnData().GetWaveData(ranEnemyWaveType).amount;
+            EnemyID currentEnemyID = MapScene.instance.GetSpawnData().GetWaveData(ranEnemyWaveType).enemyId;
             enemyWaveRecord.Add(waveId, totalEnemiesInWave);
             for (int j = 0; j < totalEnemiesInWave; j++)
             {
@@ -52,64 +52,48 @@ public class EnemySpawner : SerializedMonoBehaviour
                 enemy.SetThisEnemyFromWave(waveId)
                     .GetGameObject().transform.position = RandomPosition()
                     ;
-                yield return new WaitForSeconds(LevelConfig.instance.GetCurrentLevel().GetWaitTimeWave());
+                yield return new WaitForSeconds(MapScene.instance.GetSpawnData().GetWaitTimeWave());
             }
             countWaveSpawned++;
         }
     }
 
-    private IEnumerator IESpawnArcShape()
+    public IEnumerator IESpawnArcShape()
     {
-        for (int waveId = 0; waveId < totalWaveMax; waveId++)
+        yield return null;
+        int ranEnemyWaveType =
+            UnityEngine.Random.Range(0, MapScene.instance.GetSpawnData().GetTotalAvailableWaves());
+        int totalEnemiesInWave = MapScene.instance.GetSpawnData().GetWaveData(ranEnemyWaveType).amount;
+        EnemyID currentEnemyID = MapScene.instance.GetSpawnData().GetWaveData(ranEnemyWaveType).enemyId;
+        var IEnemy = EnemyPooling.instance.GetIEnemy(currentEnemyID);
+        var positions = GetArcShapePositions(totalEnemiesInWave, IEnemy);
+        for (int j = 0; j < totalEnemiesInWave; j++)
         {
-            if (IsEnoughtWave()) yield break;
-            if (wavesActive.Contains(waveId)) continue;
-            wavesActive.Add(waveId);
-            var currentLevel = LevelConfig.instance.GetCurrentLevel();
-            int ranEnemyWaveType =
-                UnityEngine.Random.Range(0, currentLevel.GetTotalAvailableWaves());
-            int totalEnemiesInWave = currentLevel.GetWaveData(ranEnemyWaveType).amount;
-            EnemyID currentEnemyID = currentLevel.GetWaveData(ranEnemyWaveType).enemyId;
-            enemyWaveRecord.Add(waveId, totalEnemiesInWave);
-            var IEnemy = EnemyPooling.instance.GetIEnemy(currentEnemyID);
-            var positions = GetArcShapePositions(totalEnemiesInWave, IEnemy);
-            for (int j = 0; j < totalEnemiesInWave; j++)
-            {
-                var enemy = EnemyPooling.instance.SpawnEnemy(currentEnemyID);
-                enemySpawned.Add(enemy);
-                enemy.SetThisEnemyFromWave(waveId)
-                    .GetGameObject().transform.position = positions[j];
-            }
-
-            countWaveSpawned++;
+            var enemy = EnemyPooling.instance.SpawnEnemy(currentEnemyID);
+            enemySpawned.Add(enemy);
+            enemy.SetThisEnemyFromWave(-1)
+                .GetGameObject().transform.position = positions[j];
         }
     }
-    
-    private IEnumerator IESpawnGroup()
-    {
-        for (int waveId = 0; waveId < totalWaveMax; waveId++)
-        {
-            if (IsEnoughtWave()) yield break;
-            if (wavesActive.Contains(waveId)) continue;
-            wavesActive.Add(waveId);
-            var currentLevel = LevelConfig.instance.GetCurrentLevel();
-            int ranEnemyWaveType =
-                UnityEngine.Random.Range(0, currentLevel.GetTotalAvailableWaves());
-            int totalEnemiesInWave = currentLevel.GetWaveData(ranEnemyWaveType).amount;
-            EnemyID currentEnemyID = currentLevel.GetWaveData(ranEnemyWaveType).enemyId;
-            enemyWaveRecord.Add(waveId, totalEnemiesInWave);
-            var IEnemy = EnemyPooling.instance.GetIEnemy(currentEnemyID);
-            var positions = GetGroupPosition(totalEnemiesInWave, IEnemy);
-            for (int j = 0; j < totalEnemiesInWave; j++)
-            {
-                var enemy = EnemyPooling.instance.SpawnEnemy(currentEnemyID);
-                enemySpawned.Add(enemy);
-                enemy.SetThisEnemyFromWave(waveId)
-                    .GetGameObject().transform.position = positions[j];
-            }
 
-            countWaveSpawned++;
+    List<Vector3> tempPosisitions = new List<Vector3>();
+    public IEnumerator IESpawnGroup()
+    {
+        yield return null;
+        int ranEnemyWaveType =
+            UnityEngine.Random.Range(0, MapScene.instance.GetSpawnData().GetTotalAvailableWaves());
+        int totalEnemiesInWave = MapScene.instance.GetSpawnData().GetWaveData(ranEnemyWaveType).amount;
+        EnemyID currentEnemyID = MapScene.instance.GetSpawnData().GetWaveData(ranEnemyWaveType).enemyId;
+        var IEnemy = EnemyPooling.instance.GetIEnemy(currentEnemyID);
+        tempPosisitions = GetGroupPosition(totalEnemiesInWave, IEnemy);
+        for (int j = 0; j < totalEnemiesInWave; j++)
+        {
+            var enemy = EnemyPooling.instance.SpawnEnemy(currentEnemyID);
+            enemySpawned.Add(enemy);
+            enemy.SetThisEnemyFromWave(-1)
+                .GetGameObject().transform.position = tempPosisitions[j];
         }
+
     }
 
     Vector3 RandomPosition()
@@ -131,7 +115,7 @@ public class EnemySpawner : SerializedMonoBehaviour
         Debug.Log("collider = " + collider.size);
         var size = Mathf.Max(collider.size.x, collider.size.z);
         Debug.Log("size = " + size);
-        
+
         var rows = Mathf.CeilToInt(Mathf.Sqrt(_qty));
         var cols = 0;
         while (positions.Count < _qty)
@@ -188,8 +172,9 @@ public class EnemySpawner : SerializedMonoBehaviour
 
     public void OnEnemyDie(int _atWave)
     {
+        if (_atWave <= -1) return;
         enemyWaveRecord[_atWave]--;
-        if (enemyWaveRecord[_atWave] == 0 )
+        if (enemyWaveRecord[_atWave] == 0)
         {
             countWaveSpawned--;
             StartSpawning();

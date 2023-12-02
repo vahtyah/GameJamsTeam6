@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
         {
             Vector3 hitPoint = hit.point;
-            IngameManager.instance.___test.position = hitPoint;
+            IngameManager.instance.mousePointer.position = hitPoint;
             Player.instance.GetModel().LookAt(hitPoint);
             Player.instance.GetModel().eulerAngles = new Vector3(0, Player.instance.GetModel().eulerAngles.y, 0);
         }

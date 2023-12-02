@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class IngameManager : SerializedMonoBehaviour
 {
-    public Transform ___test;
 
     public static IngameManager instance;
 
+    public Transform mousePointer;
     public Transform player;
     public MapScene mapScene;
 
@@ -81,11 +81,7 @@ public class IngameManager : SerializedMonoBehaviour
     public void StartGame()
     {
         gameState = GameState.StartGame;
-        
-        
         EnemySpawner.instance.StartSpawning();
-
-
         foreach (var signal in signals)
         {
             signal.StartGame();
