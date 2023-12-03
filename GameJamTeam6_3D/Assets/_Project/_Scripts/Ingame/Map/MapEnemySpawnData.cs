@@ -34,7 +34,3 @@ public enum EnemyID
     Example = 0, two = 1, three = 2, four = 3,
 }
 
-public enum EnemySpawnType
-{
-    Normal, Group, Arc
-}
