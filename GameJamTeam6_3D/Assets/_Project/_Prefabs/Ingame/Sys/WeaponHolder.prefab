@@ -50,6 +50,7 @@ MonoBehaviour:
     ReferencedUnityObjects:
     - {fileID: 1996311588262804385, guid: 085a96a8f6f86354ea2044fdec94c41f, type: 3}
     - {fileID: 7832936108614912041, guid: 3636a2a39abf3ed4a99bb69fd32f591d, type: 3}
+    - {fileID: 5052706393291724316, guid: 721ba7b7b9b61654295fa8dc3800c444, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -74,7 +75,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 3
     - Name: 
       Entry: 7
       Data: 
@@ -120,6 +121,39 @@ MonoBehaviour:
     - Name: weapon
       Entry: 10
       Data: 1
+    - Name: modelOnHandPos
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0.00335
+    - Name: 
+      Entry: 4
+      Data: 0.00295
+    - Name: 
+      Entry: 4
+      Data: -0.00026
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 7
+      Data: 4|WeaponHolderData, Assembly-CSharp
+    - Name: weapon
+      Entry: 10
+      Data: 2
     - Name: modelOnHandPos
       Entry: 7
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
