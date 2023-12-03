@@ -437,6 +437,7 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 1221407495398205779}
+    - {fileID: 8125211689306907698}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -448,10 +449,13 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 10
       Data: 0
+    - Name: 
+      Entry: 10
+      Data: 1
     - Name: 
       Entry: 13
       Data: 
@@ -1614,6 +1618,58 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1495154483, guid: 7288216098f0994498f29d18793ac37d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495154483, guid: 7288216098f0994498f29d18793ac37d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495154483, guid: 7288216098f0994498f29d18793ac37d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495154483, guid: 7288216098f0994498f29d18793ac37d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495154483, guid: 7288216098f0994498f29d18793ac37d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495154483, guid: 7288216098f0994498f29d18793ac37d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661138281, guid: 7288216098f0994498f29d18793ac37d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671328490, guid: 7288216098f0994498f29d18793ac37d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671328490, guid: 7288216098f0994498f29d18793ac37d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671328490, guid: 7288216098f0994498f29d18793ac37d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671328490, guid: 7288216098f0994498f29d18793ac37d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671328490, guid: 7288216098f0994498f29d18793ac37d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671328490, guid: 7288216098f0994498f29d18793ac37d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 575791892356864236, guid: 7288216098f0994498f29d18793ac37d, type: 3}
       propertyPath: serializationData.Prefab
       value: 
@@ -1712,3 +1768,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7288216098f0994498f29d18793ac37d, type: 3}
+--- !u!114 &8125211689306907698 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6628983623637369581, guid: 7288216098f0994498f29d18793ac37d, type: 3}
+  m_PrefabInstance: {fileID: 8125211689306907697}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64649dd5ccb4d7440ab1ed56ae4fb80c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
