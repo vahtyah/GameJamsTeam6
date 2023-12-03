@@ -7,6 +7,8 @@ public class GamePanel : MonoBehaviour, IGameSignal
     public static GamePanel instance;
     [SerializeField] GameObject inventoryEquipment;
     [SerializeField] GameObject pausePanel;
+    [SerializeField] GameObject winPanel;
+    [SerializeField] GameObject losePanel;
 
     private void Awake()
     {
@@ -58,7 +60,13 @@ public class GamePanel : MonoBehaviour, IGameSignal
         Time.timeScale = 1;
     }
 
-    public void Win() { }
+    public void Win()
+    {
+        winPanel.SetActive(true);
+    }
 
-    public void Lose() { }
+    public void Lose()
+    {
+        losePanel.SetActive(true);
+    }
 }
