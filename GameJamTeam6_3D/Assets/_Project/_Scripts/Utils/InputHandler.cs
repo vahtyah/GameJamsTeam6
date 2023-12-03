@@ -60,6 +60,11 @@ public class InputHandler : MonoBehaviour
     {
         return Input.GetKey(KeyCode.B);
     }
+    
+    public bool PressPause()
+    {
+        return Input.GetKeyDown(KeyCode.Escape);
+    }
 
 
 
