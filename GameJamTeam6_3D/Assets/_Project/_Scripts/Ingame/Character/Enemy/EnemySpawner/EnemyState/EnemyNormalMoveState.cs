@@ -21,9 +21,6 @@ public class EnemyNormalMoveState : IEnemyState
 
     public EnemyAnimState OnUpdate()
     {
-        //ColorDebug.DebugGreen(enemy.GetGameObject().name = Vector3.Distance(IngameManager.instance.player.position, enemy.GetGameObject().transform.position).ToString());
-        //ColorDebug.DebugYellow( Vector3.Distance(IngameManager.instance.player.position, enemy.GetGameObject().transform.position) < rangeAttack);
-        //ColorDebug.DebugRed(rangeAttack);
         if (Vector3.Distance( IngameManager.instance.player.position, enemy.GetGameObject().transform.position) < rangeAttack)
         {
             return EnemyAnimState.Attack;
