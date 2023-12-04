@@ -8,61 +8,59 @@ public class DraggableEquipmentItem : MonoBehaviour
 {
     public static DraggableEquipmentItem instance;
 
-    public Action onDropSuccess;
+    public Action onDrop;
 
     [SerializeField] Image itemIcon;
 
     RectTransform rectTransform;
-
-    int itemId;
+    [Header("Debug")]
+    [SerializeField] int itemId;
     public int ItemID => itemId;
     ItemType type;
     public ItemType Type => type;
-    int inventoryIndex;
+    [SerializeField] int inventoryIndex;
     public int InventoryIndex => inventoryIndex;
-    bool fromEquipment;
+    [SerializeField] bool fromEquipment;
     public bool FromEquipment =>fromEquipment;
 
-    bool ok;
+    public EquipmentItemUI equipmentUI;
+    public InventoryItemUI inventoryUI;
+
+    bool ok = false;
 
     private void Awake()
     {
         instance = this;
         rectTransform = transform as RectTransform;
-        onDropSuccess = OnDropSuccess;
+        gameObject.SetActive(false);
     }
 
     private void Update()
     {
         rectTransform.position = Input.mousePosition;
-        if (Input.GetMouseButtonUp(0) == false || ok) return;
-        if (fromEquipment)
-        {
-            //InventorySystem
-        }
-        else
-        {
-
-        }
-        ok = false;
-    }
-
-    void OnDropSuccess()
-    {
-        
     }
 
     public void SetVisual(ItemType _type, int _id, bool _fromEquipment , int _inventoryIndex = -1)
     {
-        ok = false;
         fromEquipment = _fromEquipment;
         itemId = _id;
         type = _type;
         inventoryIndex = _inventoryIndex;
         itemIcon.sprite = InventorySystem.instance.GetItemIcon(_type, _id);
+        rectTransform.position = Input.mousePosition;
         gameObject.SetActive(true);
     }
 
-
+    public void Restore()
+    {
+        if (fromEquipment)
+        {
+            equipmentUI.TurnActive(_on: true);
+        }
+        else
+        {
+            inventoryUI.SetActive();
+        }
+    }
 
 }

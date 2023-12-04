@@ -15,6 +15,7 @@ public class EncryptionUtil : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            LoadKey();
             //if (GetKey() == false)
             //{
             //    GenerateKey();

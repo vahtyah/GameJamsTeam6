@@ -7,7 +7,7 @@ public class ArmorData : ScriptableObject, IItemEquipmentData
 {
     [SerializeField] int addDefValue;
 
-    [SerializeField] ItemType itemType;
+    ItemType itemType = ItemType.Armour;
     [SerializeField] Sprite itemIcon;
     [SerializeField] string itemName;
     [SerializeField] string description;

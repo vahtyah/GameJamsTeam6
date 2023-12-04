@@ -31,7 +31,7 @@ public class BeltData : ScriptableObject, IItemEquipmentData
         return itemName;
     }
 
-    [SerializeField] ItemType type;
+    ItemType type = ItemType.Belt;
     public ItemType GetItemType()
     {
         return type;

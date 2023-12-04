@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using EnhancedUI.EnhancedScroller;
+using System;
+using Sirenix.OdinInspector;
 
-public class InventoryPanel : MonoBehaviour, IEnhancedScrollerDelegate
+public class InventoryPanel : SerializedMonoBehaviour, IEnhancedScrollerDelegate
 {
     public const int totalItemInRow = 4;
     [SerializeField] InventoryItemRowUI prefab;
     [Space][SerializeField] GameObject activePanel;
+    public void SetActivePanel(bool _check) { activePanel.SetActive(_check); }
+    public GameObject GetActivePanel() { return activePanel; }  
     [SerializeField] EnhancedScroller scroller;
-    List<EquipmentDataRowUI> data = new List<EquipmentDataRowUI>();
+    [Header("Debug")]
+    [SerializeField] List<EquipmentDataRowUI> data = new List<EquipmentDataRowUI>();
 
 
     private void Awake()
@@ -24,15 +29,22 @@ public class InventoryPanel : MonoBehaviour, IEnhancedScrollerDelegate
         SetData();
     }
 
+    void OnEnable()
+    {
+        SetData();
+    }
+
     void OnDestroy()
     {
         InventorySystem.instance.onAddedItemInventory -= OnAddingItem;
     }
 
-    void OnAddingItem(int _inventoryIndex, ItemType _type, int _id)
+    void OnAddingItem(int _inventoryIndex)
     {
         int rowIndex = _inventoryIndex % totalItemInRow;
-        data[Mathf.FloorToInt(_inventoryIndex / totalItemInRow)].rows[rowIndex].itemID = _id;
+        data[Mathf.FloorToInt(_inventoryIndex / totalItemInRow)].rows[rowIndex].itemID = InventorySystem.instance.GetItemInventory()[_inventoryIndex] != null ?
+            InventorySystem.instance.GetItemInventory()[_inventoryIndex].GetItemID() 
+            : -1;
     }
 
     void SetData()
@@ -81,10 +93,17 @@ public class InventoryPanel : MonoBehaviour, IEnhancedScrollerDelegate
         return data.Count;
     }
 }
-
+[Serializable]
 public class EquipmentDataRowUI
 {
     public EquipmentDataCellUI[] rows = new EquipmentDataCellUI[InventoryPanel.totalItemInRow];
+    public EquipmentDataRowUI()
+    {
+        for (int i = 0; i < rows.Length; i++)
+        {
+            rows[i] = new EquipmentDataCellUI();
+        }
+    }
 }
 
 public class EquipmentDataCellUI

@@ -12,3 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b5f90278855e9498be233a4003ec2a, type: 3}
   m_Name: CasualGloves
   m_EditorClassIdentifier: 
+  addCrit: 0
+  itemIcon: {fileID: 21300000, guid: a568f5732c529c541abb3a5fb827c66f, type: 3}
+  itemName: Casual Gloves
+  description: 
+  type: 0

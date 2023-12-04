@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class EquipmentPanel : SerializedMonoBehaviour
 {
-    [SerializeField] Dictionary<ItemType, EquipmentItemUI> equippedItems = new Dictionary<ItemType, EquipmentItemUI>() {
+    [SerializeField]
+    Dictionary<ItemType, EquipmentItemUI> equippedItems = new Dictionary<ItemType, EquipmentItemUI>() {
         {ItemType.Belt, null },
         {ItemType.Helmet, null},
         {ItemType.Weapon, null },
@@ -17,7 +18,10 @@ public class EquipmentPanel : SerializedMonoBehaviour
     private void Start()
     {
         InventorySystem.instance.onEquip += Equip;
-        
+        foreach (var keyValue in InventorySystem.instance.GetItemEquipment())
+        {
+            equippedItems[keyValue.Key].SetData(keyValue.Key);
+        }
     }
 
     private void OnDestroy()
@@ -25,17 +29,11 @@ public class EquipmentPanel : SerializedMonoBehaviour
         InventorySystem.instance.onEquip -= Equip;
     }
 
-    public void Equip(ItemType _type, int id)
+    public void Equip(ItemType _type)
     {
-        //equippedItems[_type] = InventorySystem.instance.GetIItem(_type, id);
-        if (id <= -1)
-        {
-            equippedItems[_type].TurnOff();
-        }
-        else
-        {
-            equippedItems[_type].SetData(_type, id);
-        }
+
+        equippedItems[_type].SetData(_type);
+
     }
 
 

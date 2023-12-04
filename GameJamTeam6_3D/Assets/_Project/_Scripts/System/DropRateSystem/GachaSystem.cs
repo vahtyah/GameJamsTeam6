@@ -5,21 +5,28 @@ using UnityEngine;
 
 public class GachaSystem : SerializedMonoBehaviour
 {
-    [SerializeField]  Dictionary<ItemType, IGachaItemOnField> equipmentItemPrefabs;
-    [SerializeField] IGachaItemOnField coinPrefab;
+    public static GachaSystem instance;
 
-    public void DoGacha(float _rate)
+    private void Awake()
+    {
+        instance = this; 
+    }
+
+    public void DoGacha(float _rate, GachaType _type)
     {
         _rate = _rate * 100f;
         float ranResult = Random.Range(0f, 100f);
-        if (ranResult < _rate)
+        if (ranResult > _rate) return;
+        switch (_type)
         {
+            case GachaType.WeaponItem:
+                GachaEquipmentItem();
+                break;
+            case GachaType.Coin:
 
+                break;
         }
-        else
-        {
 
-        }
     }
 
     void GachaEquipmentItem()

@@ -3848,6 +3848,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MapTransferPrev
       objectReference: {fileID: 0}
+    - target: {fileID: 7739349735081254912, guid: a76a64074e578d44784f167e60c41f9b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7739349735081254914, guid: a76a64074e578d44784f167e60c41f9b, type: 3}
       propertyPath: nextMapID
       value: 0

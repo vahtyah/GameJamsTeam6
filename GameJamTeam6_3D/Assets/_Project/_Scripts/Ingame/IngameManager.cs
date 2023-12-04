@@ -42,6 +42,7 @@ public class IngameManager : SerializedMonoBehaviour
     public void Pause()
     {
         gameState = GameState.Pause;
+        Time.timeScale = 0;
         foreach (var signal in signals)
         {
             signal.Pause();
@@ -61,6 +62,7 @@ public class IngameManager : SerializedMonoBehaviour
     public void Resume()
     {
         gameState = GameState.Resume;
+        Time.timeScale = 1;
         foreach (var signal in signals)
         {
             signal.Resume();

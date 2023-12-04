@@ -18,6 +18,10 @@ public class MapSceneManager : MonoBehaviour
     {
         instance = this;
         playerProgressSave = Application.persistentDataPath + playerProgressSaveTxt;
+    }
+
+    private void Start()
+    {
         LoadScene(LoadPLayerSceneProgress());
     }
 

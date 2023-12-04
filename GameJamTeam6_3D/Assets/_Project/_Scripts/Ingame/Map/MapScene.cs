@@ -30,8 +30,8 @@ public class MapScene : MonoBehaviour
     private void Start()
     {
         Player.instance.transform.position = playerStartPos.position;
-        previousMapCheckPoint.TurnOn();
-        nextMapCheckpoint.TurnOn();
+        //previousMapCheckPoint.TurnOn();
+        //nextMapCheckpoint.TurnOn();
     }
 
 
