@@ -26,7 +26,6 @@ public class InventoryPanel : SerializedMonoBehaviour, IEnhancedScrollerDelegate
     {
         InventorySystem.instance.onAddedItemInventory += OnAddingItem;
         activePanel.SetActive(false);
-        SetData();
     }
 
     void OnEnable()
