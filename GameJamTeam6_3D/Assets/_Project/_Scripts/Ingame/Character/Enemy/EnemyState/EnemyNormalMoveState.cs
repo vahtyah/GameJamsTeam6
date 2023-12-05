@@ -25,7 +25,7 @@ public class EnemyNormalMoveState : IEnemyState
         {
             return EnemyAnimState.Attack;
         }
-        enemy.GetGameObject().transform.LookAt(IngameManager.instance.player.position);
+        //enemy.GetGameObject().transform.LookAt(IngameManager.instance.player.position);
         enemy.GetEnemyNav().MoveToPlayer();
         return enemyState;
     }

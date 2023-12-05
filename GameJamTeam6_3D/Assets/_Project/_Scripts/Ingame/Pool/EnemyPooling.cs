@@ -21,19 +21,21 @@ public class EnemyPooling : SerializedMonoBehaviour
         }
     }
 
-    public IEnemy SpawnEnemy(EnemyID _id)
+    public IEnemy SpawnEnemy(EnemyID _id, Vector3 _pos)
     {
         for (int i = 0; i < pooledEnemies[_id].Count; i++)
         {
             if (pooledEnemies[_id][i].GetGameObject().activeSelf) continue;
-            pooledEnemies[_id][i].GetGameObject().SetActive(true);
             pooledEnemies[_id][i].Setup();
+            pooledEnemies[_id][i].GetGameObject().transform.position = _pos;
+            pooledEnemies[_id][i].GetGameObject().SetActive(true);
             return pooledEnemies[_id][i];
         }
         GameObject newObj = Instantiate(prefabs[_id].GetGameObject(), transform);
         IEnemy newEnemy = newObj.GetComponent<IEnemy>();
-        newEnemy.GetGameObject().SetActive(true);
         newEnemy.Setup();
+        newEnemy.GetGameObject().transform.position = _pos;
+        newEnemy.GetGameObject().SetActive(true);
         pooledEnemies[_id].Add(newEnemy);
         return newEnemy;
     }

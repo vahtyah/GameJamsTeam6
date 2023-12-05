@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BeltData", menuName = GlobalString.ItemData + "BeltData")]
+[CreateAssetMenu(fileName = "BeltData", menuName = GlobalInfo.ItemData + "BeltData")]
 public class BeltData : ScriptableObject, IItemEquipmentData
 {
     [SerializeField] int addCritDamgPercent;

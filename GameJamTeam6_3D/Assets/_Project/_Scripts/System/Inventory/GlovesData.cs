@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "GlovesData", menuName = GlobalString.ItemData + "GlovesData")]
+[CreateAssetMenu(fileName = "GlovesData", menuName = GlobalInfo.ItemData + "GlovesData")]
 public class GlovesData : ScriptableObject, IItemEquipmentData
 {
     [SerializeField] int addCrit;

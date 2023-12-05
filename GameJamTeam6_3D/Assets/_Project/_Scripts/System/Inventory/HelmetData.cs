@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "HelmetData", menuName = GlobalString.ItemData + "HelmetData")]
+[CreateAssetMenu(fileName = "HelmetData", menuName = GlobalInfo.ItemData + "HelmetData")]
 public class HelmetData : ScriptableObject, IItemEquipmentData
 {
     [SerializeField] int addMaxHp;

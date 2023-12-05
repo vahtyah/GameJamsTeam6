@@ -23,7 +23,7 @@ public class MeleeEnemy : MonoBehaviour, IEnemy
     void Awake()
     {
         curEnemyData = enemyData;
-        tag = GlobalString.enemyTagAndLayer;
+        tag = GlobalInfo.enemyTagAndLayer;
         gameObject.layer = LayerMask.NameToLayer(tag);
         agent = GetComponent<NavMeshAgent>();
         characterHealth.AddSignalHealthChange((curHealth) =>
@@ -35,11 +35,13 @@ public class MeleeEnemy : MonoBehaviour, IEnemy
             gameObject.SetActive(false);
             EnemySpawner.instance.OnEnemyDie(atWave);
         });
+        enemyNav.SetAgent(agent);
     }
 
     void OnEnable()
     {
         characterHealth.Setup(curEnemyData.hp);
+        agent.enabled = true;
     }
 
     void Update()
@@ -67,7 +69,8 @@ public class MeleeEnemy : MonoBehaviour, IEnemy
     {
         characterHealth.Setup(enemyData.hp);
         anim.SetAnimator(animator);
-        enemyNav.SetAnimController(anim).SetSpeed(8).SetAgent(agent);
+        enemyNav.SetAnimController(anim).SetSpeed(enemyData.speed);
+        agent.enabled = false;
         return this;
     }
 

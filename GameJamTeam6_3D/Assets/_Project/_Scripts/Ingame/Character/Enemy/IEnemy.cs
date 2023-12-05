@@ -33,7 +33,21 @@ public interface IBoss
     public EnemyData GetEnemyData();
     public CharacterHealth GetCharacterHealth();
     public EnemyAnimController GetEnemyAnimController();
+    public EnemyBehaviourTree GetBehaviourTree();
+
     public void OnDie();
+
+    float considerAtLowHealthPercent { get; set; }
+    public void OnCurrentHealthChange(int _health)
+    {
+        if ((float)_health / (float)GetCharacterHealth().MaxHealth <= considerAtLowHealthPercent)
+            GetBehaviourTree().Blackboard.AssignBlackBoard(BehaviourTreeBlackboardInfo.SelfEnemyLowHealth, true);
+        else
+        {
+            if (GetBehaviourTree().Blackboard.GetInfo(BehaviourTreeBlackboardInfo.SelfEnemyLowHealth) == false) return;
+            GetBehaviourTree().Blackboard.AssignBlackBoard(BehaviourTreeBlackboardInfo.SelfEnemyLowHealth, false);
+        }
+    }
 }
 
 

@@ -1002,8 +1002,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
+    SerializedFormat: 0
+    SerializedBytes: 01010b00000065006e0065006d0079005300740061007400650073002f000000000173000000530079007300740065006d002e0043006f006c006c0065006300740069006f006e0073002e00470065006e0065007200690063002e00440069006300740069006f006e00610072007900600032005b005b0045006e0065006d00790041006e0069006d00530074006100740065002c00200041007300730065006d0062006c0079002d004300530068006100720070005d002c005b00490045006e0065006d007900530074006100740065002c00200041007300730065006d0062006c0079002d004300530068006100720070005d005d002c0020006d00730063006f0072006c00690062000000000001010800000063006f006d00700061007200650072002f01000000015e000000530079007300740065006d002e0043006f006c006c0065006300740069006f006e0073002e00470065006e0065007200690063002e0045006e0075006d0045007100750061006c0069007400790043006f006d0070006100720065007200600031005b005b0045006e0065006d00790041006e0069006d00530074006100740065002c00200041007300730065006d0062006c0079002d004300530068006100720070005d005d002c0020006d00730063006f0072006c0069006200010000000600000000000000000705060400000000000000042e1d010200000024006b000000000000000000010102000000240076002f02000000012500000045006e0065006d0079004e006f0072006d0061006c00490064006c006500530074006100740065002c00200041007300730065006d0062006c0079002d00430053006800610072007000020000001f01090000007700610069007400540069006d00650072000000803f0505042e1d010200000024006b000100000000000000010102000000240076002f03000000012500000045006e0065006d0079004e006f0072006d0061006c004d006f0076006500530074006100740065002c00200041007300730065006d0062006c0079002d00430053006800610072007000030000001f010b000000720061006e0067006500410074007400610063006b00000040400505042e1d010200000024006b000200000000000000010102000000240076002f04000000012100000045006e0065006d0079004d0065006c0065006500410074007400610063006b002c00200041007300730065006d0062006c0079002d00430053006800610072007000040000001f010a000000610074007400610063006b00540069006d006500000000400b010f000000640061006d0061006700650043006f006c006c006900730069006f006e00000000001f010b000000610074007400610063006b00540069006d0065007200000000000505042e1d010200000024006b000300000000000000010102000000240076002f05000000012400000045006e0065006d0079004e006f0072006d0061006c00440069006500530074006100740065002c00200041007300730065006d0062006c0079002d0043005300680061007200700005000000050507050b010500000065006e0065006d00790001000000
     ReferencedUnityObjects:
     - {fileID: 7801239833479858344}
     - {fileID: 7832614591336046447}
@@ -1011,111 +1011,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: enemyStates
-      Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[EnemyAnimState, Assembly-CSharp],[IEnemyState,
-        Assembly-CSharp]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[EnemyAnimState,
-        Assembly-CSharp]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 4
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 0
-    - Name: $v
-      Entry: 7
-      Data: 2|EnemyNormalIdleState, Assembly-CSharp
-    - Name: waitTimer
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 1
-    - Name: $v
-      Entry: 7
-      Data: 3|EnemyNormalMoveState, Assembly-CSharp
-    - Name: rangeAttack
-      Entry: 4
-      Data: 3
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 2
-    - Name: $v
-      Entry: 7
-      Data: 4|EnemyMeleeAttack, Assembly-CSharp
-    - Name: attackTime
-      Entry: 4
-      Data: 2
-    - Name: damageCollision
-      Entry: 10
-      Data: 0
-    - Name: attackTimer
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 3
-    - Name: $v
-      Entry: 7
-      Data: 5|EnemyNormalDieState, Assembly-CSharp
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: enemy
-      Entry: 10
-      Data: 1
+    SerializationNodes: []
 --- !u!114 &7832614591336046447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1210,7 +1106,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8604978505456851793}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.628, z: 1.292}
+  m_LocalPosition: {x: 0, y: 0.628, z: 0.977}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1228,7 +1124,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 2.45}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7801239833479858344
 MonoBehaviour:
@@ -1269,18 +1165,70 @@ PrefabInstance:
     - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
+      propertyPath: serializationData.SerializedFormat
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
+      propertyPath: serializationData.SerializedBytes.Array.size
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
+      propertyPath: serializationData.SerializationNodes.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
+      propertyPath: serializationData.SerializedBytes.Array.data[0]
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
+      propertyPath: serializationData.SerializedBytes.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
+      propertyPath: serializationData.SerializedBytes.Array.data[2]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
+      propertyPath: serializationData.SerializedBytes.Array.data[6]
+      value: 101
+      objectReference: {fileID: 0}
+    - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
+      propertyPath: serializationData.SerializedBytes.Array.data[8]
+      value: 110
+      objectReference: {fileID: 0}
     - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
+      propertyPath: serializationData.SerializedBytes.Array.data[10]
+      value: 101
+      objectReference: {fileID: 0}
+    - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
+      propertyPath: serializationData.SerializedBytes.Array.data[12]
+      value: 109
+      objectReference: {fileID: 0}
+    - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
+      propertyPath: serializationData.SerializedBytes.Array.data[14]
+      value: 121
       objectReference: {fileID: 0}
     - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[0]
       value: '"path":"enemy","value":$eref:0'
       objectReference: {fileID: 0}
     - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
-      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
+      propertyPath: serializationData.ReferencedUnityObjects.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
+      propertyPath: serializationData.ReferencedUnityObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 7832614591336046447}
+    - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
@@ -1374,6 +1322,10 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7852267457218292422, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
 --- !u!114 &1832622906998091219 stripped
@@ -1410,16 +1362,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
+    SerializedFormat: 0
+    SerializedBytes: 0b010500000065006e0065006d00790000000000
     ReferencedUnityObjects:
     - {fileID: 7832614591336046447}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: enemy
-      Entry: 10
-      Data: 0
+    SerializationNodes: []
   slider: {fileID: 1832622906998091219}

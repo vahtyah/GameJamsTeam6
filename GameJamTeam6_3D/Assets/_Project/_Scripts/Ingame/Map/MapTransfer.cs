@@ -18,7 +18,7 @@ public class MapTransfer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(GlobalString.tagPlayer))
+        if (other.CompareTag(GlobalInfo.tagPlayer))
         {
             StartCoroutine(LoadingPanel.instance.IELoading());
             MapSceneManager.instance.LoadScene(nextMapID);

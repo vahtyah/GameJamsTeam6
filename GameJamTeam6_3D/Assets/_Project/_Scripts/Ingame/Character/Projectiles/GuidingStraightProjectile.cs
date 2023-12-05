@@ -68,7 +68,7 @@ public class GuidingStraightProjectile : MonoBehaviour, IProjectile
     private void OnTriggerEnter(Collider other)
     {
         bool pop = false;
-        if (other.gameObject.CompareTag(GlobalString.obstacleTagAndLayer))
+        if (other.gameObject.CompareTag(GlobalInfo.obstacleTagAndLayer))
         {
             ProjectilePooling.instance.DeactivateProjectile(this);
             pop = true;
@@ -76,7 +76,7 @@ public class GuidingStraightProjectile : MonoBehaviour, IProjectile
         }
         if ( isPlayer == false)
         {
-            if (other.gameObject.CompareTag(GlobalString.tagPlayer))
+            if (other.gameObject.CompareTag(GlobalInfo.tagPlayer))
             {
                 ProjectilePooling.instance.DeactivateProjectile(this);
                 Player.instance.AddHealth(-damage);
@@ -85,7 +85,7 @@ public class GuidingStraightProjectile : MonoBehaviour, IProjectile
         }
         else
         {
-            if (other.gameObject.CompareTag(GlobalString.enemyTagAndLayer))
+            if (other.gameObject.CompareTag(GlobalInfo.enemyTagAndLayer))
             {
                 ProjectilePooling.instance.DeactivateProjectile(this);
                 other.GetComponent<IEnemy>().AddHealth(-damage);

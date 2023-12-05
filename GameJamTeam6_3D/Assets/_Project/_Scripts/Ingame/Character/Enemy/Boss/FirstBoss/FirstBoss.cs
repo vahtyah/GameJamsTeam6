@@ -1,30 +1,33 @@
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class FirstBoss : MonoBehaviour, IBoss
+public class FirstBoss : SerializedMonoBehaviour, IBoss
 {
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Animator animator;
     [SerializeField] EnemyBehaviourTree behaviourTree;
     [SerializeField] EnemyData enemyData;
+    [SerializeField] IEnemySkill enemySkills;
     CharacterHealth characterHealth = new CharacterHealth();
     EnemyAnimController anim = new EnemyAnimController();
     EnemyNav enemyNav = new EnemyNav();
+
 
     // Start is called before the first frame update
 
     void Awake()
     {
-        characterHealth.onCurHealthChange = OnCurrentHealthChange;
+        characterHealth.onCurHealthChange = (this as IBoss).OnCurrentHealthChange;
         characterHealth.onDead = OnDie;
     }
 
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -60,21 +63,24 @@ public class FirstBoss : MonoBehaviour, IBoss
 
     [Range(0, 1f)]
     [SerializeField] float considerAtLowHealthPercent = 0.2f;
-    private void OnCurrentHealthChange(int _health)
-    {
-        if ((float)_health / (float)characterHealth.MaxHealth <= considerAtLowHealthPercent)
-            behaviourTree.Blackboard.AssignBlackBoard(BehaviourTreeBlackboardInfo.SelfEnemyLowHealth, true);
-        else
-        {
-            if (behaviourTree.Blackboard.GetInfo(BehaviourTreeBlackboardInfo.SelfEnemyLowHealth) == false) return;
-            behaviourTree.Blackboard.AssignBlackBoard(BehaviourTreeBlackboardInfo.SelfEnemyLowHealth, false);
-        }
-    }
+
+    [SerializeField] float IBoss.considerAtLowHealthPercent { get => considerAtLowHealthPercent; set => considerAtLowHealthPercent = value; }
+
+    //private void OnCurrentHealthChange(int _health)
+    //{
+    //    if ((float)_health / (float)characterHealth.MaxHealth <= considerAtLowHealthPercent)
+    //        behaviourTree.Blackboard.AssignBlackBoard(BehaviourTreeBlackboardInfo.SelfEnemyLowHealth, true);
+    //    else
+    //    {
+    //        if (behaviourTree.Blackboard.GetInfo(BehaviourTreeBlackboardInfo.SelfEnemyLowHealth) == false) return;
+    //        behaviourTree.Blackboard.AssignBlackBoard(BehaviourTreeBlackboardInfo.SelfEnemyLowHealth, false);
+    //    }
+    //}
 
 
     public void OnDie()
     {
-        
+        gameObject.SetActive(false);
     }
 
     public void Setup()
@@ -82,11 +88,15 @@ public class FirstBoss : MonoBehaviour, IBoss
         enemyNav.SetAgent(agent);
         enemyNav.SetAnimController(anim);
         enemyNav.SetSpeed(enemyData.speed);
-
     }
 
     public EnemyAnimController GetEnemyAnimController()
     {
         return anim;
+    }
+
+    public EnemyBehaviourTree GetBehaviourTree()
+    {
+        return behaviourTree;
     }
 }

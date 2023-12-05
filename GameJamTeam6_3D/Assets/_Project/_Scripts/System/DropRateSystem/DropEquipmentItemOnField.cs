@@ -9,7 +9,7 @@ public class DropEquipmentItemOnField : MonoBehaviour, IDropEquipmentItemOnField
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(GlobalString.tagPlayer) == false) return;
+        if (other.CompareTag(GlobalInfo.tagPlayer) == false) return;
         InventorySystem.instance.AddItemToInventory(itemType, equipID);
         gameObject.SetActive(false);
     }

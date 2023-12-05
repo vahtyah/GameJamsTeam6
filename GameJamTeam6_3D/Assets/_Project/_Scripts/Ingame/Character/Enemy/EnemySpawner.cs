@@ -47,11 +47,9 @@ public class EnemySpawner : SerializedMonoBehaviour
             enemyWaveRecord.Add(waveId, totalEnemiesInWave);
             for (int j = 0; j < totalEnemiesInWave; j++)
             {
-                IEnemy enemy = EnemyPooling.instance.SpawnEnemy(currentEnemyID);
+                IEnemy enemy = EnemyPooling.instance.SpawnEnemy(currentEnemyID, RandomPosition());
                 enemySpawned.Add(enemy);
-                enemy.SetThisEnemyFromWave(waveId)
-                    .GetGameObject().transform.position = RandomPosition()
-                    ;
+                enemy.SetThisEnemyFromWave(waveId) ;
                 yield return new WaitForSeconds(MapScene.instance.GetSpawnData().GetWaitTimeWave());
             }
             countWaveSpawned++;
@@ -69,10 +67,9 @@ public class EnemySpawner : SerializedMonoBehaviour
         tempPosisitions = GetArcShapePositions(totalEnemiesInWave, IEnemy, _pos);
         for (int j = 0; j < totalEnemiesInWave; j++)
         {
-            var enemy = EnemyPooling.instance.SpawnEnemy(currentEnemyID);
+            var enemy = EnemyPooling.instance.SpawnEnemy(currentEnemyID, tempPosisitions[j]);
             enemySpawned.Add(enemy);
-            enemy.SetThisEnemyFromWave(-1)
-                .GetGameObject().transform.position = tempPosisitions[j];
+            enemy.SetThisEnemyFromWave(-1);
         }
     }
 
@@ -87,10 +84,9 @@ public class EnemySpawner : SerializedMonoBehaviour
         tempPosisitions = GetGroupPosition(totalEnemiesInWave, IEnemy, _pos);
         for (int j = 0; j < totalEnemiesInWave; j++)
         {
-            var enemy = EnemyPooling.instance.SpawnEnemy(currentEnemyID);
+            var enemy = EnemyPooling.instance.SpawnEnemy(currentEnemyID,tempPosisitions[j]);
             enemySpawned.Add(enemy);
-            enemy.SetThisEnemyFromWave(-1)
-                .GetGameObject().transform.position = tempPosisitions[j];
+            enemy.SetThisEnemyFromWave(-1);
         }
 
     }

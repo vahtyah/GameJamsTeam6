@@ -20,7 +20,7 @@ public class RangeEnemy : SerializedMonoBehaviour, IRangeEnemy
     void Awake()
     {
         curEnemyData = enemyData;
-        tag = GlobalString.enemyTagAndLayer;
+        tag = GlobalInfo.enemyTagAndLayer;
         gameObject.layer = LayerMask.NameToLayer(tag);
         agent = GetComponent<NavMeshAgent>();
         characterHealth.Setup(enemyData.hp);
@@ -32,6 +32,12 @@ public class RangeEnemy : SerializedMonoBehaviour, IRangeEnemy
             gameObject.SetActive(false);
             EnemySpawner.instance.OnEnemyDie(atWave);
         });
+        enemyNav.SetAgent(agent);
+    }
+    void OnEnable()
+    {
+        characterHealth.Setup(curEnemyData.hp);
+        agent.enabled = true;
     }
 
     void Update()
@@ -59,7 +65,7 @@ public class RangeEnemy : SerializedMonoBehaviour, IRangeEnemy
     {
         characterHealth.Setup(100);
         anim.SetAnimator(animator);
-        enemyNav.SetAnimController(anim).SetSpeed(12).SetAgent(agent).MoveToPlayer();
+        enemyNav.SetAnimController(anim).SetSpeed(enemyData.speed).MoveToPlayer();
         return this;
     }
 

@@ -29,20 +29,19 @@ public class StraightProjectile : MonoBehaviour, IProjectile
     private void OnTriggerEnter(Collider other)
     {
         bool pop = false;
-        if (other.gameObject.CompareTag(GlobalString.obstacleTagAndLayer))
+        if (other.gameObject.CompareTag(GlobalInfo.obstacleTagAndLayer))
         {
             pop = true;
         }
-        ColorDebug.DebugGreen(isPlayer + " " + other.gameObject.CompareTag(GlobalString.tagPlayer));
         if (isPlayer == false)
         {
-            if (other.gameObject.CompareTag(GlobalString.tagPlayer))
+            if (other.gameObject.CompareTag(GlobalInfo.tagPlayer))
             {
                 Player.instance.AddHealth(-damage);
                 pop = true;
             }
         }
-        else if (other.gameObject.CompareTag(GlobalString.enemyTagAndLayer))
+        else if (other.gameObject.CompareTag(GlobalInfo.enemyTagAndLayer))
         {
                 other.GetComponent<IEnemy>().AddHealth(-damage);
                 pop = true;

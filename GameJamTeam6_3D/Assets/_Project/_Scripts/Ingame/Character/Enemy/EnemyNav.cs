@@ -7,20 +7,27 @@ public class EnemyNav
 {
     NavMeshAgent agent;
     EnemyAnimController animController;
-
+    private NavMeshPath navMeshPath;
     float stableSpeed = -1;
 
     public EnemyNav SetAgent(NavMeshAgent _agent)
     {
         agent = _agent;
-        agent.enabled = true;
+        navMeshPath = new NavMeshPath();
+        agent.enabled = false;
         return this;
     }
 
     public EnemyNav SetSpeed(float _speed)
     {
         stableSpeed = _speed;
+        agent.enabled = false;
         return this;
+    }
+
+    public void StartAgent()
+    {
+        agent.enabled = true;
     }
 
     public EnemyNav SetAnimController(EnemyAnimController _anim)
@@ -28,14 +35,17 @@ public class EnemyNav
         animController = _anim;
         return this;
     }
-
+    
     public void MoveToPlayer()
     {
         agent.enabled = true;
         animController.PlayAnim(EnemyAnimState.Move);
         agent.speed = stableSpeed;
-        agent.SetDestination(IngameManager.instance.player.position);
-        //CheckMove();
+        agent.CalculatePath(IngameManager.instance.player.position, navMeshPath);
+        if (CheckMove())
+        {
+            agent.SetDestination(IngameManager.instance.player.position);
+        }
     }
 
     public void MoveToPosition(Vector3 position)
@@ -45,18 +55,20 @@ public class EnemyNav
         animController.PlayAnim(EnemyAnimState.Move);
         agent.speed = stableSpeed;
         agent.SetDestination(position);
-        //CheckMove();
+        CheckMove();
     }
 
-    void CheckMove()
+    bool CheckMove()
     {
         //return;
-        if (agent.path.status == NavMeshPathStatus.PathPartial && agent.enabled)
+        if (navMeshPath.status != NavMeshPathStatus.PathComplete)
         {
             animController.PlayAnim(EnemyAnimState.Idle);
             agent.destination = agent.gameObject.transform.position;
             Stop();
+            return false;
         }
+        return true;
     }
 
     public void Idle()

@@ -45,7 +45,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 77.37, y: 1, z: 75.4}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!114 &1247788704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3782,6 +3782,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1545380871186018943}
     m_Modifications:
+    - target: {fileID: 543056303980844136, guid: e6a8a692032a9f049a6c3396e13f1835, type: 3}
+      propertyPath: qty
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 543056303980844141, guid: e6a8a692032a9f049a6c3396e13f1835, type: 3}
       propertyPath: m_Name
       value: MapAreaEnemySpawn
