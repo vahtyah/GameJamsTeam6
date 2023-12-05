@@ -5,10 +5,13 @@ using UnityEngine;
 public class GamePanel : MonoBehaviour, IGameSignal
 {
     public static GamePanel instance;
-    [SerializeField] GameObject inventoryEquipment;
+    [SerializeField] GameObject hud;
+    [SerializeField] InventoryPanel inventoryEquipment;
     [SerializeField] GameObject pausePanel;
     [SerializeField] GameObject winPanel;
     [SerializeField] GameObject losePanel;
+
+    public GameObject GetHUDObj() { return hud; }
 
     private void Awake()
     {
@@ -18,30 +21,25 @@ public class GamePanel : MonoBehaviour, IGameSignal
     private void Update()
     {
         if (InputHandler.instance.PressInventory()) ActiveInventory();
-        if (InputHandler.instance.PressPause()) PauseHandle();
+        if (InputHandler.instance.PressPause()) PausePanelHandle();
     }
 
     public void ActiveInventory()
     {
-        inventoryEquipment.SetActive(inventoryEquipment.gameObject.activeSelf == false);
-        if (inventoryEquipment.gameObject.activeSelf == false)
-        {
-        }
-        else
-        {
-        }
+        inventoryEquipment.SetActivePanel(inventoryEquipment.GetActivePanel().gameObject.activeSelf == false);
+        PausePanelMechanic(inventoryEquipment.GetActivePanel().gameObject.activeSelf);
     }
 
-    private void PauseHandle()
+    private void PausePanelHandle()
     {
-        if (IngameManager.instance.gameState == GameState.Pause)
-        {
-            IngameManager.instance.Resume();
-        }
-        else
-        {
-            IngameManager.instance.Pause();
-        }
+        pausePanel.SetActive(pausePanel.activeSelf == false);
+        PausePanelMechanic(pausePanel.activeSelf);
+    }
+
+    void PausePanelMechanic(bool _isActive)
+    {
+        if (_isActive == false) IngameManager.instance.Resume();
+        else IngameManager.instance.Pause();
     }
 
     public void Prepare() { }
@@ -50,14 +48,12 @@ public class GamePanel : MonoBehaviour, IGameSignal
 
     public void Pause()
     {
-        pausePanel.SetActive(true); 
-        Time.timeScale = 0;
+
     }
 
     public void Resume()
     {
-        pausePanel.SetActive(false); 
-        Time.timeScale = 1;
+
     }
 
     public void Win()

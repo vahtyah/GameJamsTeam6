@@ -4,23 +4,53 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class EquipmentItemUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
+public class EquipmentItemUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDragHandler
     , IPointerEnterHandler, IPointerExitHandler
 {
+    [SerializeField] GameObject equipmentTypeIdleActive;
     [SerializeField] GameObject active;
     [SerializeField] Image itemIcon;
+    [SerializeField] ItemType type;
+    [Header("Debug")]
+    public int itemID = -1;
 
-    int itemID;
-    ItemType type;
-
-    bool mouseEnter;
+    [SerializeField] bool mouseEnter;
     bool isClick = false;
     Vector2 mousePosition;
+
+    void Start()
+    {
+        DraggableEquipmentItem.instance.onDrop += OnDrop;
+    }
+
+    void OnDrop()
+    {
+        if (mouseEnter == false) return;
+        if (DraggableEquipmentItem.instance.gameObject.activeSelf == false) return;
+        if (DraggableEquipmentItem.instance.FromEquipment) return;
+        if (DraggableEquipmentItem.instance.Type != type)
+        {
+            DraggableEquipmentItem.instance.Restore();
+            return;
+        }
+        InventorySystem.instance.SwapEquipmentInventoryItem(DraggableEquipmentItem.instance.InventoryIndex, type);
+        DraggableEquipmentItem.instance.inventoryUI.SetData(new EquipmentDataCellUI()
+        {
+            inventoryIndex = DraggableEquipmentItem.instance.InventoryIndex,
+            itemID = InventorySystem.instance.GetItemInventoryID(DraggableEquipmentItem.instance.InventoryIndex),
+            itemType = InventorySystem.instance.GetItemInventoryType(DraggableEquipmentItem.instance.InventoryIndex),
+        });
+        itemID = InventorySystem.instance.GetItemEquipment()[type].GetItemID();
+        DraggableEquipmentItem.instance.gameObject.SetActive(false);
+
+        SetData(type);
+    }
 
     public void OnDrag(PointerEventData eventData)
     {
         if (itemID <= -1) return;
-        TurnOff();
+        TurnActive();
+        DraggableEquipmentItem.instance.equipmentUI = this;
         DraggableEquipmentItem.instance.SetVisual(type, itemID, _fromEquipment: true);
     }
 
@@ -41,29 +71,32 @@ public class EquipmentItemUI : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         isClick = false;
     }
 
-    public void OnPointerUp(PointerEventData eventData)
+    public void OnEndDrag(PointerEventData eventData)
     {
+        DraggableEquipmentItem.instance.onDrop.Invoke();
+        return;
 
     }
-    public void SetData(ItemType _type, int id)
+    public void SetData(ItemType _type)
     {
-        if (id <= -1)
+        type = _type;
+        itemID = InventorySystem.instance.GetItemEquipmentID(_type);
+        if (itemID <= -1)
         {
-            TurnOff();
+            TurnActive(false);
         }
         else
         {
-            active.SetActive(true);
-            itemID = id;
-            type = _type;
-            itemIcon.sprite = InventorySystem.instance.GetItemHolders()[_type][id].GetItemIcon();
+            TurnActive();
+            itemIcon.sprite = InventorySystem.instance.GetItemIcon(type, itemID);
         }
 
     }
 
-    public void TurnOff()
+    public void TurnActive(bool _on = true)
     {
-        active.SetActive(false);
+        active.SetActive(_on);
+        equipmentTypeIdleActive.SetActive(_on == false);
     }
 
 

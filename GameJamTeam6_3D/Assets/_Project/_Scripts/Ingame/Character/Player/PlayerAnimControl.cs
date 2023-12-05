@@ -9,7 +9,8 @@ public class PlayerAnimControl : MonoBehaviour
         //{PlayerAnimState.Walk, "Walk" },
         //{PlayerAnimState.NormalAttack, "NormalAttack" },
         {PlayerAnimState.NormalMovement, "Move" },
-        {PlayerAnimState.Die, "Die" }
+        {PlayerAnimState.Die, "Die" },
+        {PlayerAnimState.EquipmentInventory, "EquipmentInventory" }
     };
 
     const string moveBlendAnimX = "MoveX";
@@ -43,6 +44,7 @@ public enum PlayerAnimState
     //Idle,
     NormalMovement,
     Die,
+    EquipmentInventory,
     //Walk,
     //NormalAttack,
 }

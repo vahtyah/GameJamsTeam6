@@ -10,11 +10,11 @@ public class WeaponData : ScriptableObject, IItemEquipmentData
     [SerializeField] string description;
     [SerializeField] int bulletID;
     [SerializeField] float cooldown;
-    [SerializeField] int magazine;
+    //[SerializeField] int magazine;
     [SerializeField] int damage;
 
     public float GetCoolDown() => cooldown;
-    public int GetMagazine()=> magazine;
+    //public int GetMagazine()=> magazine;
     public int GetDamage() => damage;
     public int GetBulletID() => bulletID;
 
@@ -33,7 +33,7 @@ public class WeaponData : ScriptableObject, IItemEquipmentData
     {
         return itemName;
     }
-    [SerializeField] ItemType type;
+    ItemType type = ItemType.Weapon;
     public ItemType GetItemType()
     {
         return type;

@@ -36,14 +36,18 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
         {
             Vector3 hitPoint = hit.point;
-            IngameManager.instance.___test.position = hitPoint;
-            Player.instance.GetModel().LookAt(hitPoint);
-            Player.instance.GetModel().eulerAngles = new Vector3(0, Player.instance.GetModel().eulerAngles.y, 0);
+            IngameManager.instance.mousePointer.position = hitPoint;
+            Player.instance.transform.LookAt(hitPoint);
+            Player.instance.transform.eulerAngles = new Vector3(0, Player.instance.transform.eulerAngles.y, 0);
+            //Player.instance.GetModel().LookAt(hitPoint);
+            //Player.instance.GetModel().eulerAngles = new Vector3(0, Player.instance.GetModel().eulerAngles.y, 0);
         }
         else
         {
-            Player.instance.GetModel().LookAt(_mousePos);
-            Player.instance.GetModel().eulerAngles = new Vector3(0, Player.instance.GetModel().eulerAngles.y, 0);
+            Player.instance.transform.LookAt(_mousePos);
+            Player.instance.transform.eulerAngles = new Vector3(0, Player.instance.transform.eulerAngles.y, 0);
+            //Player.instance.GetModel().LookAt(_mousePos);
+            //Player.instance.GetModel().eulerAngles = new Vector3(0, Player.instance.GetModel().eulerAngles.y, 0);
         }
     }
 

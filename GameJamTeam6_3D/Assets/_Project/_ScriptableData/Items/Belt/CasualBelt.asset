@@ -12,3 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7e8c420890fdac40a2789a499070802, type: 3}
   m_Name: CasualBelt
   m_EditorClassIdentifier: 
+  addCritDamgPercent: 0
+  itemIcon: {fileID: 21300000, guid: b8ed39d29bdde78428a3da5db4a74dff, type: 3}
+  itemName: Casual Belt
+  description: 
+  type: 0

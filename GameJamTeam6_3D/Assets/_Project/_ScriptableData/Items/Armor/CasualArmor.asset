@@ -12,3 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3646c110a28b0f74a8557a27c6901f4a, type: 3}
   m_Name: CasualArmor
   m_EditorClassIdentifier: 
+  addDefValue: 5
+  itemType: 0
+  itemIcon: {fileID: 21300000, guid: d78b1ba295480324aaf51dc4e3aa8fb5, type: 3}
+  itemName: Casual Armor
+  description: 

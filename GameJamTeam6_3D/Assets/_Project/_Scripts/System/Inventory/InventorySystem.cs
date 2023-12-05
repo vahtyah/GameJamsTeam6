@@ -9,60 +9,65 @@ public class InventorySystem : SerializedMonoBehaviour
 {
     public static InventorySystem instance;
 
-    public Action<ItemType, int> onEquip;
+    public Action<ItemType> onEquip;
     /// <summary>
     /// 1st int : inventory Index,
-    /// 2nd int : itemType Index
     /// </summary>
-    public Action<int, ItemType, int> onAddedItemInventory;
+    public Action<int> onAddedItemInventory;
     public Action<int> onRemoveItemInventory;
 
-    [SerializeField] Dictionary<ItemType, List<IItemData>> itemHolders;
+    [SerializeField] InventoryHolderData itemHolder;
     [Space][SerializeField] Dictionary<ItemType, IItemEquipmentData> itemEquipment;
     [Space][SerializeField] List<IItemData> itemInventory;
     InventoryEquipmentSaveLoadHandler inventoryEquipmentSaveLoadHandler = new InventoryEquipmentSaveLoadHandler();
 
     public Dictionary<ItemType, IItemEquipmentData> GetItemEquipment() { return itemEquipment; }
-    public Dictionary<ItemType, List<IItemData>> GetItemHolders() { return itemHolders; }
-    public Sprite GetItemIcon(ItemType _type, int _id) => itemHolders[_type][_id].GetItemIcon();
+    public Sprite GetItemIcon(ItemType _type, int _id) => itemHolder.itemHolding[_type].data[_id].GetItemIcon();
     public List<IItemData> GetItemInventory() => itemInventory;
-    public IItemData GetIItemFromHolder(ItemType _type, int _id)
+    public int GetItemInventoryID(int _inventoryIndex)
     {
-        return itemHolders[_type][_id];
+        if (itemInventory[_inventoryIndex] == null) return -1;
+        return itemInventory[_inventoryIndex].GetItemID();
     }
+    public ItemType GetItemInventoryType(int _inventoryIndex)
+    {
+        if (itemInventory[_inventoryIndex] == null) return ItemType.Material;
+        return itemInventory[_inventoryIndex].GetItemType();
+    }
+    public int GetItemEquipmentID(ItemType _type)
+    {
+        if (itemEquipment[_type] == null) return -1;
+        return itemEquipment[_type].GetItemID();
+    }
+
+    public IItemData GetIItemFromHolder(ItemType _type, int _id) { return itemHolder.itemHolding[_type].data[_id]; }
+    public bool HasEquipID(ItemType _type, int _id) { return _id >= 0 && _id < itemHolder.itemHolding[_type].data.Length; }
+
 
     private void Awake()
     {
         instance = this;
-        onEquip += Equip;
         onAddedItemInventory += AddInventory;
         onRemoveItemInventory += RemoveInventory;
-        foreach (var keyValue in itemHolders)
+        foreach (var keyValue in itemHolder.itemHolding)
         {
-            for (int i = 0; i < keyValue.Value.Count; i++)
+            for (int i = 0; i < keyValue.Value.data.Length; i++)
             {
-                keyValue.Value[i].SetItemID(i);
+                keyValue.Value.data[i].SetItemID(i);
             }
         }
         inventoryEquipmentSaveLoadHandler.Load();
     }
 
-    void Equip(ItemType _type, int _id)
-    {
-        if (itemEquipment[_type] != null) itemEquipment[_type].OnUnEquip();
-        itemEquipment[_type] = itemHolders[_type][_id] as IItemEquipmentData;
-        itemEquipment[_type].OnEquip();
-        inventoryEquipmentSaveLoadHandler.SaveEquipment();
-    }
 
-    void AddInventory(int _inventoryIndexSlot, ItemType _type, int _id)
+    void AddInventory(int _inventoryIndexSlot)
     {
-        inventoryEquipmentSaveLoadHandler.SaveInventory();
+        StartCoroutine(inventoryEquipmentSaveLoadHandler.IESaveInventory(_inventoryIndexSlot));
     }
 
     void RemoveInventory(int _inventoryIndexSlot)
     {
-        inventoryEquipmentSaveLoadHandler.SaveInventory();
+        StartCoroutine(inventoryEquipmentSaveLoadHandler.IESaveInventoryRemoved(_inventoryIndexSlot));
     }
 
     public void InitInventory(List<IItemData> _items)
@@ -79,26 +84,29 @@ public class InventorySystem : SerializedMonoBehaviour
         }
     }
 
-    public void SwapItemEquipmentInventory(int _inventoryIndexSlot, ItemType _type, int _id)
+    IItemData tempItemData;
+    public void SwapEquipmentInventoryItem(int _inventoryIndexSlot, ItemType _equipmentType)
     {
-        if (itemEquipment[_type] != null)
+        tempItemData = itemInventory[_inventoryIndexSlot];
+        if (itemEquipment[_equipmentType] != null)
         {
-            itemInventory[_inventoryIndexSlot] = itemEquipment[_type];
-            onAddedItemInventory?.Invoke(_inventoryIndexSlot, _type, _id);
+            itemInventory[_inventoryIndexSlot] = itemEquipment[_equipmentType];
+            onAddedItemInventory?.Invoke(_inventoryIndexSlot);
         }
-        onEquip?.Invoke(_type, _id);
+        if (itemEquipment[_equipmentType] != null) itemEquipment[_equipmentType].OnUnEquip();
+        itemEquipment[_equipmentType] = tempItemData as IItemEquipmentData;
+        itemEquipment[_equipmentType].OnEquip();
+        inventoryEquipmentSaveLoadHandler.SaveEquipment();
+        onEquip?.Invoke(_equipmentType);
     }
 
-    public void SwapItemInventory(int _swappingInventoryIndexSlot, int _targetInventoryIndex, ItemType _type, int _id)
+    public void SwapInventoryItems(int _atInventoryIndex, int _toInventoryIndex)
     {
-        if (itemInventory[_targetInventoryIndex] != null)
-        {
-            itemInventory[_swappingInventoryIndexSlot] = itemInventory[_targetInventoryIndex];
-            onAddedItemInventory?.Invoke(_swappingInventoryIndexSlot, itemInventory[_swappingInventoryIndexSlot].GetItemType()
-                , itemInventory[_swappingInventoryIndexSlot].GetItemID());
-        }
-        itemInventory[_targetInventoryIndex] = itemHolders[_type][_id];
-        onAddedItemInventory?.Invoke(_targetInventoryIndex, _type, _id);
+        tempItemData = itemInventory[_toInventoryIndex];
+        itemInventory[_toInventoryIndex] = itemInventory[_atInventoryIndex];
+        onAddedItemInventory?.Invoke(_toInventoryIndex);
+        itemInventory[_atInventoryIndex] = tempItemData;
+        onAddedItemInventory?.Invoke(_atInventoryIndex);
     }
 
     public void AddItemToInventory(ItemType _type, int _id)
@@ -107,8 +115,8 @@ public class InventorySystem : SerializedMonoBehaviour
         {
             if (itemInventory[i] == null)
             {
-                itemInventory[i] = itemHolders[_type][_id];
-                onAddedItemInventory?.Invoke(i, _type, _id);
+                itemInventory[i] = itemHolder.itemHolding[_type].data[_id];
+                onAddedItemInventory?.Invoke(i);
                 return;
             }
         }
@@ -116,8 +124,8 @@ public class InventorySystem : SerializedMonoBehaviour
 
     public void AddItemToInventory(int _inventoryIndexSlot, ItemType _type, int _id)
     {
-        itemInventory[_inventoryIndexSlot] = itemHolders[_type][_id];
-        onAddedItemInventory?.Invoke(_inventoryIndexSlot, _type, _id);
+        itemInventory[_inventoryIndexSlot] = itemHolder.itemHolding[_type].data[_id];
+        onAddedItemInventory?.Invoke(_inventoryIndexSlot);
     }
 
 }
@@ -161,6 +169,7 @@ public class InventoryEquipmentSaveLoadHandler
     {
         foreach (var keyValue in InventorySystem.instance.GetItemEquipment())
         {
+            if (keyValue.Value == null) continue;
             equipmentSaveLoad[keyValue.Key] = keyValue.Value.GetItemID();
         }
         IOSystemic.SaveData<Dictionary<ItemType, int>>(equipmentSaveLoad, equipmentSaveString);
@@ -168,24 +177,63 @@ public class InventoryEquipmentSaveLoadHandler
 
     void LoadInventory()
     {
-        if (IOSystemic.CheckFileExist(inventorySaveString) == false) return;
+        if (IOSystemic.CheckFileExist(inventorySaveString) == false)
+        {
+            for (int i = 0; i < InventorySystem.instance.GetItemInventory().Count; i++)
+            {
+                inventorySaveLoad.Add(null);
+            }
+            return;
+        }
         List<IItemData> inventory = new List<IItemData>();
         inventorySaveLoad = IOSystemic.LoadData<List<Tuple<ItemType, int>>>(inventorySaveString);
         for (int i = 0; i < inventorySaveLoad.Count; i++)
         {
+            if (inventorySaveLoad[i] == null)
+            {
+                inventory.Add(null);
+                continue;
+            }
             inventory.Add(InventorySystem.instance.GetIItemFromHolder(inventorySaveLoad[i].Item1, inventorySaveLoad[i].Item2));
         }
         InventorySystem.instance.InitInventory(inventory);
     }
 
-    public void SaveInventory()
+    //public void SaveInventory()
+    //{
+    //    for (int i = 0; i < InventorySystem.instance.GetItemInventory().Count; i++)
+    //    {
+
+    //        inventorySaveLoad[i] = (InventorySystem.instance.GetItemInventory()[i].GetItemType()
+    //            , InventorySystem.instance.GetItemInventory()[i].GetItemID()).ToTuple();
+    //    }
+    //    IOSystemic.SaveData(inventorySaveLoad, inventorySaveString);
+    //}
+
+    public IEnumerator IESaveInventory()
     {
         for (int i = 0; i < InventorySystem.instance.GetItemInventory().Count; i++)
         {
+            if (InventorySystem.instance.GetItemInventory()[i] == null) continue;
             inventorySaveLoad[i] = (InventorySystem.instance.GetItemInventory()[i].GetItemType()
                 , InventorySystem.instance.GetItemInventory()[i].GetItemID()).ToTuple();
         }
         IOSystemic.SaveData(inventorySaveLoad, inventorySaveString);
+        yield return null;
+    }
+    public IEnumerator IESaveInventory(int _indexInventory)
+    {
+        if (InventorySystem.instance.GetItemInventory()[_indexInventory] == null) yield break;
+        inventorySaveLoad[_indexInventory] = (InventorySystem.instance.GetItemInventory()[_indexInventory].GetItemType()
+            , InventorySystem.instance.GetItemInventory()[_indexInventory].GetItemID()).ToTuple();
+        IOSystemic.SaveData(inventorySaveLoad, inventorySaveString);
+        yield return null;
+    }
+    public IEnumerator IESaveInventoryRemoved(int _indexInventory)
+    {
+        inventorySaveLoad[_indexInventory] = null;
+        IOSystemic.SaveData(inventorySaveLoad, inventorySaveString);
+        yield return null;
     }
 
 }
@@ -195,4 +243,9 @@ public class ItemInfoData
     public ItemType itemType;
     public int id;
 }
-
+[Serializable]
+public class ListIItemData
+{
+    [ListDrawerSettings(ShowIndexLabels = true)]
+    public IItemData[] data;
+}

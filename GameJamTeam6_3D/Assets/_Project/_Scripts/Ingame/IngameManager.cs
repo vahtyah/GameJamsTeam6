@@ -5,12 +5,10 @@ using UnityEngine;
 
 public class IngameManager : SerializedMonoBehaviour
 {
-    public Transform ___test;
-
     public static IngameManager instance;
 
+    public Transform mousePointer;
     public Transform player;
-    public MapScene mapScene;
 
     public GameState gameState = GameState.Prepare;
     [SerializeField] List<IGameSignal> signals = new List<IGameSignal>();
@@ -44,6 +42,7 @@ public class IngameManager : SerializedMonoBehaviour
     public void Pause()
     {
         gameState = GameState.Pause;
+        Time.timeScale = 0;
         foreach (var signal in signals)
         {
             signal.Pause();
@@ -63,6 +62,7 @@ public class IngameManager : SerializedMonoBehaviour
     public void Resume()
     {
         gameState = GameState.Resume;
+        Time.timeScale = 1;
         foreach (var signal in signals)
         {
             signal.Resume();
@@ -81,11 +81,7 @@ public class IngameManager : SerializedMonoBehaviour
     public void StartGame()
     {
         gameState = GameState.StartGame;
-        
-        
         EnemySpawner.instance.StartSpawning();
-
-
         foreach (var signal in signals)
         {
             signal.StartGame();

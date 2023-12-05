@@ -29,7 +29,7 @@ public class GlovesData : ScriptableObject, IItemEquipmentData
     {
         return itemName;
     }
-    [SerializeField] ItemType type;
+    ItemType type = ItemType.Gloves;
     public ItemType GetItemType()
     {
         return type;

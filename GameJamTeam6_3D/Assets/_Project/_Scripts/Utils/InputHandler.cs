@@ -58,7 +58,7 @@ public class InputHandler : MonoBehaviour
 
     public bool PressInventory()
     {
-        return Input.GetKey(KeyCode.B);
+        return Input.GetKeyDown(KeyCode.B);
     }
     
     public bool PressPause()
