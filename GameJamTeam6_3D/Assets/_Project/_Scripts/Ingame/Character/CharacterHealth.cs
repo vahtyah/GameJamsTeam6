@@ -7,16 +7,17 @@ public class CharacterHealth
 {
     int curHealth;
     int maxHealth;
+    public int MaxHealth => maxHealth;
     public Action<int> onCurHealthChange;
     public Action onDead;
 
 
 
-    public void Setup(int _maxHealth, int _startHealth = -1)
+    public void Setup(int _maxHealth, float _startHealth = 1)
     {
         maxHealth = _maxHealth;
         if (_startHealth == -1) curHealth = maxHealth;
-        else curHealth = _startHealth;
+        else curHealth = (int)(_maxHealth * _startHealth);
     }
 
     public void AddHealth(int _input)
