@@ -10,11 +10,12 @@ public class EnemyMeleeAttack : IEnemyState
     [SerializeField] protected float attackTimer = 0f;
     protected IEnemy enemy;
 
-    public EnemyAnimState enemyState => throw new System.NotImplementedException();
+    public EnemyAnimState enemyState => EnemyAnimState.Attack;
 
     public void OnEnter()
     {
         damageCollision.SetDamage(enemy.GetEnemyData().damage);
+        attackTimer = attackTime;
     }
 
     public void OnExit()

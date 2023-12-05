@@ -23,7 +23,7 @@ public class LoadingPanel : MonoBehaviour
         StartCoroutine(IELoadScene(SceneManager.Scene.GamePlay));
     }
 
-    private IEnumerator IELoadScene(SceneManager.Scene scene)
+    public IEnumerator IELoadScene(SceneManager.Scene scene)
     {
         gameObject.SetActive(true);
         slider.value = 0;

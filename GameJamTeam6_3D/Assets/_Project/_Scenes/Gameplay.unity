@@ -220,7 +220,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 0.45
+  m_Intensity: 0.84
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -820,15 +820,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 210588410113764961, guid: 7288216098f0994498f29d18793ac37d, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 210588410113764961, guid: 7288216098f0994498f29d18793ac37d, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 210588410113764961, guid: 7288216098f0994498f29d18793ac37d, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.000008940697
       objectReference: {fileID: 0}
     - target: {fileID: 575791892356864236, guid: 7288216098f0994498f29d18793ac37d, type: 3}
       propertyPath: serializationData.Prefab
@@ -996,7 +996,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8398917413383062040, guid: 7288216098f0994498f29d18793ac37d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8569361774278871143, guid: 7288216098f0994498f29d18793ac37d, type: 3}
       propertyPath: m_AnchorMax.y

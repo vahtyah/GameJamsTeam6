@@ -31,26 +31,30 @@ public class EnemyNav
 
     public void MoveToPlayer()
     {
+        agent.enabled = true;
         animController.PlayAnim(EnemyAnimState.Move);
         agent.speed = stableSpeed;
         agent.SetDestination(IngameManager.instance.player.position);
-        CheckMove();
+        //CheckMove();
     }
 
     public void MoveToPosition(Vector3 position)
     {
+        agent.enabled = true;
         agent.velocity = Vector3.zero;
         animController.PlayAnim(EnemyAnimState.Move);
         agent.speed = stableSpeed;
         agent.SetDestination(position);
-        CheckMove();
+        //CheckMove();
     }
 
     void CheckMove()
     {
-        if (agent.path.status == NavMeshPathStatus.PathComplete)
+        //return;
+        if (agent.path.status == NavMeshPathStatus.PathPartial && agent.enabled)
         {
             animController.PlayAnim(EnemyAnimState.Idle);
+            agent.destination = agent.gameObject.transform.position;
             Stop();
         }
     }
@@ -81,9 +85,11 @@ public class EnemyNav
     void Stop()
     {
         agent.speed = 0;
-        //if (agent.destination == agent.gameObject.transform.position) return;
-        agent.destination = agent.gameObject.transform.position;
+        agent.velocity = Vector3.zero;
+        agent.enabled = false;
     }
+
+
 
     private void Slip(float slipFactor)
     {

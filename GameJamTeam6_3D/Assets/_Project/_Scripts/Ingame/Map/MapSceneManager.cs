@@ -13,7 +13,7 @@ public class MapSceneManager : MonoBehaviour
     [Header("Debug")][SerializeField] MapScene currentMap;
     public MapScene GetCurrentMap() { return currentMap; }
     int currentMapID = 0;
-
+    
     private void Awake()
     {
         instance = this;
@@ -24,6 +24,8 @@ public class MapSceneManager : MonoBehaviour
     {
         LoadScene(LoadPLayerSceneProgress());
     }
+
+    
 
     public void LoadScene(int _mapID)
     {

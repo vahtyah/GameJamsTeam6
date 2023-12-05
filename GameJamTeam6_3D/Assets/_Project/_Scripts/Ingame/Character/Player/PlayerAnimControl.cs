@@ -32,6 +32,11 @@ public class PlayerAnimControl : MonoBehaviour
         animator.SetFloat(moveBlendAnimY, _blendY);
     }
 
+    public float GetCurrentAnimLength()
+    {
+        return animator.GetCurrentAnimatorStateInfo(0).length;
+    }
+
     //public void SetAnimSpeed(float _speed)
     //{
         

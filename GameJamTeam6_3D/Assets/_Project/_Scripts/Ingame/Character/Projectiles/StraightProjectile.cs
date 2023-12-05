@@ -10,7 +10,7 @@ public class StraightProjectile : MonoBehaviour, IProjectile
     float timeExist = 5f;
     float timer = 0;
     int damage = 5;
-    bool isPlayer;
+    [SerializeField] bool isPlayer;
     void OnEnable()
     {
         timer = 0;
@@ -33,6 +33,7 @@ public class StraightProjectile : MonoBehaviour, IProjectile
         {
             pop = true;
         }
+        ColorDebug.DebugGreen(isPlayer + " " + other.gameObject.CompareTag(GlobalString.tagPlayer));
         if (isPlayer == false)
         {
             if (other.gameObject.CompareTag(GlobalString.tagPlayer))
@@ -40,12 +41,11 @@ public class StraightProjectile : MonoBehaviour, IProjectile
                 Player.instance.AddHealth(-damage);
                 pop = true;
             }
-            return;
         }
-        if (other.gameObject.CompareTag(GlobalString.enemyTagAndLayer))
+        else if (other.gameObject.CompareTag(GlobalString.enemyTagAndLayer))
         {
-            other.GetComponent<IEnemy>().AddHealth(-damage);
-            pop = true;
+                other.GetComponent<IEnemy>().AddHealth(-damage);
+                pop = true;
         }
         if (pop == false) return;
         ProjectileImpactPooling.instance.Activate(id).gameObject.transform.position = transform.position;

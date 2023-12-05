@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8380792515656957186}
   m_Layer: 0
   m_Name: EnemyRangeHOR
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,8 +87,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8437737, y: 1, z: 1}
-  m_Center: {x: -0.005998194, y: 0, z: 0}
+  m_Size: {x: 0.8437737, y: 1.62, z: 0.88}
+  m_Center: {x: -0.005998194, y: 0.76, z: 0}
 --- !u!114 &8050325878039086450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1495,9 +1495,29 @@ PrefabInstance:
       value: HealthBar
       objectReference: {fileID: 0}
     - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
+    - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[0]
+      value: '"path":"enemy","value":$eref:0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 8380792515656957186}
     - target: {fileID: 2040258614414282186, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1593,3 +1613,45 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2040258614414282186, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
   m_PrefabInstance: {fileID: 560738625575961386}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2210455438684303230 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1829931828951149652, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
+  m_PrefabInstance: {fileID: 560738625575961386}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6448934369441698373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2210455438684303230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b5ab5dd57a4f6fb842abc8305d5ef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 8380792515656957186}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: enemy
+      Entry: 10
+      Data: 0
+  slider: {fileID: 7723954188074412524}
+--- !u!114 &7723954188074412524 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7852267457218292422, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
+  m_PrefabInstance: {fileID: 560738625575961386}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

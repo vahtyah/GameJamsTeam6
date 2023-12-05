@@ -12,6 +12,6 @@ public class WinPanel : MonoBehaviour
 
     private void ContinueButtonOnClick()
     {
-        
+        gameObject.SetActive(false);    
     }
 }

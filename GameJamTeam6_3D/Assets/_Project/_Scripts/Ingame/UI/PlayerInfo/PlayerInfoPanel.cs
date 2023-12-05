@@ -9,15 +9,14 @@ namespace _Project._Scripts.Ingame.UI.PlayerInfo
     public class PlayerInfoPanel : MonoBehaviour
     {
         [SerializeField] private Transform UnderHealthBar, OverHealthBar;
-        [SerializeField] private TextMeshProUGUI levelText;
+        //[SerializeField] private TextMeshProUGUI levelText;
         [SerializeField] private float smoothTime = 0.5f;
         private Player player;
 
         private void Start()
         {
-            return;
             player = Player.instance;
-            player.onHealthChange += UpdateHealthBar;
+            Player.instance.GetCharacterHealth().onCurHealthChange = UpdateHealthBar;
             //LevelConfig.instance.onLevelChange += UpdateLevelText;
         }
 
@@ -28,9 +27,9 @@ namespace _Project._Scripts.Ingame.UI.PlayerInfo
             UnderHealthBar.DOScaleX(healthAmountNormalized, smoothTime);
         }
         
-        private void UpdateLevelText(int level)
-        {
-            levelText.text = "Level " + (level + 1);
-        }
+        //private void UpdateLevelText(int level)
+        //{
+        //    levelText.text = "Level " + (level + 1);
+        //}
     }
 }

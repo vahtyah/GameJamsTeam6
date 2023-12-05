@@ -2,13 +2,12 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class Player : SerializedMonoBehaviour, IGameSignal
 {
     public static Player instance;
-
-    public Action<int> onHealthChange;
 
     [SerializeField] Rigidbody rb;
     [SerializeField] PlayerData playerData;
@@ -23,40 +22,53 @@ public class Player : SerializedMonoBehaviour, IGameSignal
     public Transform GetModel() => model;
     [SerializeField] Transform modelRightHand;
     public Transform GetModelRightHand() => modelRightHand;
+    CharacterHealth characterHealth = new CharacterHealth();
+    public CharacterHealth GetCharacterHealth() => characterHealth;
     public GameObject inventoryCam;
 
-    int hp = 0;
+    bool isLive = false;
 
     private void Awake()
     {
         instance = this;
+        characterHealth.onDead = OnDie;
     }
 
     private void Start()
     {
-        anim.PlayAnim(PlayerAnimState.NormalMovement);
+       
     }
 
     void Update()
     {
+        if (isLive == false) return;
         movement.Iterate();
-            if (weapon.CanAttack()) weapon.Shoot();
+        if (weapon.CanAttack()) weapon.Shoot();
+    }
+
+    void OnDie()
+    {
+        StartCoroutine(IEDying());
+    }
+
+    IEnumerator IEDying()
+    {
+        anim.PlayAnim(PlayerAnimState.Die);
+        isLive = false;
+        GetComponent<CapsuleCollider>().enabled = false;
+        yield return new WaitForSeconds(anim.GetCurrentAnimLength());
+        IngameManager.instance.Lose();
     }
 
     public void AddHealth(int _input)
     {
         _input -= playerData.def.value;
-        hp += _input;
-        if (hp > playerData.maxHp.value)
-        {
-            hp = playerData.maxHp.value;
-        }
-        onHealthChange?.Invoke(hp);
+        characterHealth.AddHealth(_input);
     }
-    
+
     public float GetHealthAmountNormalized()
     {
-        return (float)hp / (float)playerData.maxHp.value;
+        return (float)characterHealth.CurHealth / (float)playerData.maxHp.value;
     }
 
     public void SetNewWeapon(IWeapon _weapon)
@@ -68,30 +80,32 @@ public class Player : SerializedMonoBehaviour, IGameSignal
     {
         movement.Setup(); ;
         weapon.Setup();
+        characterHealth.Setup(100);
+        anim.PlayAnim(PlayerAnimState.NormalMovement);
     }
 
     public void StartGame()
     {
-        
+        isLive = true;
     }
 
     public void Pause()
     {
-        
+
     }
 
     public void Resume()
     {
-        
+
     }
 
     public void Win()
     {
-        
+
     }
 
     public void Lose()
     {
-       
+
     }
 }

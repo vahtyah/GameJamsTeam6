@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-
+using _Project._Scripts.Utils;
 public class LosePanel : MonoBehaviour
 {
     [SerializeField] private Button restartButton, exitButton;
@@ -19,5 +19,7 @@ public class LosePanel : MonoBehaviour
         Application.Quit();
     }
 
-    private void RestartButtonOnClick() { throw new System.NotImplementedException(); }
+    private void RestartButtonOnClick() {
+        StartCoroutine(LoadingPanel.instance.IELoadScene(SceneManager.Scene.GamePlay));
+    }
 }

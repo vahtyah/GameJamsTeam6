@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent (typeof(Rigidbody))]
 [RequireComponent (typeof(BoxCollider))]
-public class RangeEnemy : MonoBehaviour, IRangeEnemy
+public class RangeEnemy : SerializedMonoBehaviour, IRangeEnemy
 {
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Animator animator;
@@ -12,7 +13,7 @@ public class RangeEnemy : MonoBehaviour, IRangeEnemy
     [SerializeField] EnemyData enemyData;
     EnemyData curEnemyData;
     EnemyNav enemyNav = new EnemyNav();
-    CharacterHealth characterHealth = new CharacterHealth();
+    [SerializeField] CharacterHealth characterHealth = new CharacterHealth();
     EnemyAnimController anim = new EnemyAnimController();
     int atWave = -1;
 
@@ -22,11 +23,13 @@ public class RangeEnemy : MonoBehaviour, IRangeEnemy
         tag = GlobalString.enemyTagAndLayer;
         gameObject.layer = LayerMask.NameToLayer(tag);
         agent = GetComponent<NavMeshAgent>();
+        characterHealth.Setup(enemyData.hp);
         characterHealth.AddSignalHealthChange((curHealth) =>
         {
         });
         characterHealth.AddSignalOnDead(() =>
         {
+            gameObject.SetActive(false);
             EnemySpawner.instance.OnEnemyDie(atWave);
         });
     }
@@ -43,7 +46,7 @@ public class RangeEnemy : MonoBehaviour, IRangeEnemy
 
     public void AddHealth(int _inputDamage)
     {
-        characterHealth.AddHealth(-_inputDamage);
+        characterHealth.AddHealth(_inputDamage);
     }
 
     public IEnemy SetThisEnemyFromWave(int _wave)

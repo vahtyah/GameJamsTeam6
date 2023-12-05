@@ -39,7 +39,7 @@ public class MeleeEnemy : MonoBehaviour, IEnemy
 
     void OnEnable()
     {
-        characterHealth.Setup(curEnemyData.hp, curEnemyData.hp);
+        characterHealth.Setup(curEnemyData.hp);
     }
 
     void Update()

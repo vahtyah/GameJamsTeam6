@@ -36,6 +36,7 @@ public class EnemyRangeAttackState : EnemyNormalAttackState
     {
         var projectile = ProjectilePooling.instance.ActivateProjectile(0).SetDamage(enemy.GetEnemyData().damage);
         projectile.SetPossession(_isPlayer: false);
+        projectile.GetGameObject().transform.rotation = enemy.GetGameObject().transform.rotation;
         projectile.GetGameObject().transform.position = (enemy as IRangeEnemy).GetShootTransform().position;
     }
 }
