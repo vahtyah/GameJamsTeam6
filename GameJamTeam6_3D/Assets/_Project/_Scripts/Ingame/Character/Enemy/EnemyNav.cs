@@ -96,9 +96,10 @@ public class EnemyNav
     }
     void Stop()
     {
-        agent.speed = 0;
-        agent.velocity = Vector3.zero;
-        agent.enabled = false;
+        //agent.speed = 0;
+        //agent.velocity = Vector3.zero;
+        agent.CalculatePath(agent.gameObject.transform.position, navMeshPath);
+        agent.destination = agent.gameObject.transform.position;
     }
 
 
@@ -107,5 +108,6 @@ public class EnemyNav
     {
         agent.speed = 0;
         agent.velocity *= slipFactor;
+
     }
 }

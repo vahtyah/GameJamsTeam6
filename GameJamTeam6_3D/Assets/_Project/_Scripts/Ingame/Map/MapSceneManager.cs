@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ using UnityEngine;
 public class MapSceneManager : MonoBehaviour
 {
     public static MapSceneManager instance;
+
     const string playerProgressSaveTxt = "/playerMapProgress.txt";
     string playerProgressSave;
     [ListDrawerSettings(ShowIndexLabels = true)]
@@ -25,18 +27,18 @@ public class MapSceneManager : MonoBehaviour
         LoadScene(LoadPLayerSceneProgress());
     }
 
-    
-
     public void LoadScene(int _mapID)
     {
+        EnemySpawner.instance.StopSpawning();
         currentMapID = _mapID;
-        SavePlayerSceneProgress();
         if (currentMap != null)
         {
             currentMap.gameObject.SetActive(false);
             Destroy(currentMap.gameObject);
         }
         currentMap = Instantiate(mapScenePrefabs[currentMapID]);
+        IngameManager.instance.Prepare();
+        SavePlayerSceneProgress();
     }
 
     void SavePlayerSceneProgress()

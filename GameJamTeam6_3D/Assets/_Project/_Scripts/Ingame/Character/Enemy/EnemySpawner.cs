@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class EnemySpawner : SerializedMonoBehaviour
+public class EnemySpawner : SerializedMonoBehaviour, IGameSignal
 {
     public static EnemySpawner instance;
 
@@ -22,11 +22,24 @@ public class EnemySpawner : SerializedMonoBehaviour
     {
         if (instance == null) instance = this;
     }
+    public void Prepare()
+    {
+        StartSetup();
+    }
 
+    public void StartGame()
+    {
+        StartSpawning();
+    }
     public void StartSetup()
     {
-        totalWaveMax = MapScene.instance.GetSpawnData().GetTotalWaveMax();
+        totalWaveMax = MapSceneManager.instance.GetCurrentMap().GetSpawnData().GetTotalWaveMax();
         spawnMarkers = MapSceneManager.instance.GetCurrentMap().GetSpawnPoints();
+    }
+
+    public void StopSpawning()
+    {
+        StopCoroutine(IESpawn());
     }
 
     public void StartSpawning()
@@ -41,16 +54,16 @@ public class EnemySpawner : SerializedMonoBehaviour
             if (IsEnoughtWave()) yield break;
             if (wavesActive.Contains(waveId)) continue;
             wavesActive.Add(waveId);
-            int ranEnemyWaveType = UnityEngine.Random.Range(0, MapScene.instance.GetSpawnData().GetTotalAvailableWaves());
-            int totalEnemiesInWave = MapScene.instance.GetSpawnData().GetWaveData(ranEnemyWaveType).amount;
-            EnemyID currentEnemyID = MapScene.instance.GetSpawnData().GetWaveData(ranEnemyWaveType).enemyId;
+            int ranEnemyWaveType = UnityEngine.Random.Range(0, MapSceneManager.instance.GetCurrentMap().GetSpawnData().GetTotalAvailableWaves());
+            int totalEnemiesInWave = MapSceneManager.instance.GetCurrentMap().GetSpawnData().GetWaveData(ranEnemyWaveType).amount;
+            EnemyID currentEnemyID = MapSceneManager.instance.GetCurrentMap().GetSpawnData().GetWaveData(ranEnemyWaveType).enemyId;
             enemyWaveRecord.Add(waveId, totalEnemiesInWave);
             for (int j = 0; j < totalEnemiesInWave; j++)
             {
                 IEnemy enemy = EnemyPooling.instance.SpawnEnemy(currentEnemyID, RandomPosition());
                 enemySpawned.Add(enemy);
                 enemy.SetThisEnemyFromWave(waveId) ;
-                yield return new WaitForSeconds(MapScene.instance.GetSpawnData().GetWaitTimeWave());
+                yield return new WaitForSeconds(MapSceneManager.instance.GetCurrentMap().GetSpawnData().GetWaitTimeWave());
             }
             countWaveSpawned++;
         }
@@ -60,9 +73,9 @@ public class EnemySpawner : SerializedMonoBehaviour
     {
         yield return null;
         int ranEnemyWaveType =
-            UnityEngine.Random.Range(0, MapScene.instance.GetSpawnData().GetTotalAvailableWaves());
-        int totalEnemiesInWave = MapScene.instance.GetSpawnData().GetWaveData(ranEnemyWaveType).amount;
-        EnemyID currentEnemyID = MapScene.instance.GetSpawnData().GetWaveData(ranEnemyWaveType).enemyId;
+            UnityEngine.Random.Range(0, MapSceneManager.instance.GetCurrentMap().GetSpawnData().GetTotalAvailableWaves());
+        int totalEnemiesInWave = MapSceneManager.instance.GetCurrentMap().GetSpawnData().GetWaveData(ranEnemyWaveType).amount;
+        EnemyID currentEnemyID = MapSceneManager.instance.GetCurrentMap().GetSpawnData().GetWaveData(ranEnemyWaveType).enemyId;
         var IEnemy = EnemyPooling.instance.GetIEnemy(currentEnemyID);
         tempPosisitions = GetArcShapePositions(totalEnemiesInWave, IEnemy, _pos);
         for (int j = 0; j < totalEnemiesInWave; j++)
@@ -77,9 +90,9 @@ public class EnemySpawner : SerializedMonoBehaviour
     {
         yield return null;
         int ranEnemyWaveType =
-            UnityEngine.Random.Range(0, MapScene.instance.GetSpawnData().GetTotalAvailableWaves());
-        int totalEnemiesInWave = MapScene.instance.GetSpawnData().GetWaveData(ranEnemyWaveType).amount;
-        EnemyID currentEnemyID = MapScene.instance.GetSpawnData().GetWaveData(ranEnemyWaveType).enemyId;
+            UnityEngine.Random.Range(0, MapSceneManager.instance.GetCurrentMap().GetSpawnData().GetTotalAvailableWaves());
+        int totalEnemiesInWave = MapSceneManager.instance.GetCurrentMap().GetSpawnData().GetWaveData(ranEnemyWaveType).amount;
+        EnemyID currentEnemyID = MapSceneManager.instance.GetCurrentMap().GetSpawnData().GetWaveData(ranEnemyWaveType).enemyId;
         var IEnemy = EnemyPooling.instance.GetIEnemy(currentEnemyID);
         tempPosisitions = GetGroupPosition(totalEnemiesInWave, IEnemy, _pos);
         for (int j = 0; j < totalEnemiesInWave; j++)
@@ -175,6 +188,28 @@ public class EnemySpawner : SerializedMonoBehaviour
             countWaveSpawned--;
             StartSpawning();
         }
+    }
+
+
+
+    public void Pause()
+    {
+        
+    }
+
+    public void Resume()
+    {
+       
+    }
+
+    public void Win()
+    {
+        
+    }
+
+    public void Lose()
+    { 
+       
     }
 }
 

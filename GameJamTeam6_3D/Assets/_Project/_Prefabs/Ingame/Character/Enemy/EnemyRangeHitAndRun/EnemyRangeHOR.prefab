@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &538423114018516317
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2578812294842537625}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2578812294842537625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538423114018516317}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.004, y: 0.371, z: 0.574}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 469058860419245485}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8128658581448076805
 GameObject:
   m_ObjectHideFlags: 0
@@ -35,6 +66,7 @@ Transform:
   m_Children:
   - {fileID: 1988427924265750240}
   - {fileID: 8174065489087779343}
+  - {fileID: 2578812294842537625}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -225,11 +257,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be5ff270437346d592c0ece6d2103635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: characterHealth
+      Entry: 7
+      Data: 0|CharacterHealth, Assembly-CSharp
+    - Name: curHealth
+      Entry: 3
+      Data: 0
+    - Name: maxHealth
+      Entry: 3
+      Data: 0
+    - Name: onCurHealthChange
+      Entry: 6
+      Data: 
+    - Name: onDead
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   agent: {fileID: 7214480207353263494}
   animator: {fileID: 8174065489078500847}
   enemyStateHandler: {fileID: 8050325878039086450}
   enemyData: {fileID: 11400000, guid: 5a138655d1b97d04bab99aecf0eac08e, type: 2}
-  shootPlace: {fileID: 0}
+  shootPlace: {fileID: 2578812294842537625}
 --- !u!1 &8174065489087876641
 GameObject:
   m_ObjectHideFlags: 0

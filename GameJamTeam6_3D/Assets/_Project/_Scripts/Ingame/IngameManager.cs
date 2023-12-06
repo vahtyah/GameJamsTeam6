@@ -52,7 +52,6 @@ public class IngameManager : SerializedMonoBehaviour
     public void Prepare()
     {
         gameState = GameState.Prepare;
-        EnemySpawner.instance.StartSetup();
         foreach (var signal in signals)
         {
             signal.Prepare();
@@ -81,7 +80,6 @@ public class IngameManager : SerializedMonoBehaviour
     public void StartGame()
     {
         gameState = GameState.StartGame;
-        EnemySpawner.instance.StartSpawning();
         foreach (var signal in signals)
         {
             signal.StartGame();

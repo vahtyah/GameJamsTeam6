@@ -22,7 +22,7 @@ public class FirstBoss : SerializedMonoBehaviour, IBoss
     void Awake()
     {
         characterHealth.onCurHealthChange = (this as IBoss).OnCurrentHealthChange;
-        characterHealth.onDead = OnDie;
+        characterHealth.onDead += OnDie;
     }
 
     void Start()

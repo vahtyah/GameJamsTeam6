@@ -26,12 +26,12 @@ public class Player : SerializedMonoBehaviour, IGameSignal
     public CharacterHealth GetCharacterHealth() => characterHealth;
     public GameObject inventoryCam;
 
-    bool isLive = false;
+     bool isLive = false;
 
     private void Awake()
     {
         instance = this;
-        characterHealth.onDead = OnDie;
+        characterHealth.onDead += OnDie;
     }
 
     private void Start()
@@ -78,6 +78,7 @@ public class Player : SerializedMonoBehaviour, IGameSignal
 
     public void Prepare()
     {
+        isLive = false;
         movement.Setup(); ;
         weapon.Setup();
         characterHealth.Setup(100);

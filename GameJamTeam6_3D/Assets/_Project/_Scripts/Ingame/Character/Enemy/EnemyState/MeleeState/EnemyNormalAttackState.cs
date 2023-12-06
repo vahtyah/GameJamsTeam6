@@ -23,6 +23,7 @@ public class EnemyNormalAttackState : IEnemyState
     public virtual EnemyAnimState OnUpdate()
     {
         attackTimer += Time.deltaTime;
+        enemy.GetGameObject().transform.LookAt(IngameManager.instance.player.position);
         if (attackTimer > attackTime) {
             if (Vector3.Distance(IngameManager.instance.player.position, enemy.GetGameObject().transform.position) < 3f)
             {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MapScene : MonoBehaviour
 {
-    public static MapScene instance;
+    //public static MapScene instance;
     [SerializeField] Transform playerStartPos;
     [SerializeField] MapEnemySpawnData mapEnemySpawnData;
     [SerializeField] MapTransfer previousMapCheckPoint;
@@ -20,7 +20,7 @@ public class MapScene : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        //instance = this;
         for (int i = 0; i < spawnPointHolder.childCount; i++)
         {
             spawnPoints.Add(spawnPointHolder.GetChild(i).transform);

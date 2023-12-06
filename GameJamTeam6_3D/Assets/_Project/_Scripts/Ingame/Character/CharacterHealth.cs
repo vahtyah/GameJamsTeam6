@@ -36,7 +36,7 @@ public class CharacterHealth
 
     public void AddSignalHealthChange(Action<int> _call)
     {
-        onCurHealthChange = _call;
+        onCurHealthChange += _call;
     }
 
     public void AddSignalOnDead(Action _call)
