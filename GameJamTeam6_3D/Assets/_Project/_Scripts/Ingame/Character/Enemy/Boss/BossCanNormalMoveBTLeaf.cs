@@ -11,11 +11,11 @@ public class BossCanNormalMoveBTLeaf : MonoBehaviour, IBehaviourTree
         return disabled;
     }
 
-    public BehaviourTreeResult Tick(BehaviourTreeBlackboard _blackboard)
+    public BehaviourTreeResult Tick(BehaviourTreeBossBlackboard _blackboard)
     {
         if (_blackboard.GetInfo(BehaviourTreeBlackboardInfo.NearPlayer))
             return BehaviourTreeResult.Fail;
-        _blackboard.Agent.GetEnemyNav().MoveToPlayer();
+        _blackboard.GetAgent().GetEnemyNav().MoveToPlayer();
         return BehaviourTreeResult.Sucess;
     }
 }

@@ -6,7 +6,7 @@ public class BehaviourTreeSelector : MonoBehaviour, IBehaviourTree
 {
     [SerializeField] bool disabled = false;
     IBehaviourTree lastChild;
-    BehaviourTreeBlackboard blackboard;
+    BehaviourTreeBossBlackboard blackboard;
     List<IBehaviourTree> childs = new List<IBehaviourTree>();
 
     void Start()
@@ -22,12 +22,12 @@ public class BehaviourTreeSelector : MonoBehaviour, IBehaviourTree
         return disabled;
     }
 
-    public void SetBlackboard(BehaviourTreeBlackboard _blackboard)
+    public void SetBlackboard(BehaviourTreeBossBlackboard _blackboard)
     {
         blackboard = _blackboard;   
     }
 
-    public BehaviourTreeResult Tick(BehaviourTreeBlackboard _blackboard)
+    public BehaviourTreeResult Tick(BehaviourTreeBossBlackboard _blackboard)
     {
         if (_blackboard.LastResult == BehaviourTreeResult.Running)
         {

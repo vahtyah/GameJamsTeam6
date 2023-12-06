@@ -5,7 +5,7 @@ using UnityEngine;
 public class BehaviourTreeInverter : MonoBehaviour, IBehaviourTree
 {
     [SerializeField] bool disabled = false;
-    BehaviourTreeBlackboard blackboard;
+    BehaviourTreeBossBlackboard blackboard;
     IBehaviourTree onlyChild = null;
 
     void Start()
@@ -19,7 +19,7 @@ public class BehaviourTreeInverter : MonoBehaviour, IBehaviourTree
         return disabled;
     }
 
-    public BehaviourTreeResult Tick(BehaviourTreeBlackboard _blackboard)
+    public BehaviourTreeResult Tick(BehaviourTreeBossBlackboard _blackboard)
     {
         BehaviourTreeResult result = onlyChild.Tick(_blackboard);
         if (result == BehaviourTreeResult.Running) return result;

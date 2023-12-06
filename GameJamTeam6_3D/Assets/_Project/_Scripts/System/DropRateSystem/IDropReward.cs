@@ -1,4 +1,4 @@
-public interface IGachaReward
+public interface IDropReward
 {
     public void DoGacha();
 

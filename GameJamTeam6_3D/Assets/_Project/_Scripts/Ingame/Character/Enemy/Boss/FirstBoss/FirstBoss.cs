@@ -11,7 +11,7 @@ public class FirstBoss : SerializedMonoBehaviour, IBoss
     [SerializeField] Animator animator;
     [SerializeField] EnemyBehaviourTree behaviourTree;
     [SerializeField] EnemyData enemyData;
-    [SerializeField] IEnemySkill enemySkills;
+    [SerializeField] IEnemySkill[] enemySkills;
     CharacterHealth characterHealth = new CharacterHealth();
     EnemyAnimController anim = new EnemyAnimController();
     EnemyNav enemyNav = new EnemyNav();
@@ -25,15 +25,14 @@ public class FirstBoss : SerializedMonoBehaviour, IBoss
         characterHealth.onDead += OnDie;
     }
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         behaviourTree.OnUpdate();
+        for (int i = 0; i < enemySkills.Length; i++)
+        {
+            if (GlobalInfo.enemyAbilityInfo.ContainsKey(i) == false) break;
+            behaviourTree.Blackboard.AssignBlackBoard(GlobalInfo.enemyAbilityInfo[i], enemySkills[i].IsReady());
+        }
     }
 
     public void AddHealth(int _input)
@@ -65,18 +64,6 @@ public class FirstBoss : SerializedMonoBehaviour, IBoss
     [SerializeField] float considerAtLowHealthPercent = 0.2f;
 
     [SerializeField] float IBoss.considerAtLowHealthPercent { get => considerAtLowHealthPercent; set => considerAtLowHealthPercent = value; }
-
-    //private void OnCurrentHealthChange(int _health)
-    //{
-    //    if ((float)_health / (float)characterHealth.MaxHealth <= considerAtLowHealthPercent)
-    //        behaviourTree.Blackboard.AssignBlackBoard(BehaviourTreeBlackboardInfo.SelfEnemyLowHealth, true);
-    //    else
-    //    {
-    //        if (behaviourTree.Blackboard.GetInfo(BehaviourTreeBlackboardInfo.SelfEnemyLowHealth) == false) return;
-    //        behaviourTree.Blackboard.AssignBlackBoard(BehaviourTreeBlackboardInfo.SelfEnemyLowHealth, false);
-    //    }
-    //}
-
 
     public void OnDie()
     {

@@ -11,6 +11,8 @@ public static class GlobalInfo
         {1, BehaviourTreeBlackboardInfo.EnemyAbilityTwoReady },
         {2, BehaviourTreeBlackboardInfo.EnemyAbilityThreeReady },
         {3, BehaviourTreeBlackboardInfo.EnemyAbilityFourReady },
+        {4, BehaviourTreeBlackboardInfo.EnemyAbilityFiveReady },
+        {5, BehaviourTreeBlackboardInfo.EnemyAbilitySixReady },
     };
     public const string enemyTagAndLayer = "Enemy";
     public const string floorTagAndLayer = "Floor";

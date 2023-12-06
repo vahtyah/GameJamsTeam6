@@ -7,7 +7,7 @@ public interface IBehaviourTree
     //public void Setup();
     //public void SetBlackboard(BehaviourTreeBlackboard _blackboard);
 
-    public BehaviourTreeResult Tick(BehaviourTreeBlackboard _blackboard);
+    public BehaviourTreeResult Tick(BehaviourTreeBossBlackboard _blackboard);
     public bool IsDisabled();
 
 }

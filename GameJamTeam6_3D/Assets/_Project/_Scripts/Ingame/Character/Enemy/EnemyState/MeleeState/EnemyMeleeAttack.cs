@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMeleeAttack : IEnemyState
 {
     [SerializeField] protected float attackTime = 2f;
-    [SerializeField] EnemyMeleeDamageCollision damageCollision;
+    [SerializeField] EnemyDamageCollision damageCollision;
     [Header("Debug")]
     [SerializeField] protected float attackTimer = 0f;
     protected IEnemy enemy;
@@ -43,7 +43,7 @@ public class EnemyMeleeAttack : IEnemyState
     {
         enemy.GetGameObject().transform.LookAt(IngameManager.instance.player.position);
         enemy.GetEnemyNav().Attack();
-
+        damageCollision.AttackOn();
     }
 
     public void SetEnemy(IEnemy _enemy)

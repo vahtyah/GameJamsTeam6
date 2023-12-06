@@ -7,37 +7,37 @@ using UnityEngine;
 public class EnemyBehaviourTree : SerializedMonoBehaviour
 {
     [SerializeField] IBehaviourTree baseBranch;
-    //[SerializeField] BehaviourTreeIterateType iterateType = BehaviourTreeIterateType.Update;
-    [SerializeField] BehaviourTreeBlackboard blackboard;
-    public BehaviourTreeBlackboard Blackboard;
-
-    //bool ok = false;
-
-    //public void Active(bool _ok = true)
-    //{
-    //    ok = _ok;
-    //}
+    [SerializeField] BehaviourTreeBossBlackboard blackboard;
+    public BehaviourTreeBossBlackboard Blackboard;
 
     public void OnUpdate()
     {
         blackboard.SetLastResult(baseBranch.Tick(blackboard));
     }
 
-    //public void Update()
-    //{
-    //    if (ok == false && iterateType != BehaviourTreeIterateType.Update) return;
-    //    blackboard.SetLastResult(baseBranch.Tick(blackboard));
-    //}
-
-    //private void FixedUpdate()
-    //{
-    //    if (ok == false && iterateType != BehaviourTreeIterateType.FixedUpdate) return;
-    //    blackboard.SetLastResult(baseBranch.Tick(blackboard));
-    //}
-
 }
 
-//public enum BehaviourTreeIterateType
-//{
-//    Update, FixedUpdate
-//}
+public interface IBTBlackboard
+{
+
+    public BehaviourTreeResult lastResult { get => lastResult; set => lastResult = value; }
+
+    public void SetInterfaceLastResult(BehaviourTreeResult _lastResult)
+    {
+        lastResult = _lastResult;
+    }
+    public Dictionary<BehaviourTreeBlackboardInfo, bool> agentInfo { get; set; }
+    public void AssignBlackBoard(BehaviourTreeBlackboardInfo _info, bool _result)
+    {
+        agentInfo[_info] = _result;
+    }
+    public bool GetInfo(BehaviourTreeBlackboardInfo _info)
+    {
+        if (agentInfo.ContainsKey(_info) == false)
+            return false;
+        return agentInfo[_info];
+    }
+
+    public IBTBlackboard GetBlackboard();
+
+}

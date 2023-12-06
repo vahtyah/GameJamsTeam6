@@ -1,12 +1,16 @@
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BehaviourTreeBlackboard 
+public class BehaviourTreeBossBlackboard : SerializedMonoBehaviour
 {
     [SerializeField] IBoss agent;
-    public IBoss Agent;
+    public IBoss GetAgent() { 
+
+        return agent;
+    }
     [SerializeField] Dictionary<BehaviourTreeBlackboardInfo, bool> agentInfo;
 
     BehaviourTreeResult lastResult;
@@ -20,6 +24,7 @@ public class BehaviourTreeBlackboard
 
     public void AssignBlackBoard(BehaviourTreeBlackboardInfo _info, bool _result)
     {
+        if (agentInfo[_info] == _result) return;
         agentInfo[_info] = _result;
     }
 
@@ -42,6 +47,9 @@ public enum BehaviourTreeBlackboardInfo
     EnemyAbilityTwoReady,
     EnemyAbilityThreeReady,
     EnemyAbilityFourReady,
+    EnemyAbilityFiveReady,
+    EnemyAbilitySixReady,
+
     NormalAttackReady,
     
     NearPlayer,

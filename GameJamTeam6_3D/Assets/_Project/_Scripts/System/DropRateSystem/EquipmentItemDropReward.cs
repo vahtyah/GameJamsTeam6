@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class EquipmentItemGachaReward : SerializedMonoBehaviour, IGachaReward
+public class EquipmentItemDropReward : SerializedMonoBehaviour, IDropReward
 {
     [Range(0f, 100f)]
     [SerializeField] float rate;

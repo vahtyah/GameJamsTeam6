@@ -10,7 +10,4 @@ public interface IEnemySkill
     public void UseSkill();
 
 
-
-
-
 }
