@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed378d01a26d68d438270f3f70ab6366, type: 3}
-  m_Name: ExampleEnemy
+  m_Name: FirstBoss
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -23,5 +23,5 @@ MonoBehaviour:
     SerializationNodes: []
   damage: 10
   rangeAttack: 3
-  hp: 100
-  speed: 6
+  hp: 1000
+  speed: 7

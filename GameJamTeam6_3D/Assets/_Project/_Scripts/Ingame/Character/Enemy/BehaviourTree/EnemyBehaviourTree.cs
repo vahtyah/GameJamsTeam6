@@ -8,7 +8,7 @@ public class EnemyBehaviourTree : SerializedMonoBehaviour
 {
     [SerializeField] IBehaviourTree baseBranch;
     [SerializeField] BehaviourTreeBossBlackboard blackboard;
-    public BehaviourTreeBossBlackboard Blackboard;
+    public BehaviourTreeBossBlackboard Blackboard => blackboard;
 
     public void OnUpdate()
     {

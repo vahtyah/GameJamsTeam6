@@ -40,13 +40,8 @@ public interface IBoss
     float considerAtLowHealthPercent { get; set; }
     public void OnCurrentHealthChange(int _health)
     {
-        if ((float)_health / (float)GetCharacterHealth().MaxHealth <= considerAtLowHealthPercent)
-            GetBehaviourTree().Blackboard.AssignBlackBoard(BehaviourTreeBlackboardInfo.SelfEnemyLowHealth, true);
-        else
-        {
-            if (GetBehaviourTree().Blackboard.GetInfo(BehaviourTreeBlackboardInfo.SelfEnemyLowHealth) == false) return;
-            GetBehaviourTree().Blackboard.AssignBlackBoard(BehaviourTreeBlackboardInfo.SelfEnemyLowHealth, false);
-        }
+        GetBehaviourTree().Blackboard.AssignBlackBoard(BehaviourTreeBlackboardInfo.SelfEnemyLowHealth
+            , ()=> (float)_health / (float)GetCharacterHealth().MaxHealth <= considerAtLowHealthPercent);
     }
 }
 

@@ -1,16 +1,16 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDamageCollision : MonoBehaviour
+public class EnemyDamageCollisionWithFX : MonoBehaviour
 {
-    public Action complete;
     [SerializeField] float prepareToAttackTimer = 0.5f;
     [SerializeField] float duration = 0.5f;
+    [SerializeField] ParticleSystem fx;
+
 
     int damage = 5;
-    
+
     public void SetDamage(int _damage)
     {
         damage = _damage;
@@ -19,6 +19,7 @@ public class EnemyDamageCollision : MonoBehaviour
     public void AttackOn()
     {
         gameObject.SetActive(true);
+        if (fx != null) fx.Play();
         StartCoroutine(IEEndAttack());
     }
 
@@ -26,7 +27,6 @@ public class EnemyDamageCollision : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         gameObject.SetActive(false);
-        complete.Invoke();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,6 +36,11 @@ public class EnemyDamageCollision : MonoBehaviour
             Player.instance.AddHealth(-damage);
         }
     }
+
+
+
+
+
 
 
 

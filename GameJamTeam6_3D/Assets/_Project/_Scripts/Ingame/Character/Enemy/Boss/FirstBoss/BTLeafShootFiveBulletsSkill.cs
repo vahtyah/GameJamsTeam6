@@ -9,25 +9,27 @@ public class BTLeafShootFiveBulletsSkill : MonoBehaviour, IEnemySkill, IBehaviou
     [SerializeField] int angleSpread = 30;
     [SerializeField] Transform shootPos;
     float[] selectedAngles;
-    float coolDownTimer = 0;
+    float nextTime = 0;
     
     [SerializeField] int damage = 10;
 
 
     void Awake()
     {
-        coolDownTimer = coolDown;
+        nextTime = coolDown;
         selectedAngles = new float[totalBulletsOut];
         for (int i = 0; i < selectedAngles.Length; i++)
         {
             selectedAngles[i] = -angleSpread + i * 2 * (angleSpread / (totalBulletsOut - 1));
         }
+        nextTime = coolDown + Time.time;
     }
 
     public bool IsReady()
     {
-        coolDownTimer -= Time.deltaTime;
-        return coolDownTimer <= 0;
+        return Time.time >= nextTime;
+        //nextTime -= Time.deltaTime;
+        //return nextTime <= 0;
     }
 
     public void UseSkill()
@@ -43,8 +45,9 @@ public class BTLeafShootFiveBulletsSkill : MonoBehaviour, IEnemySkill, IBehaviou
             , bullet.GetGameObject().transform.rotation.z
             );
         }
-        coolDownTimer = coolDown;
+        nextTime = Time.time + coolDown;
     }
+
     IBoss boss;
     public BehaviourTreeResult Tick(BehaviourTreeBossBlackboard _blackboard)
     {
@@ -57,8 +60,9 @@ public class BTLeafShootFiveBulletsSkill : MonoBehaviour, IEnemySkill, IBehaviou
         return BehaviourTreeResult.Fail;
     }
 
+    [SerializeField] bool disabled;
     public bool IsDisabled()
     {
-        throw new System.NotImplementedException();
+        return disabled;
     }
 }

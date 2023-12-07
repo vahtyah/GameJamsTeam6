@@ -11,7 +11,7 @@ public class BehaviourTreeBossBlackboard : SerializedMonoBehaviour
 
         return agent;
     }
-    [SerializeField] Dictionary<BehaviourTreeBlackboardInfo, bool> agentInfo;
+    [SerializeField] Dictionary<BehaviourTreeBlackboardInfo, Func<bool>> agentInfo;
 
     BehaviourTreeResult lastResult;
     public BehaviourTreeResult LastResult => lastResult;
@@ -22,17 +22,16 @@ public class BehaviourTreeBossBlackboard : SerializedMonoBehaviour
         lastResult = _lastResult;
     }
 
-    public void AssignBlackBoard(BehaviourTreeBlackboardInfo _info, bool _result)
+    public void AssignBlackBoard(BehaviourTreeBlackboardInfo _info, Func<bool> _result)
     {
-        if (agentInfo[_info] == _result) return;
+        //if (agentInfo[_info] == _result) return;
         agentInfo[_info] = _result;
     }
-
     public bool GetInfo(BehaviourTreeBlackboardInfo _info)
     {
         if (agentInfo.ContainsKey(_info) == false)
             return false;
-        return agentInfo[_info];
+        return agentInfo[_info].Invoke();
     }
 
 }
@@ -53,5 +52,5 @@ public enum BehaviourTreeBlackboardInfo
     NormalAttackReady,
     
     NearPlayer,
-
+    PlayerAtFar,
 }

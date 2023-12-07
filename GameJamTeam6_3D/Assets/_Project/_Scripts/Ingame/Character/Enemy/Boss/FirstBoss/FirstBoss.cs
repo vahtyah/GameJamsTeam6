@@ -24,15 +24,17 @@ public class FirstBoss : SerializedMonoBehaviour, IBoss
         characterHealth.onCurHealthChange = (this as IBoss).OnCurrentHealthChange;
         characterHealth.onDead += OnDie;
     }
-
-    void Update()
+    void Start()
     {
-        behaviourTree.OnUpdate();
         for (int i = 0; i < enemySkills.Length; i++)
         {
             if (GlobalInfo.enemyAbilityInfo.ContainsKey(i) == false) break;
-            behaviourTree.Blackboard.AssignBlackBoard(GlobalInfo.enemyAbilityInfo[i], enemySkills[i].IsReady());
+            behaviourTree.Blackboard.AssignBlackBoard(GlobalInfo.enemyAbilityInfo[i], () => enemySkills[i].IsReady());
         }
+    }
+    void Update()
+    {
+        behaviourTree.OnUpdate();
     }
 
     public void AddHealth(int _input)
@@ -63,7 +65,7 @@ public class FirstBoss : SerializedMonoBehaviour, IBoss
     [Range(0, 1f)]
     [SerializeField] float considerAtLowHealthPercent = 0.2f;
 
-    [SerializeField] float IBoss.considerAtLowHealthPercent { get => considerAtLowHealthPercent; set => considerAtLowHealthPercent = value; }
+    float IBoss.considerAtLowHealthPercent { get => considerAtLowHealthPercent; set => considerAtLowHealthPercent = value; }
 
     public void OnDie()
     {

@@ -6,10 +6,15 @@ public class EnemyDamageCollisionImminent : MonoBehaviour
 {
     [SerializeField] EnemyDamageCollision damageCollision;
     [SerializeField] float imminentTime = 2f;
-    //float timer;
+
+    private void Awake()
+    {
+        damageCollision.complete = ()=> gameObject.SetActive(false);
+    }
 
     public void StartComing()
     {
+        gameObject.SetActive(true);
         StartCoroutine(IEStartComing());
     }
 
