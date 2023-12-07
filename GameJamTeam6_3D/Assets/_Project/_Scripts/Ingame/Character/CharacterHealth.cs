@@ -5,18 +5,20 @@ using UnityEngine;
 
 public class CharacterHealth 
 {
-    int curHealth;
-    int maxHealth;
+    [SerializeField] int curHealth;
+    [SerializeField] int maxHealth;
+    public int CurHealth => curHealth;
+    public int MaxHealth => maxHealth;
     public Action<int> onCurHealthChange;
     public Action onDead;
 
 
 
-    public void Setup(int _maxHealth, int _startHealth = -1)
+    public void Setup(int _maxHealth, float _startHealthPercent = 1)
     {
         maxHealth = _maxHealth;
-        if (_startHealth == -1) curHealth = maxHealth;
-        else curHealth = _startHealth;
+        curHealth = (int)((float)maxHealth * _startHealthPercent);
+        onCurHealthChange?.Invoke(curHealth);
     }
 
     public void AddHealth(int _input)
@@ -34,7 +36,7 @@ public class CharacterHealth
 
     public void AddSignalHealthChange(Action<int> _call)
     {
-        onCurHealthChange = _call;
+        onCurHealthChange += _call;
     }
 
     public void AddSignalOnDead(Action _call)

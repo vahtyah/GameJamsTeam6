@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ArmorData", menuName = GlobalString.ItemData + "ArmorData")]
+[CreateAssetMenu(fileName = "ArmorData", menuName = GlobalInfo.ItemData + "ArmorData")]
 public class ArmorData : ScriptableObject, IItemEquipmentData
 {
     [SerializeField] int addDefValue;

@@ -24,3 +24,4 @@ MonoBehaviour:
   damage: 10
   rangeAttack: 3
   hp: 100
+  speed: 6

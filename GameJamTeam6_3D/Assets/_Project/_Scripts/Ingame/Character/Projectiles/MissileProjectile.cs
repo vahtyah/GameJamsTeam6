@@ -23,12 +23,12 @@ public class MissileProjectile : MonoBehaviour, IProjectile
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag(GlobalString.enemyTagAndLayer))
+        if (other.gameObject.CompareTag(GlobalInfo.enemyTagAndLayer))
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
             foreach (Collider collider in colliders)
             {
-                if (collider.gameObject.CompareTag(GlobalString.enemyTagAndLayer))
+                if (collider.gameObject.CompareTag(GlobalInfo.enemyTagAndLayer))
                 {
                     collider.GetComponent<IEnemy>().AddHealth(-damage);
                 }

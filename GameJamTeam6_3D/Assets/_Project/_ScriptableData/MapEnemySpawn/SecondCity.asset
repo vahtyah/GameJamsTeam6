@@ -60,7 +60,7 @@ MonoBehaviour:
       Data: 4|SpawnWaveData, Assembly-CSharp
     - Name: enemyId
       Entry: 3
-      Data: 3
+      Data: 2
     - Name: amount
       Entry: 3
       Data: 4

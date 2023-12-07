@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HealthBar : SerializedMonoBehaviour
 {
     [SerializeField] private Slider slider;
-     private IEnemy enemy;
+    [SerializeField] private IEnemy enemy;
 
     private CharacterHealth characterHealth;
     private Camera camera;
@@ -14,7 +14,7 @@ public class HealthBar : SerializedMonoBehaviour
     private void Start()
     {
         camera = Camera.main;
-        enemy = transform.GetComponentInParent<IEnemy>();
+        //enemy = transform.GetComponentInParent<IEnemy>();
         characterHealth = enemy.GetCharacterHealth();
         characterHealth.AddSignalHealthChange(UpdateHealthBar);
     }
@@ -30,7 +30,7 @@ public class HealthBar : SerializedMonoBehaviour
         if(!slider.gameObject.activeSelf) slider.gameObject.SetActive(true);
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (camera != null) transform.LookAt(transform.position + camera.transform.forward);
     }

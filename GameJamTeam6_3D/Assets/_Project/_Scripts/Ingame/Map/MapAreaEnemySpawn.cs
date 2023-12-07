@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class MapAreaEnemySpawn : MonoBehaviour
 {
@@ -19,7 +20,8 @@ public class MapAreaEnemySpawn : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(GlobalString.tagPlayer) == false) return;
+        if (other.CompareTag(GlobalInfo.tagPlayer) == false) return;
+        ColorDebug.DebugYellow("spawn");
         switch (spawnType)
         {
             case EnemySpawnType.Arc:
@@ -32,16 +34,18 @@ public class MapAreaEnemySpawn : MonoBehaviour
                 SpawnGroup();
                 break;
         }
+        gameObject.SetActive(false);
     }
 
     void SingleSpawn()
     {
         for (int i = 0; i < qty; i++)
         {
-            IEnemy enemy = EnemyPooling.instance.SpawnEnemy(enemyIDs[Random.Range(0, enemyIDs.Length)]);
-            enemy.SetThisEnemyFromWave(-1)
-                .GetGameObject().transform.position = RandomPosition()
-                ;
+            IEnemy enemy = EnemyPooling.instance.SpawnEnemy(enemyIDs[Random.Range(0, enemyIDs.Length)], RandomPosition());
+            enemy.SetThisEnemyFromWave(-1);
+            //enemy.SetThisEnemyFromWave(-1)
+            //    .GetGameObject().name = enemy.GetGameObject().transform.position.ToString();
+            
         }
     }
 
@@ -57,7 +61,8 @@ public class MapAreaEnemySpawn : MonoBehaviour
 
     Vector3 RandomPosition()
     {
-        return spawns[ Random.Range(0, spawns.Count)].position;
+        Vector3 pos = spawns[Random.Range(0, spawns.Count)].position;
+        return pos;
     }
 
 

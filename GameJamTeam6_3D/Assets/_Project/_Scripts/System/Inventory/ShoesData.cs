@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(fileName = "ShoesData", menuName = GlobalString.ItemData + "ShoesData")]
+[CreateAssetMenu(fileName = "ShoesData", menuName = GlobalInfo.ItemData + "ShoesData")]
 public class ShoesData : ScriptableObject, IItemEquipmentData
 {
     [SerializeField] int addSpeed;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu (fileName = "WeaponData", menuName = GlobalString.ItemData + "WeaponData")]
+[CreateAssetMenu (fileName = "WeaponData", menuName = GlobalInfo.ItemData + "WeaponData")]
 public class WeaponData : ScriptableObject, IItemEquipmentData
 {
     [SerializeField] Sprite itemIcon;
