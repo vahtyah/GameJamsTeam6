@@ -65,6 +65,11 @@ public class InputHandler : MonoBehaviour
     {
         return Input.GetKeyDown(KeyCode.Escape);
     }
+    
+    public bool PressRightClick()
+    {
+        return Input.GetMouseButtonDown(1);
+    }
 
 
 

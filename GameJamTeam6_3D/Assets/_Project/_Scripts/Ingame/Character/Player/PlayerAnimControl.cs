@@ -10,7 +10,8 @@ public class PlayerAnimControl : MonoBehaviour
         //{PlayerAnimState.NormalAttack, "NormalAttack" },
         {PlayerAnimState.NormalMovement, "Move" },
         {PlayerAnimState.Die, "Die" },
-        {PlayerAnimState.EquipmentInventory, "EquipmentInventory" }
+        {PlayerAnimState.EquipmentInventory, "EquipmentInventory" },
+        {PlayerAnimState.DiveRoll, "DiveRoll" },
     };
 
     const string moveBlendAnimX = "MoveX";
@@ -21,6 +22,7 @@ public class PlayerAnimControl : MonoBehaviour
 
     public void PlayAnim(PlayerAnimState _state)
     {
+        ColorDebug.DebugRed(_state.ToString());
         if (currentAnim == animNames[_state]) return;
         animator.Play(animNames[_state]);
         currentAnim = animNames[_state];
@@ -50,6 +52,7 @@ public enum PlayerAnimState
     NormalMovement,
     Die,
     EquipmentInventory,
+    DiveRoll,
     //Walk,
     //NormalAttack,
 }
