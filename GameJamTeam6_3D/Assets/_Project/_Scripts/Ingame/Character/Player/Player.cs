@@ -54,6 +54,7 @@ public class Player : SerializedMonoBehaviour, IGameSignal
     IEnumerator IEDying()
     {
         anim.PlayAnim(PlayerAnimState.Die);
+        rb.velocity = Vector3.zero;
         isLive = false;
         GetComponent<CapsuleCollider>().enabled = false;
         yield return new WaitForSeconds(anim.GetCurrentAnimLength());
@@ -81,7 +82,7 @@ public class Player : SerializedMonoBehaviour, IGameSignal
         isLive = false;
         movement.Setup(); ;
         weapon.Setup();
-        characterHealth.Setup(100);
+        characterHealth.Setup(PlayerRecord.instance.GetPlayerHealth());
         anim.PlayAnim(PlayerAnimState.NormalMovement);
     }
 

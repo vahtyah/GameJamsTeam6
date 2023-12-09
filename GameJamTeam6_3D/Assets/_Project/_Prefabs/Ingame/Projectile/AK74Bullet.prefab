@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6441260119915665006}
   - component: {fileID: 4536380812301620928}
   - component: {fileID: 2870074146947661852}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4764,7 +4764,7 @@ GameObject:
   - component: {fileID: 3466181638531167259}
   - component: {fileID: 9148781807617391756}
   - component: {fileID: 5110888295771377560}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AK74Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4842,7 +4842,7 @@ GameObject:
   - component: {fileID: 6806345964917114277}
   - component: {fileID: 6806345964901908591}
   - component: {fileID: 6806345964903349533}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: StretchyBit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9585,7 +9585,7 @@ GameObject:
   - component: {fileID: 6806345964917195413}
   - component: {fileID: 2704354971200370407}
   - component: {fileID: 3684245251211037267}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: fx
   m_TagString: Untagged
   m_Icon: {fileID: 0}

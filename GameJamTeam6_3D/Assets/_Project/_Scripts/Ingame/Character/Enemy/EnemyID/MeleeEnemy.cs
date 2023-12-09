@@ -18,6 +18,7 @@ public class MeleeEnemy : MonoBehaviour, IEnemy
     EnemyNav enemyNav = new EnemyNav();
     CharacterHealth characterHealth = new CharacterHealth();
     EnemyAnimController anim = new EnemyAnimController();
+    public EnemyAnimController GetAnim() => anim;
     int atWave = -1;
 
     void Awake()
@@ -30,18 +31,14 @@ public class MeleeEnemy : MonoBehaviour, IEnemy
         {
 
         });
-        characterHealth.AddSignalOnDead(() =>
-        {
-            gameObject.SetActive(false);
-            EnemySpawner.instance.OnEnemyDie(atWave);
-        });
+        characterHealth.AddSignalOnDead(() => OnDie());
         enemyNav.SetAgent(agent);
     }
 
     void OnEnable()
     {
         characterHealth.Setup(curEnemyData.hp);
-        agent.enabled = true;
+        //agent.enabled = true;
     }
 
     void Update()
@@ -70,7 +67,7 @@ public class MeleeEnemy : MonoBehaviour, IEnemy
         characterHealth.Setup(enemyData.hp);
         anim.SetAnimator(animator);
         enemyNav.SetAnimController(anim).SetSpeed(enemyData.speed);
-        agent.enabled = false;
+        //agent.enabled = false;
         return this;
     }
 
@@ -92,6 +89,10 @@ public class MeleeEnemy : MonoBehaviour, IEnemy
     public void OnDie()
     {
         enemyMeleeDamageCollision.SetActive(false);
+        EnemySpawner.instance.OnEnemyDie(atWave);
+        //enabled = false;
+        enemyStateHandler.ForceState(EnemyAnimState.Die);
+        ColorDebug.DebugOrange("deo hieu");
     }
 }
 

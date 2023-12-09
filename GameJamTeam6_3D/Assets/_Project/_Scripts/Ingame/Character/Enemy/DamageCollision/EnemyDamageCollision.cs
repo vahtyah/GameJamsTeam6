@@ -11,6 +11,12 @@ public class EnemyDamageCollision : MonoBehaviour
 
     int damage = 5;
     
+    public void SetTime(float _prepareToAttackTimer, float _duration)
+    {
+        prepareToAttackTimer = _prepareToAttackTimer;
+        duration = _duration;
+    }
+
     public void SetDamage(int _damage)
     {
         damage = _damage;
@@ -26,7 +32,7 @@ public class EnemyDamageCollision : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         gameObject.SetActive(false);
-        complete.Invoke();
+        complete?.Invoke();
     }
 
     private void OnTriggerEnter(Collider other)

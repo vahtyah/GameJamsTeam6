@@ -29,8 +29,8 @@ public class RangeEnemy : SerializedMonoBehaviour, IRangeEnemy
         });
         characterHealth.AddSignalOnDead(() =>
         {
-            gameObject.SetActive(false);
-            EnemySpawner.instance.OnEnemyDie(atWave);
+            //gameObject.SetActive(false);
+            OnDie();
         });
         enemyNav.SetAgent(agent);
     }
@@ -65,7 +65,7 @@ public class RangeEnemy : SerializedMonoBehaviour, IRangeEnemy
     {
         characterHealth.Setup(100);
         anim.SetAnimator(animator);
-        enemyNav.SetAnimController(anim).SetSpeed(enemyData.speed).MoveToPlayer();
+        enemyNav.SetAnimController(anim).SetSpeed(enemyData.speed);
         return this;
     }
 
@@ -90,6 +90,12 @@ public class RangeEnemy : SerializedMonoBehaviour, IRangeEnemy
 
     public void OnDie()
     {
-        
+        EnemySpawner.instance.OnEnemyDie(atWave);
+        enemyStateHandler.ForceState(EnemyAnimState.Die);
+    }
+
+    public EnemyAnimController GetAnim()
+    {
+        return anim;
     }
 }
