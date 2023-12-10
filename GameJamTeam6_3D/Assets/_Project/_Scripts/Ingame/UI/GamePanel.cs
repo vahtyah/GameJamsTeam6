@@ -44,25 +44,27 @@ public class GamePanel : MonoBehaviour, IGameSignal
 
     public void Prepare() { }
 
-    public void StartGame() { }
+    public void StartGame() { Cursor.visible = false; }
 
     public void Pause()
     {
-
+        Cursor.visible = true;
     }
 
     public void Resume()
     {
-
+        Cursor.visible = false;
     }
 
     public void Win()
     {
         winPanel.SetActive(true);
+        Cursor.visible = true;
     }
 
     public void Lose()
     {
         losePanel.SetActive(true);
+        Cursor.visible = true;
     }
 }

@@ -29,7 +29,7 @@ public class EnemySpawner : SerializedMonoBehaviour, IGameSignal
 
     public void StartGame()
     {
-        //StartSpawning();
+        StartSpawning();
     }
     public void StartSetup()
     {
