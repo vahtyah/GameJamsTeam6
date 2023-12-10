@@ -21,7 +21,10 @@ public class EquipmentItemUI : MonoBehaviour, IPointerDownHandler, IDragHandler,
     void Start()
     {
         DraggableEquipmentItem.instance.onDrop += OnDrop;
+        
     }
+
+
 
     void OnDrop()
     {
@@ -62,12 +65,17 @@ public class EquipmentItemUI : MonoBehaviour, IPointerDownHandler, IDragHandler,
     public void OnPointerEnter(PointerEventData eventData)
     {
         mouseEnter = true;
+        if (itemID < 0) return;
+        ItemInfoText.instance.SetText(InventorySystem.instance.GetIItemFromHolder(type, itemID).GetItemName(),
+            InventorySystem.instance.GetIItemFromHolder(type, itemID).GetItemDescription()
+            );
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         mouseEnter = false;
         isClick = false;
+        ItemInfoText.instance.SetText(GlobalInfo.emptyString, GlobalInfo.emptyString);
     }
 
     public void OnEndDrag(PointerEventData eventData)

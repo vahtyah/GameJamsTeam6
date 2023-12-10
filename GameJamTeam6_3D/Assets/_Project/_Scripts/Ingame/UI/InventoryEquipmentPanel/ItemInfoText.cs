@@ -16,7 +16,11 @@ public class ItemInfoText : MonoBehaviour
     }
 
     
-
+    public void SetText(string _itemName, string _des)
+    {
+        itemDesStat.text = _des;
+        itemName.text = _itemName;
+    }
 
 
 

@@ -19,6 +19,7 @@ public static class GlobalInfo
     public const string obstacleTagAndLayer = "Obstacle";
     public const string tagPlayer = "Player";
     public const string ItemData = "ItemData/";
+    public const string emptyString = "";
 
 }
 

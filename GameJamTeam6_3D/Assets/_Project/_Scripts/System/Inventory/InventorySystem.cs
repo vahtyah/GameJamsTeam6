@@ -48,7 +48,6 @@ public class InventorySystem : SerializedMonoBehaviour
     {
         instance = this;
         onAddedItemInventory += AddInventory;
-        onRemoveItemInventory += RemoveInventory;
         foreach (var keyValue in itemHolder.itemHolding)
         {
             for (int i = 0; i < keyValue.Value.data.Length; i++)
@@ -67,6 +66,8 @@ public class InventorySystem : SerializedMonoBehaviour
 
     public void RemoveInventory(int _inventoryIndexSlot)
     {
+        itemInventory[_inventoryIndexSlot] = null;
+        onRemoveItemInventory?.Invoke(_inventoryIndexSlot);
         StartCoroutine(inventoryEquipmentSaveLoadHandler.IESaveInventoryRemoved(_inventoryIndexSlot));
     }
 

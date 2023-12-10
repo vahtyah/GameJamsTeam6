@@ -23,7 +23,7 @@ public class TrashItemRemoverUI : MonoBehaviour
         if (mouseEntered == false) return;
         if (DraggableEquipmentItem.instance.FromEquipment) return;
         InventorySystem.instance.RemoveInventory(DraggableEquipmentItem.instance.InventoryIndex);
-
+        DraggableEquipmentItem.instance.gameObject.SetActive(false);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
