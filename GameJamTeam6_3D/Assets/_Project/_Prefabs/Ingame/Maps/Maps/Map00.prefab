@@ -3397,7 +3397,7 @@ GameObject:
   - component: {fileID: 783018488117620421}
   - component: {fileID: 8922700765427087252}
   - component: {fileID: 8946624685864485695}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: map_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

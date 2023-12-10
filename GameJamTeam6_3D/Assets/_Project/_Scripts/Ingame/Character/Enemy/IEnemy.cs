@@ -18,12 +18,15 @@ public interface IEnemy
 
     public void OnDie();
 
+    public EnemyAnimController GetAnim();
 }
 
 public interface IRangeEnemy : IEnemy
 {
     public Transform GetShootTransform();
 }
+
+
 
 public interface IBoss
 {
@@ -38,6 +41,7 @@ public interface IBoss
     public void OnDie();
 
     float considerAtLowHealthPercent { get; set; }
+    // ???? to clean code 
     public void OnCurrentHealthChange(int _health)
     {
         GetBehaviourTree().Blackboard.AssignBlackBoard(BehaviourTreeBlackboardInfo.SelfEnemyLowHealth

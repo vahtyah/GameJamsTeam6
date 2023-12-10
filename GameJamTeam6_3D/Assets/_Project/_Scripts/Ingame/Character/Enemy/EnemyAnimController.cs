@@ -10,7 +10,8 @@ public class EnemyAnimController
         {EnemyAnimState.Idle, "Idle"}, {EnemyAnimState.Attack, "Attack"},
         {EnemyAnimState.GetHurt, "GetHurt" },
         {EnemyAnimState.Move, "Move"},
-        {EnemyAnimState.Die, "Die" }
+        {EnemyAnimState.Die, "Die" },
+        {EnemyAnimState.CastSpellOne, "CastSpell" },
     };
     
     Animator animator;
@@ -28,9 +29,19 @@ public class EnemyAnimController
         animator.Play(animNames[_state]);
         currentAnim = animNames[_state];
     }
+
+    public float GetCurrentAnimLength()
+    {
+        return animator.GetCurrentAnimatorClipInfo(0).Length;
+    }
+
 }
 
 public enum EnemyAnimState
 {
-    Idle, Move, Attack, Die, GetHurt
+    Idle, Move, Attack, Die, GetHurt, 
+    CastSpellOne,
+    CastSpellTwo,
+    CastSpellThree,
+    CastSpellFour,
 }

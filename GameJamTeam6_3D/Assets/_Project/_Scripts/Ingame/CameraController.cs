@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    [SerializeField] Vector3 distance;
     //[SerializeField] float smoothTime;
     //Vector3 curVelo;
     Vector3 offset;

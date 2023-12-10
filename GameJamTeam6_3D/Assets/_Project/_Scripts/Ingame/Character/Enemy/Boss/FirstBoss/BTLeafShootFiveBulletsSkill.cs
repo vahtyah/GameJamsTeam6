@@ -28,8 +28,6 @@ public class BTLeafShootFiveBulletsSkill : MonoBehaviour, IEnemySkill, IBehaviou
     public bool IsReady()
     {
         return Time.time >= nextTime;
-        //nextTime -= Time.deltaTime;
-        //return nextTime <= 0;
     }
 
     public void UseSkill()
@@ -55,6 +53,7 @@ public class BTLeafShootFiveBulletsSkill : MonoBehaviour, IEnemySkill, IBehaviou
         if (IsReady())
         {
             UseSkill();
+            _blackboard.GetAgent().GetEnemyAnimController().PlayAnim(EnemyAnimState.CastSpellOne);
             return BehaviourTreeResult.Sucess;
         }
         return BehaviourTreeResult.Fail;

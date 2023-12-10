@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CharacterHealth 
 {
@@ -12,10 +13,11 @@ public class CharacterHealth
     public Action<int> onCurHealthChange;
     public Action onDead;
 
-
+    bool alive = true;
 
     public void Setup(int _maxHealth, float _startHealthPercent = 1)
     {
+        alive = true;
         maxHealth = _maxHealth;
         curHealth = (int)((float)maxHealth * _startHealthPercent);
         onCurHealthChange?.Invoke(curHealth);
@@ -26,7 +28,10 @@ public class CharacterHealth
         curHealth += _input;
         if (curHealth > maxHealth) curHealth = maxHealth;
         onCurHealthChange?.Invoke(curHealth);
-        if (IsDead()) onDead?.Invoke();
+        if (IsDead() && alive) {
+            alive = false;
+            onDead?.Invoke();
+        }
     }
     
     public float GetHealthAmountNormalized()
@@ -41,7 +46,7 @@ public class CharacterHealth
 
     public void AddSignalOnDead(Action _call)
     {
-        onDead = _call;
+        onDead += _call;
     }
 
     bool IsDead()

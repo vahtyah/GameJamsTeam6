@@ -10,25 +10,27 @@ public class EnemyNav
     private NavMeshPath navMeshPath;
     float stableSpeed = -1;
 
+    public NavMeshAgent GetAgent() { return agent; }
+
     public EnemyNav SetAgent(NavMeshAgent _agent)
     {
         agent = _agent;
         navMeshPath = new NavMeshPath();
-        agent.enabled = false;
+        //agent.enabled = false;
         return this;
     }
 
     public EnemyNav SetSpeed(float _speed)
     {
         stableSpeed = _speed;
-        agent.enabled = false;
+        //agent.enabled = false;
         return this;
     }
 
-    public void StartAgent()
-    {
-        agent.enabled = true;
-    }
+    //public void StartAgent()
+    //{
+    //    agent.enabled = true;
+    //}
 
     public EnemyNav SetAnimController(EnemyAnimController _anim)
     {
@@ -38,11 +40,12 @@ public class EnemyNav
     
     public void MoveToPlayer()
     {
-        agent.enabled = true;
+        //agent.enabled = true;
+        agent.isStopped = false;
         animController.PlayAnim(EnemyAnimState.Move);
         agent.speed = stableSpeed;
         agent.CalculatePath(IngameManager.instance.player.position, navMeshPath);
-        if (CheckMove())
+        if (navMeshPath.status == NavMeshPathStatus.PathComplete)
         {
             agent.SetDestination(IngameManager.instance.player.position);
         }
@@ -50,26 +53,27 @@ public class EnemyNav
 
     public void MoveToPosition(Vector3 position)
     {
-        agent.enabled = true;
+        //agent.enabled = true;
+        agent.isStopped = false;
         agent.velocity = Vector3.zero;
         animController.PlayAnim(EnemyAnimState.Move);
         agent.speed = stableSpeed;
         agent.SetDestination(position);
-        CheckMove();
+        //CheckMove();
     }
 
-    bool CheckMove()
-    {
-        //return;
-        if (navMeshPath.status != NavMeshPathStatus.PathComplete)
-        {
-            animController.PlayAnim(EnemyAnimState.Idle);
-            agent.destination = agent.gameObject.transform.position;
-            Stop();
-            return false;
-        }
-        return true;
-    }
+    //bool CheckMove()
+    //{
+    //    //return;
+    //    if (navMeshPath.status != NavMeshPathStatus.PathComplete)
+    //    {
+    //        animController.PlayAnim(EnemyAnimState.Idle);
+    //        agent.destination = agent.gameObject.transform.position;
+    //        Stop();
+    //        return false;
+    //    }
+    //    return true;
+    //}
 
     public void Idle()
     {
@@ -91,14 +95,18 @@ public class EnemyNav
 
     public void Die()
     {
-        Stop();
-        animController.PlayAnim(EnemyAnimState.Die);
+        //Stop();
+        agent.destination = agent.gameObject.transform.position;
+        agent.velocity = Vector3.zero;
+        agent.speed = 0;
+        //animController.PlayAnim(EnemyAnimState.Die);
     }
     void Stop()
     {
-        //agent.speed = 0;
-        //agent.velocity = Vector3.zero;
-        agent.CalculatePath(agent.gameObject.transform.position, navMeshPath);
+        agent.speed = 0;
+        agent.velocity = Vector3.zero;
+        agent.isStopped = true;
+        //agent.CalculatePath(agent.gameObject.transform.position, navMeshPath);
         agent.destination = agent.gameObject.transform.position;
     }
 

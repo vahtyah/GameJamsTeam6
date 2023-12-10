@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2988737422986815619}
   - component: {fileID: 5312673003971637738}
   - component: {fileID: 8182447794971678184}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BazookaBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,9 +86,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 848183833090161730}
     m_Modifications:
+    - target: {fileID: 102606, guid: 7f7a62c898b02134dafe679b40f8c57c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 109274, guid: 7f7a62c898b02134dafe679b40f8c57c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 127654, guid: 7f7a62c898b02134dafe679b40f8c57c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 177226, guid: 7f7a62c898b02134dafe679b40f8c57c, type: 3}
       propertyPath: m_Name
       value: BulletRed
+      objectReference: {fileID: 0}
+    - target: {fileID: 177226, guid: 7f7a62c898b02134dafe679b40f8c57c, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 464422, guid: 7f7a62c898b02134dafe679b40f8c57c, type: 3}
       propertyPath: m_RootOrder

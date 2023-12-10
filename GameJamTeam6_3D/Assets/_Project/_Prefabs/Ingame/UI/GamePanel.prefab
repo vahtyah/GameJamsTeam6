@@ -398,7 +398,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnderHealthBar: {fileID: 597168090}
   OverHealthBar: {fileID: 306229179}
-  levelText: {fileID: 0}
   smoothTime: 1
 --- !u!1 &306229178
 GameObject:
@@ -2830,6 +2829,7 @@ GameObject:
   - component: {fileID: 3595954399141447867}
   - component: {fileID: 427083365194233415}
   - component: {fileID: 4982967383331805152}
+  - component: {fileID: 348365417527407738}
   m_Layer: 5
   m_Name: LosePanel
   m_TagString: Untagged
@@ -2897,6 +2897,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &348365417527407738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6611977365670248090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67646ce79ef7450e995c81c9ac0bbc21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  restartButton: {fileID: 3549584613517686055}
+  exitButton: {fileID: 6477499785389529972}
 --- !u!1 &7483070062362424264
 GameObject:
   m_ObjectHideFlags: 0

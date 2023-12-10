@@ -7,10 +7,14 @@ public class EnemyNormalDieState : IEnemyState
 
     public EnemyAnimState enemyState => EnemyAnimState.Die;
 
+    float timer = 0f;
+
     public void OnEnter()
     {
+        ColorDebug.DebugGreen("Enter die state");
         enemy.GetEnemyNav().Die();
-        enemy.OnDie();
+        enemy.GetAnim().PlayAnim(EnemyAnimState.Die);
+        timer = enemy.GetAnim().GetCurrentAnimLength();
     }
 
     public void OnExit()
@@ -20,6 +24,12 @@ public class EnemyNormalDieState : IEnemyState
 
     public EnemyAnimState OnUpdate()
     {
+        timer -= Time.deltaTime;
+        if (timer < 0f)
+        {
+            enemy.GetGameObject().SetActive(false);
+        }
+
         return enemyState;
     }
 

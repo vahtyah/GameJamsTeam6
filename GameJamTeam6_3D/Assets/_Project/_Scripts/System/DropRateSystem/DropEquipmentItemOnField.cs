@@ -24,9 +24,11 @@ public class DropEquipmentItemOnField : MonoBehaviour, IDropEquipmentItemOnField
 
     public void Spin()
     {
-        float ranPosX = Random.Range(-0.5f + transform.position.x, 0.5f + transform.position.x);
-        float ranPosZ = Random.Range(-0.5f + transform.position.z, 0.5f + transform.position.z);
-        transform.DOMove(new Vector3(ranPosX, transform.position.y + 1f, ranPosZ), 0.25f).SetEase(Ease.InCirc);
+        gameObject.SetActive(true);
+        //float ranPosX = Random.Range(-0.5f + transform.position.x, 0.5f + transform.position.x);
+        //float ranPosZ = Random.Range(-0.5f + transform.position.z, 0.5f + transform.position.z);
+        //transform.DOMove(new Vector3(ranPosX, transform.position.y + 1f, ranPosZ), 0.5f).SetEase(Ease.Linear);
+        transform.DORotate(new Vector3(0, 360, 0), 0.5f).SetLoops(-1, LoopType.Incremental);
     }
 
     public void SetEquipmentID(int _id)

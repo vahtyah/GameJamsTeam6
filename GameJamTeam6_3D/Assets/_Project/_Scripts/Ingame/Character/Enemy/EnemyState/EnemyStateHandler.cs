@@ -7,9 +7,11 @@ public class EnemyStateHandler : SerializedMonoBehaviour
 {
     [SerializeField] Dictionary<EnemyAnimState, IEnemyState> enemyStates;
     [SerializeField] IEnemy enemy;
-    IEnemyState currentState;
+    [Space]
+    [SerializeField] IEnemyState currentState;
     //[Header("For Debug")]
     //[SerializeField] EnemyAnimState debug;
+    [SerializeField] bool active = true;
 
     private void Awake()
     {
@@ -20,9 +22,11 @@ public class EnemyStateHandler : SerializedMonoBehaviour
         }
     }
 
-    public void SetState(EnemyAnimState _state)
+    public void ForceState(EnemyAnimState _state)
     {
+        currentState.OnExit();
         currentState = enemyStates[_state];
+        currentState.OnEnter();
     }
 
     public void OnUpdate()
@@ -35,7 +39,7 @@ public class EnemyStateHandler : SerializedMonoBehaviour
             currentState.OnEnter();
         }
     }
-    
+
     public IEnemyState GetState(EnemyAnimState state) { return enemyStates[state]; }
 }
 

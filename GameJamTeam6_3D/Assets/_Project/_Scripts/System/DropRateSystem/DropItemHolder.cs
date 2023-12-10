@@ -10,7 +10,14 @@ public class DropItemHolder : SerializedMonoBehaviour
 
     [SerializeField] Dictionary<ItemType, IDropEquipmentItemOnField> equipmentItemPrefabs;
     [SerializeField] IDropCurrencyItemOnField coinPrefab;
-    Dictionary<ItemType, List<IDropEquipmentItemOnField>> equipmentPool = new Dictionary<ItemType, List<IDropEquipmentItemOnField>>();
+    Dictionary<ItemType, List<IDropEquipmentItemOnField>> equipmentPool = new Dictionary<ItemType, List<IDropEquipmentItemOnField>>() {
+        {ItemType.Armour, new List<IDropEquipmentItemOnField>() },
+        {ItemType.Weapon, new List<IDropEquipmentItemOnField>() },
+        {ItemType.Helmet, new List<IDropEquipmentItemOnField>() },
+        {ItemType.Gloves, new List<IDropEquipmentItemOnField>() },
+        {ItemType.Shoes, new List<IDropEquipmentItemOnField>() },
+        {ItemType.Belt, new List<IDropEquipmentItemOnField>() },
+    };
     List<IDropCurrencyItemOnField> coinPool = new List<IDropCurrencyItemOnField>();
 
     private void Awake()
@@ -18,7 +25,7 @@ public class DropItemHolder : SerializedMonoBehaviour
         instance = this;
     }
 
-    public void SpawnEquipmentItem(ItemType _type, int _qty, int _equipId, Vector3 _position)
+    public void SpawnEquipmentItem(ItemType _type, int _equipId, Vector3 _position)
     {
         IDropEquipmentItemOnField dropEquipment = GenEquipmentDropped(_type, _position);
         dropEquipment.SetEquipmentID(_equipId);
@@ -31,6 +38,7 @@ public class DropItemHolder : SerializedMonoBehaviour
         {
             if (equipmentPool[_type][i].GetGameObject().activeSelf) continue;
             equipmentPool[_type][i].GetGameObject().transform.position = _position;
+            equipmentPool[_type][i].Spin();
             return equipmentPool[_type][i];
         }
         IDropEquipmentItemOnField newObj = Instantiate(equipmentItemPrefabs[_type].GetGameObject(), transform).GetComponent<IDropEquipmentItemOnField>();

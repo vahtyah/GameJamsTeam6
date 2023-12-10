@@ -17,7 +17,7 @@ public class InputHandler : MonoBehaviour
     public bool IsNormalAttackHoldDown()
     {
         return Input.GetMouseButton(0);
-        return Input.GetMouseButtonDown(0);
+        //return Input.GetMouseButtonDown(0);
     }
 
     public float HorizontalMovement()

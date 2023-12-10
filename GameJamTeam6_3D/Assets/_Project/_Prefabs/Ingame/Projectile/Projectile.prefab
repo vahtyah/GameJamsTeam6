@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9148781807617391756}
   - component: {fileID: 4275745565038443174}
   - component: {fileID: 6330214487994200489}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,6 +142,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: MagicChargeBlue
       objectReference: {fileID: 0}
+    - target: {fileID: 147226, guid: 206bd2e9a5887fc41b93e35bfeab0dbb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 155830, guid: 206bd2e9a5887fc41b93e35bfeab0dbb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 491034, guid: 206bd2e9a5887fc41b93e35bfeab0dbb, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -209,6 +217,10 @@ PrefabInstance:
     - target: {fileID: 19940780, guid: 206bd2e9a5887fc41b93e35bfeab0dbb, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445265708358034, guid: 206bd2e9a5887fc41b93e35bfeab0dbb, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 199216902498239064, guid: 206bd2e9a5887fc41b93e35bfeab0dbb, type: 3}
       propertyPath: m_Materials.Array.size

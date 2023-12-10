@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MapScene : MonoBehaviour
 {
-    //public static MapScene instance;
     [SerializeField] Transform playerStartPos;
     [SerializeField] MapEnemySpawnData mapEnemySpawnData;
     [SerializeField] MapTransfer previousMapCheckPoint;
@@ -13,8 +12,6 @@ public class MapScene : MonoBehaviour
 
     List<Transform> spawnPoints = new List<Transform>();
 
-    //public MapTransfer GetPreviousMap() => previousMapCheckPoint;
-    //public MapTransfer GetNextMap() => nextMapCheckpoint;
     public MapEnemySpawnData GetSpawnData() { return mapEnemySpawnData; }
     public List<Transform> GetSpawnPoints() { return spawnPoints; }
 
@@ -30,9 +27,11 @@ public class MapScene : MonoBehaviour
     private void Start()
     {
         Player.instance.transform.position = playerStartPos.position;
-        //previousMapCheckPoint.TurnOn();
-        //nextMapCheckpoint.TurnOn();
     }
 
-
+    public void ActivePortals(bool _yep = true)
+    {
+        previousMapCheckPoint.gameObject.SetActive(_yep);
+        nextMapCheckpoint.gameObject.SetActive(_yep);
+    }
 }

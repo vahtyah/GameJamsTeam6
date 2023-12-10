@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Floor
   - Obstacle
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - Enemy
   - Floor
   - Obstacle
-  - 
-  - 
+  - EnemyCollision
+  - PlayerItem
   - 
   - 
   - 

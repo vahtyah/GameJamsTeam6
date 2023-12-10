@@ -8,11 +8,15 @@ public class BTLeafCustomDropDamageAreaSkill : MonoBehaviour, IEnemySkill, IBeha
     [SerializeField] EnemyDamageCollisionImminent[] enemyDamageCollisionImminents;
     [SerializeField] Transform collisionsHolder;
     [SerializeField] float coolDown = 5;
+    RunningActionProgressBehaving progressBehave = new RunningActionProgressBehaving();
     float timer;
+
+    bool ok = false;
 
     void Awake()
     {
         timer = Time.time + coolDown;
+        enemyDamageCollisionImminents[0].complete = ()=> ok = true;
     }
 
     public bool IsDisabled()
@@ -24,25 +28,34 @@ public class BTLeafCustomDropDamageAreaSkill : MonoBehaviour, IEnemySkill, IBeha
     {
         return Time.time >= timer;
     }
+
     Vector3 position;
     public BehaviourTreeResult Tick(BehaviourTreeBossBlackboard _blackboard)
     {
         if (IsReady())
         {
-            position = _blackboard.GetAgent().GetGameObject().transform.position;
-            UseSkill();
-            return BehaviourTreeResult.Sucess;
+            return progressBehave.Progress(
+                _onEnter: () =>
+                {
+                    _blackboard.GetAgent().GetGameObject().transform.LookAt(Player.instance.transform.position);
+                    //position = _blackboard.GetAgent().GetGameObject().transform.position;
+                    UseSkill();
+                }
+                , _onRunning: null
+                , ref ok
+                , ()=> timer = Time.time + coolDown
+                ); ;
         }
         return BehaviourTreeResult.Fail;
     }
 
     public void UseSkill()
     {
-        collisionsHolder.transform.position = position;
+        collisionsHolder.transform.position = transform.position;
         for (int i = 0; i < enemyDamageCollisionImminents.Length; i++)
         {
             enemyDamageCollisionImminents[i].StartComing();
         }
-        timer = Time.time + coolDown;
+        //timer = Time.time + coolDown;
     }
 }

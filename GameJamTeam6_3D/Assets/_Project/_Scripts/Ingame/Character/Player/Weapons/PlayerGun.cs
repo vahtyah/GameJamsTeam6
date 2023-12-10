@@ -43,12 +43,12 @@ public class PlayerGun : MonoBehaviour, IWeapon
         var bullet = ProjectilePooling.instance.ActivateProjectile(data.GetBulletID()).SetDamage(DamageHelper.GetPlayerDamage(damage));
         bullet.SetPossession(_isPlayer: true);
         bullet.GetGameObject().transform.position = shootPos.position;
-        //bullet.GetGameObject().transform.rotation = Player.instance.GetModel().transform.rotation;
-        bullet.GetGameObject().transform.rotation = Player.instance.transform.rotation;
-        bullet.GetGameObject().transform.Rotate(bullet.GetGameObject().transform.rotation.x
-            , UnityEngine.Random.Range(bullet.GetGameObject().transform.rotation.y - shakeValue, bullet.GetGameObject().transform.rotation.y + shakeValue)
-            , bullet.GetGameObject().transform.rotation.z
-            );
+        bullet.GetGameObject().transform.LookAt(IngameManager.instance.mousePointer.position);
+        bullet.GetGameObject().transform.eulerAngles = new Vector3(0, bullet.GetGameObject().transform.eulerAngles.y, 0);
+        //bullet.GetGameObject().transform.Rotate(bullet.GetGameObject().transform.rotation.x
+        //    , UnityEngine.Random.Range(bullet.GetGameObject().transform.rotation.y - shakeValue, bullet.GetGameObject().transform.rotation.y + shakeValue)
+        //    , bullet.GetGameObject().transform.rotation.z
+        //    );
     }
 
     public int GetDamage()

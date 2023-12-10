@@ -6,33 +6,73 @@ using Sirenix.OdinInspector;
 public class EquipmentItemDropReward : SerializedMonoBehaviour, IDropReward
 {
     [Range(0f, 100f)]
-    [SerializeField] float rate;
-    [SerializeField] Dictionary<ItemType, float> itemRates = new Dictionary<ItemType, float>();
-    [SerializeField] int[] equipIdRates;
-    [SerializeField] int qty = 1;
+    [SerializeField] float rate = 0.9f;
+    [Tooltip("Value : rate")]
+    [SerializeField] Dictionary<ItemType, float> itemRates = new Dictionary<ItemType, float>() {
+        {ItemType.Weapon, 0.5f }
+    };
+    [ListDrawerSettings(ShowIndexLabels =  true)]
+    [SerializeField] int[] equipIdRates = new int[1] {25 };
+    [SerializeField] IEnemy enemy;
+
+    void Awake()
+    {
+        if (GetComponent<IEnemy>() != null)
+        {
+            enemy = GetComponent<IEnemy>();
+        }
+        enemy.GetCharacterHealth().onDead += DoGacha;
+    }
 
     public void DoGacha()
     {
         if (rate == 0) return;
         if (Random.Range(1, 101f) > rate) return;
-        int count = 0;
-        while (true)
+        //int count = 0;
+        for (int tryTime = 0; tryTime < 10; tryTime++)
         {
-            int ranItemType = Random.Range(0, itemRates.Keys.Count);
-            if (itemRates[(ItemType)ranItemType] == 0) continue;
+            ItemType typeRoll = RollItemKey();
+            if (itemRates[typeRoll] == 0) continue;
             float ranRate = Random.Range(1f, 101f);
-            if (Random.Range(1, 101f) > rate) continue;
+            if (Random.Range(1, 101f) > ranRate) continue;
             int id = RollEquipID();
-            DropItemHolder.instance.SpawnEquipmentItem((ItemType)ranItemType, qty, id, transform.position);
-            count++;
-            if (count >= qty) break;
+            DropItemHolder.instance.SpawnEquipmentItem(typeRoll, id, transform.position);
+            return;
         }
+
+        //while (true)
+        //{
+        //    ItemType typeRoll = RollItemKey();
+        //    if (itemRates[typeRoll] == 0) continue;
+        //    float ranRate = Random.Range(1f, 101f);
+        //    if (Random.Range(1, 101f) > ranRate) continue;
+        //    int id = RollEquipID();
+        //    DropItemHolder.instance.SpawnEquipmentItem(typeRoll, id, transform.position);
+        //    //count++;
+        //    //if (count >= qty) break;
+        //}
+    }
+
+    ItemType RollItemKey()
+    {
+        int index = Random.Range(0, itemRates.Keys.Count);
+        int count = 0;
+        foreach (var item in itemRates.Keys)
+        {
+            ColorDebug.DebugOrange(item);
+            if (count == index)
+            {
+                return item;
+            }
+            count++;
+        }
+        return ItemType.Weapon;
     }
 
     int RollEquipID()
     {
         if (equipIdRates.Length == 1) return 0;
-        while (equipIdRates.Length > 1)
+        for (int tryTime = 0; tryTime < 10; tryTime++)
         {
             int ranID = Random.Range(0, equipIdRates.Length);
             float value = Random.Range(1, 101f);
