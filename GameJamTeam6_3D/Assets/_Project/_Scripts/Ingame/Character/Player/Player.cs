@@ -16,6 +16,7 @@ public class Player : SerializedMonoBehaviour, IGameSignal
     [SerializeField] IWeapon weapon;
     public IWeapon GetWeapon() => weapon;
     [SerializeField] PlayerMovement movement;
+    public PlayerMovement GetMovement() => movement;
     [SerializeField] PlayerAnimControl anim;
     public PlayerAnimControl GetAnimControl() => anim;
     [SerializeField] Transform model;
@@ -25,8 +26,12 @@ public class Player : SerializedMonoBehaviour, IGameSignal
     CharacterHealth characterHealth = new CharacterHealth();
     public CharacterHealth GetCharacterHealth() => characterHealth;
     public GameObject inventoryCam;
+    
+    [SerializeField] PlayerStateHandler stateHandler;
+    public PlayerStateHandler GetStateHandler() => stateHandler;
 
      bool isLive = false;
+     public bool IsLive() => isLive;
 
     private void Awake()
     {
@@ -39,12 +44,12 @@ public class Player : SerializedMonoBehaviour, IGameSignal
        
     }
 
-    void Update()
-    {
-        if (isLive == false) return;
-        movement.Iterate();
-        if (weapon.CanAttack()) weapon.Shoot();
-    }
+    // void Update()
+    // {
+    //     if (isLive == false) return;
+    //     movement.Iterate();
+    //     if (weapon.CanAttack()) weapon.Shoot();
+    // }
 
     void OnDie()
     {
@@ -53,7 +58,6 @@ public class Player : SerializedMonoBehaviour, IGameSignal
 
     IEnumerator IEDying()
     {
-        anim.PlayAnim(PlayerAnimState.Die);
         rb.velocity = Vector3.zero;
         isLive = false;
         GetComponent<CapsuleCollider>().enabled = false;
@@ -83,7 +87,6 @@ public class Player : SerializedMonoBehaviour, IGameSignal
         movement.Setup(); ;
         weapon.Setup();
         characterHealth.Setup(PlayerRecord.instance.GetPlayerHealth());
-        anim.PlayAnim(PlayerAnimState.NormalMovement);
     }
 
     public void StartGame()
