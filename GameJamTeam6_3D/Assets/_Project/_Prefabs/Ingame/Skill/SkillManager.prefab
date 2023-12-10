@@ -47,7 +47,9 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: a275d550c2fecb745b0d91347ffe45f1, type: 2}
+    - {fileID: 11400000, guid: c28aab6d2525bc3429192533e84446b0, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -72,7 +74,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 7
       Data: 
@@ -82,9 +84,36 @@ MonoBehaviour:
     - Name: $v
       Entry: 7
       Data: 2|DiveRollSkill, Assembly-CSharp
-    - Name: cooldownTime
-      Entry: 4
-      Data: 5
+    - Name: skillData
+      Entry: 10
+      Data: 0
+    - Name: OnSkillUsed
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: 3|HealSkill, Assembly-CSharp
+    - Name: skillData
+      Entry: 10
+      Data: 1
+    - Name: OnSkillUsed
+      Entry: 6
+      Data: 
+    - Name: healAmount
+      Entry: 3
+      Data: 10
     - Name: 
       Entry: 8
       Data: 

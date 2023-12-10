@@ -10,26 +10,23 @@ public class SkillManager : SerializedMonoBehaviour
 
     private void Awake()
     {
-        if(Instance) Destroy(gameObject);
+        if (Instance) Destroy(gameObject);
         else Instance = this;
     }
 
     private void Update()
     {
-        if(InputHandler.instance.PressRightClick())
-        {
+        if (InputHandler.instance.PressRightClick())
             skills[SkillID.DiveRoll].Use();
-        }
+        if (InputHandler.instance.PressHealSkill())
+            skills[SkillID.Heal].Use();
     }
 
-    public Skill GetSkill(SkillID _id)
-    {
-        return skills[_id];
-    }
+    public Skill GetSkill(SkillID _id) { return skills[_id]; }
 }
 
 public enum SkillID
 {
     DiveRoll = 0,
+    Heal = 1,
 }
-

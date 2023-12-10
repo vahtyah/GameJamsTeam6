@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using _Project._Scripts.Ingame.Manager;
 using UnityEngine;
 using DG.Tweening;
 public class DropEquipmentItemOnField : MonoBehaviour, IDropEquipmentItemOnField
@@ -13,6 +14,7 @@ public class DropEquipmentItemOnField : MonoBehaviour, IDropEquipmentItemOnField
         if (other.CompareTag(GlobalInfo.tagPlayer) == false) return;
         InventorySystem.instance.AddItemToInventory(itemType, equipID);
         gameObject.SetActive(false);
+        SoundManager.Instance.PlaySFX(Sound.Pickup);
     }
 
 
