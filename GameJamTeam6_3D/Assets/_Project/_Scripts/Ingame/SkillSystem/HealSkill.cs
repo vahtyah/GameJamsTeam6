@@ -16,6 +16,7 @@ public class HealSkill : Skill
     private IEnumerator IEWaitForHeal(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        ProjectileImpactPooling.instance.Deactive(7, healEffect);
+        healEffect.gameObject.SetActive(false);
+        //ProjectileImpactPooling.instance.Deactive(7, healEffect);
     }
 }
