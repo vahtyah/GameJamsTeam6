@@ -12,7 +12,7 @@ public class HelmetData : ScriptableObject, IItemEquipmentData
     [SerializeField] string description;
     public string GetItemDescription()
     {
-        return description;
+        return StringBuilderSpecialist.SetAndGet(description + " + " + addMaxHp.ToString());
     }
 
     public Sprite GetItemIcon()
@@ -38,11 +38,13 @@ public class HelmetData : ScriptableObject, IItemEquipmentData
     public void OnEquip()
     {
         Player.instance.GetPlayerData().maxHp.AddValue(addMaxHp);
+        Player.instance.GetCharacterHealth().Setup(Player.instance.GetPlayerData().maxHp.value, Player.instance.GetCharacterHealth().CurHealth);
     }
 
     public void OnUnEquip()
     {
         Player.instance.GetPlayerData().maxHp.AddValue(-addMaxHp);
+        Player.instance.GetCharacterHealth().Setup(Player.instance.GetPlayerData().maxHp.value, Player.instance.GetCharacterHealth().CurHealth);
     }
 
     public void SetItemID(int _id)

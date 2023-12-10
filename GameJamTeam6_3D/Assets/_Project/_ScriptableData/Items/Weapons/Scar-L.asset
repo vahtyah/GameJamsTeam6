@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: 34d4da43889f5d24d92bf1a4c4b924e9, type: 3}
   itemName: ScarL
-  description: 
+  description: 'ATK: '
   bulletID: 2
   cooldown: 0.15
   damage: 40
-  type: 0

@@ -45,14 +45,16 @@ public class MapSceneManager : MonoBehaviour
     {
         IOSystemic.SaveData<int>(currentMapID, playerProgressSave);
     }
-
+    [Space]
+    [Header("debug")]
+    [SerializeField] int firstSceneIndex = 0;
     int LoadPLayerSceneProgress()
     {
         if (IOSystemic.CheckFileExist(playerProgressSave))
         {
             return IOSystemic.LoadData<int>(playerProgressSave);
         }
-        return 0;
+        return firstSceneIndex;
     }
 
 

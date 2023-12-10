@@ -20,7 +20,7 @@ public class WeaponData : ScriptableObject, IItemEquipmentData
 
     public string GetItemDescription()
     {
-        return description;
+        return StringBuilderSpecialist.SetAndGet(description + damage.ToString());
     }
 
     int id = -2;

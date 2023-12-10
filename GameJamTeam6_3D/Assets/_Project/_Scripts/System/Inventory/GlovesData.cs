@@ -12,7 +12,7 @@ public class GlovesData : ScriptableObject, IItemEquipmentData
     [SerializeField] string description;
     public string GetItemDescription()
     {
-        return description;
+        return StringBuilderSpecialist.SetAndGet(description + " + " + addCrit.ToString());
     }
 
     public Sprite GetItemIcon()

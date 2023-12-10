@@ -40,14 +40,13 @@ public class BehaviourTreeSelector : MonoBehaviour, IBehaviourTree
             switch (result)
             {
                 case BehaviourTreeResult.Sucess:
-                    break;
+                    return BehaviourTreeResult.Sucess;
                 case BehaviourTreeResult.Running:
                     return result;
                 case BehaviourTreeResult.Fail:
                     continue;
             }
-            break;
         }
-        return BehaviourTreeResult.Sucess;
+        return BehaviourTreeResult.Fail;
     }
 }

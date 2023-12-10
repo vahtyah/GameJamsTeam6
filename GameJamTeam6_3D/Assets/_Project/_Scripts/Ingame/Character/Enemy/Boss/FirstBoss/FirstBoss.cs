@@ -31,11 +31,18 @@ public class FirstBoss : SerializedMonoBehaviour, IBoss
             if (GlobalInfo.enemyAbilityInfo.ContainsKey(i) == false) break;
             behaviourTree.Blackboard.AssignBlackBoard(GlobalInfo.enemyAbilityInfo[i], () => enemySkills[i].IsReady());
         }
+        MapSceneManager.instance.GetCurrentMap().ActivePortals(false);
+        anim.SetAnimator(animator);
+        enemyNav.SetAgent(agent);
+        enemyNav.SetAnimController(anim);
+        enemyNav.SetSpeed(5);
     }
     void Update()
     {
         behaviourTree.OnUpdate();
     }
+
+    
 
     public void AddHealth(int _input)
     {
@@ -70,6 +77,8 @@ public class FirstBoss : SerializedMonoBehaviour, IBoss
     public void OnDie()
     {
         gameObject.SetActive(false);
+        MapSceneManager.instance.GetCurrentMap().ActivePortals(true);
+        IngameManager.instance.Win();
     }
 
     public void Setup()

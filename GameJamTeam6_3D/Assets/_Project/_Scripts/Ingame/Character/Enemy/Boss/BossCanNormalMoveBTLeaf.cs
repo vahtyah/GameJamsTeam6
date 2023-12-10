@@ -13,6 +13,7 @@ public class BossCanNormalMoveBTLeaf : MonoBehaviour, IBehaviourTree
 
     public BehaviourTreeResult Tick(BehaviourTreeBossBlackboard _blackboard)
     {
+        name = " tick";
         //if (_blackboard.GetInfo(BehaviourTreeBlackboardInfo.NearPlayer))
         //    return BehaviourTreeResult.Fail;
         _blackboard.GetAgent().GetEnemyNav().MoveToPlayer();

@@ -14,9 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: c635ea3a94556c3488a7ce49f6c3667a, type: 3}
   itemName: Bazooka
-  description: 
+  description: 'ATK: '
   bulletID: 3
   cooldown: 1
-  magazine: 0
   damage: 20
-  type: 0

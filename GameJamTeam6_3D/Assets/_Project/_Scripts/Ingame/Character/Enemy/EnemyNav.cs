@@ -101,7 +101,7 @@ public class EnemyNav
         agent.speed = 0;
         //animController.PlayAnim(EnemyAnimState.Die);
     }
-    void Stop()
+    public void Stop()
     {
         agent.speed = 0;
         agent.velocity = Vector3.zero;

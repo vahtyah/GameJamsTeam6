@@ -14,9 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: fdc9bf0b49fd0594b872292db632c009, type: 3}
   itemName: AK74
-  description: 
+  description: 'ATK: '
   bulletID: 1
   cooldown: 0.2
-  magazine: 0
   damage: 35
-  type: 0

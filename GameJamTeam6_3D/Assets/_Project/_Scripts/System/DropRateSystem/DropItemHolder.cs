@@ -29,7 +29,7 @@ public class DropItemHolder : SerializedMonoBehaviour
     {
         IDropEquipmentItemOnField dropEquipment = GenEquipmentDropped(_type, _position);
         dropEquipment.SetEquipmentID(_equipId);
-        dropEquipment.Spin();
+        dropEquipment.Activate();
     }
 
     IDropEquipmentItemOnField GenEquipmentDropped(ItemType _type, Vector3 _position)
@@ -38,13 +38,13 @@ public class DropItemHolder : SerializedMonoBehaviour
         {
             if (equipmentPool[_type][i].GetGameObject().activeSelf) continue;
             equipmentPool[_type][i].GetGameObject().transform.position = _position;
-            equipmentPool[_type][i].Spin();
+            equipmentPool[_type][i].Activate();
             return equipmentPool[_type][i];
         }
         IDropEquipmentItemOnField newObj = Instantiate(equipmentItemPrefabs[_type].GetGameObject(), transform).GetComponent<IDropEquipmentItemOnField>();
         newObj.GetGameObject().transform.position = _position;
         equipmentPool[_type].Add(newObj);
-        newObj.Spin();
+        newObj.Activate();
         return newObj;
     }
 
@@ -55,14 +55,14 @@ public class DropItemHolder : SerializedMonoBehaviour
             if (coinPool[i].GetGameObject().activeSelf) continue;
             coinPool[i].GetGameObject().transform.position = _position;
             coinPool[i].SetValue(_value);
-            coinPool[i].Spin();
+            coinPool[i].Activate();
             return;
         }
         IDropCurrencyItemOnField newObj = Instantiate(coinPrefab.GetGameObject(), transform).GetComponent<IDropCurrencyItemOnField>();
         newObj.GetGameObject().transform.position = _position;
         coinPool.Add(newObj);
         newObj.SetValue(_value);
-        newObj.Spin();
+        newObj.Activate();
     }
 
 
@@ -71,7 +71,7 @@ public class DropItemHolder : SerializedMonoBehaviour
 public interface IDropItemOnField
 {
    
-    public void Spin();
+    public void Activate();
     public GameObject GetGameObject();
 }
 

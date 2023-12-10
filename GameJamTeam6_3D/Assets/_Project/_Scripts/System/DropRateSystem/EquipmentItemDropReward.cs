@@ -19,16 +19,15 @@ public class EquipmentItemDropReward : SerializedMonoBehaviour, IDropReward
     {
         if (GetComponent<IEnemy>() != null)
         {
-            enemy = GetComponent<IEnemy>();
+            enemy.GetCharacterHealth().onDead += DoGacha;
         }
-        enemy.GetCharacterHealth().onDead += DoGacha;
+        
     }
 
     public void DoGacha()
     {
         if (rate == 0) return;
         if (Random.Range(1, 101f) > rate) return;
-        //int count = 0;
         for (int tryTime = 0; tryTime < 10; tryTime++)
         {
             ItemType typeRoll = RollItemKey();
@@ -39,18 +38,6 @@ public class EquipmentItemDropReward : SerializedMonoBehaviour, IDropReward
             DropItemHolder.instance.SpawnEquipmentItem(typeRoll, id, transform.position);
             return;
         }
-
-        //while (true)
-        //{
-        //    ItemType typeRoll = RollItemKey();
-        //    if (itemRates[typeRoll] == 0) continue;
-        //    float ranRate = Random.Range(1f, 101f);
-        //    if (Random.Range(1, 101f) > ranRate) continue;
-        //    int id = RollEquipID();
-        //    DropItemHolder.instance.SpawnEquipmentItem(typeRoll, id, transform.position);
-        //    //count++;
-        //    //if (count >= qty) break;
-        //}
     }
 
     ItemType RollItemKey()
@@ -59,7 +46,6 @@ public class EquipmentItemDropReward : SerializedMonoBehaviour, IDropReward
         int count = 0;
         foreach (var item in itemRates.Keys)
         {
-            ColorDebug.DebugOrange(item);
             if (count == index)
             {
                 return item;

@@ -35,7 +35,7 @@ public class BTLeafShootFiveBulletsSkill : MonoBehaviour, IEnemySkill, IBehaviou
         for (int i = 0; i < selectedAngles.Length; i++)
         {
             IProjectile bullet = ProjectilePooling.instance.ActivateProjectile(0).SetDamage(DamageHelper.GetPlayerDamage(damage));
-            bullet.SetPossession(_isPlayer: true);
+            bullet.SetPossession(_isPlayer: false);
             bullet.GetGameObject().transform.position = shootPos.position;
             bullet.GetGameObject().transform.rotation = boss.GetGameObject().transform.rotation;
             bullet.GetGameObject().transform.Rotate(bullet.GetGameObject().transform.rotation.x
@@ -52,6 +52,7 @@ public class BTLeafShootFiveBulletsSkill : MonoBehaviour, IEnemySkill, IBehaviou
         boss = _blackboard.GetAgent();
         if (IsReady())
         {
+            _blackboard.GetAgent().GetEnemyNav().Stop();
             UseSkill();
             _blackboard.GetAgent().GetEnemyAnimController().PlayAnim(EnemyAnimState.CastSpellOne);
             return BehaviourTreeResult.Sucess;

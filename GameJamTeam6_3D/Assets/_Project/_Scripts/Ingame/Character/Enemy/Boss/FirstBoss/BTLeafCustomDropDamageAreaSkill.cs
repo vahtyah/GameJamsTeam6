@@ -9,15 +9,19 @@ public class BTLeafCustomDropDamageAreaSkill : MonoBehaviour, IEnemySkill, IBeha
     [SerializeField] Transform collisionsHolder;
     [SerializeField] float coolDown = 5;
     RunningActionProgressBehaving progressBehave = new RunningActionProgressBehaving();
-    float timer;
+    [Space][SerializeField] float timer;
 
     bool ok = false;
 
     void Awake()
     {
         timer = Time.time + coolDown;
-        enemyDamageCollisionImminents[0].complete = ()=> ok = true;
+        enemyDamageCollisionImminents[0].complete = ()=> {
+            ok = true;
+        };
     }
+
+
 
     public bool IsDisabled()
     {
@@ -39,11 +43,14 @@ public class BTLeafCustomDropDamageAreaSkill : MonoBehaviour, IEnemySkill, IBeha
                 {
                     _blackboard.GetAgent().GetGameObject().transform.LookAt(Player.instance.transform.position);
                     //position = _blackboard.GetAgent().GetGameObject().transform.position;
+                    _blackboard.GetAgent().GetEnemyNav().Stop();
                     UseSkill();
                 }
                 , _onRunning: null
                 , ref ok
-                , ()=> timer = Time.time + coolDown
+                , ()=> { 
+                    timer = Time.time + coolDown; 
+                }
                 ); ;
         }
         return BehaviourTreeResult.Fail;

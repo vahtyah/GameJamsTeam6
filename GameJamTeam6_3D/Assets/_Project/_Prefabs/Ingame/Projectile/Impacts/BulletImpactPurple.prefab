@@ -4749,6 +4749,7 @@ GameObject:
   - component: {fileID: 488634}
   - component: {fileID: 19997900}
   - component: {fileID: 19825236}
+  - component: {fileID: -785688320638328323}
   m_Layer: 0
   m_Name: BulletImpactPurple
   m_TagString: Untagged
@@ -9480,6 +9481,18 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &-785688320638328323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 727a58a5689446e468a7f4f440501056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &141972
 GameObject:
   m_ObjectHideFlags: 0

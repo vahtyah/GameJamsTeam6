@@ -42,7 +42,6 @@ public class EquipmentItemUI : MonoBehaviour, IPointerDownHandler, IDragHandler,
         });
         itemID = InventorySystem.instance.GetItemEquipment()[type].GetItemID();
         DraggableEquipmentItem.instance.gameObject.SetActive(false);
-
         SetData(type);
     }
 
@@ -74,8 +73,6 @@ public class EquipmentItemUI : MonoBehaviour, IPointerDownHandler, IDragHandler,
     public void OnEndDrag(PointerEventData eventData)
     {
         DraggableEquipmentItem.instance.onDrop.Invoke();
-        return;
-
     }
     public void SetData(ItemType _type)
     {

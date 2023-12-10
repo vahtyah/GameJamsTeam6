@@ -13,7 +13,7 @@ public class BeltData : ScriptableObject, IItemEquipmentData
 
     public string GetItemDescription()
     {
-        return description;
+        return StringBuilderSpecialist.SetAndGet(description + " + " + addCritDamgPercent.ToString());
     }
 
     public Sprite GetItemIcon()

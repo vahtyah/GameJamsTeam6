@@ -41,15 +41,9 @@ public class Player : SerializedMonoBehaviour, IGameSignal
 
     private void Start()
     {
-       
+        InventorySystem.instance.InitPlayerEquip();
     }
 
-    // void Update()
-    // {
-    //     if (isLive == false) return;
-    //     movement.Iterate();
-    //     if (weapon.CanAttack()) weapon.Shoot();
-    // }
 
     void OnDie()
     {

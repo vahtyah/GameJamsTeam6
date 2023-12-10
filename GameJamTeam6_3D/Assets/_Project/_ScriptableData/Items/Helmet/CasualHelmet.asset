@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b620f7af5936449b105ae86fb82c23, type: 3}
   m_Name: CasualHelmet
   m_EditorClassIdentifier: 
-  addMaxHp: 0
+  addMaxHp: 20
   itemIcon: {fileID: 21300000, guid: e288989d99cabde4bb37c0d0997d953e, type: 3}
   itemName: Casual Helmet
-  description: 
-  type: 0
+  description: Add max HP
