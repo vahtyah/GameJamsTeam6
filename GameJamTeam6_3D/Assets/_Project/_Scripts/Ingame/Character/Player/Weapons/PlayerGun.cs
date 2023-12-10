@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using _Project._Scripts.Ingame.Manager;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -35,6 +36,7 @@ public class PlayerGun : MonoBehaviour, IWeapon
 
     public void Shoot()
     {
+        SoundManager.Instance.PlaySFX(Sound.Shot);
         canAttack = false;
         muzzle.Play();
         cooldown = data.GetCoolDown();

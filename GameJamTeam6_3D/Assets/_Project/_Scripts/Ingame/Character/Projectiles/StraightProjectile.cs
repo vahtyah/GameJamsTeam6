@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using _Project._Scripts.Ingame.Manager;
 using UnityEngine;
 
 public class StraightProjectile : MonoBehaviour, IProjectile
@@ -44,6 +45,7 @@ public class StraightProjectile : MonoBehaviour, IProjectile
         else if (other.gameObject.CompareTag(GlobalInfo.enemyTagAndLayer))
         {
                 other.GetComponent<IEnemy>().AddHealth(-damage);
+                SoundManager.Instance.PlaySFX(Sound.HitEnemy);
                 pop = true;
         }
         if (pop == false) return;

@@ -1,4 +1,5 @@
 ﻿using System;
+using _Project._Scripts.Ingame.Manager;
 using UnityEngine;
 
 public class MissileProjectile : MonoBehaviour, IProjectile
@@ -31,6 +32,7 @@ public class MissileProjectile : MonoBehaviour, IProjectile
                 if (collider.gameObject.CompareTag(GlobalInfo.enemyTagAndLayer))
                 {
                     collider.GetComponent<IEnemy>().AddHealth(-damage);
+                    SoundManager.Instance.PlaySFX(Sound.HitEnemy);
                 }
             }
         }
