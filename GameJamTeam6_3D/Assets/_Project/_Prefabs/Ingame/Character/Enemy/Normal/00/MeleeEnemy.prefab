@@ -456,15 +456,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
-    SerializedBytes: 0101090000006900740065006d00520061007400650073002f000000000168000000530079007300740065006d002e0043006f006c006c0065006300740069006f006e0073002e00470065006e0065007200690063002e00440069006300740069006f006e00610072007900600032005b005b004900740065006d0054007900700065002c00200041007300730065006d0062006c0079002d004300530068006100720070005d002c005b00530079007300740065006d002e00530069006e0067006c0065002c0020006d00730063006f0072006c00690062005d005d002c0020006d00730063006f0072006c00690062000000000001010800000063006f006d00700061007200650072002f010000000158000000530079007300740065006d002e0043006f006c006c0065006300740069006f006e0073002e00470065006e0065007200690063002e0045006e0075006d0045007100750061006c0069007400790043006f006d0070006100720065007200600031005b005b004900740065006d0054007900700065002c00200041007300730065006d0062006c0079002d004300530068006100720070005d005d002c0020006d00730063006f0072006c0069006200010000000600000000000000000705060100000000000000042e1d010200000024006b0001000000000000001f010200000024007600cdccdb420507050b010500000065006e0065006d00790000000000
+    SerializedFormat: 2
+    SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 7832614591336046447}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: itemRates
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[ItemType, Assembly-CSharp],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[ItemType, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 4
+      Data: 2.5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: enemy
+      Entry: 10
+      Data: 0
   rate: 100
   equipIdRates: 68000000
 --- !u!1 &5100725181676892699
@@ -1027,8 +1068,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
-    SerializedBytes: 01010b00000065006e0065006d0079005300740061007400650073002f000000000173000000530079007300740065006d002e0043006f006c006c0065006300740069006f006e0073002e00470065006e0065007200690063002e00440069006300740069006f006e00610072007900600032005b005b0045006e0065006d00790041006e0069006d00530074006100740065002c00200041007300730065006d0062006c0079002d004300530068006100720070005d002c005b00490045006e0065006d007900530074006100740065002c00200041007300730065006d0062006c0079002d004300530068006100720070005d005d002c0020006d00730063006f0072006c00690062000000000001010800000063006f006d00700061007200650072002f01000000015e000000530079007300740065006d002e0043006f006c006c0065006300740069006f006e0073002e00470065006e0065007200690063002e0045006e0075006d0045007100750061006c0069007400790043006f006d0070006100720065007200600031005b005b0045006e0065006d00790041006e0069006d00530074006100740065002c00200041007300730065006d0062006c0079002d004300530068006100720070005d005d002c0020006d00730063006f0072006c0069006200010000000600000000000000000705060400000000000000042e1d010200000024006b000000000000000000010102000000240076002f02000000012500000045006e0065006d0079004e006f0072006d0061006c00490064006c006500530074006100740065002c00200041007300730065006d0062006c0079002d00430053006800610072007000020000001f01090000007700610069007400540069006d00650072000000803f0505042e1d010200000024006b000100000000000000010102000000240076002f03000000012500000045006e0065006d0079004e006f0072006d0061006c004d006f0076006500530074006100740065002c00200041007300730065006d0062006c0079002d00430053006800610072007000030000001f010b000000720061006e0067006500410074007400610063006b00000040400505042e1d010200000024006b000200000000000000010102000000240076002f04000000012100000045006e0065006d0079004d0065006c0065006500410074007400610063006b002c00200041007300730065006d0062006c0079002d00430053006800610072007000040000001f010a000000610074007400610063006b00540069006d006500000000400b010f000000640061006d0061006700650043006f006c006c006900730069006f006e00000000001f010b000000610074007400610063006b00540069006d0065007200000000000505042e1d010200000024006b000300000000000000010102000000240076002f05000000012400000045006e0065006d0079004e006f0072006d0061006c00440069006500530074006100740065002c00200041007300730065006d0062006c0079002d0043005300680061007200700005000000050507050b010500000065006e0065006d007900010000002d010c000000630075007200720065006e00740053007400610074006500
+    SerializedFormat: 2
+    SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 7801239833479858344}
     - {fileID: 7832614591336046447}
@@ -1036,7 +1077,114 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: enemyStates
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[EnemyAnimState, Assembly-CSharp],[IEnemyState,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[EnemyAnimState,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: 2|EnemyNormalIdleState, Assembly-CSharp
+    - Name: waitTimer
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: 3|EnemyNormalMoveState, Assembly-CSharp
+    - Name: rangeAttack
+      Entry: 4
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 7
+      Data: 4|EnemyMeleeAttack, Assembly-CSharp
+    - Name: attackTime
+      Entry: 4
+      Data: 2
+    - Name: damageCollision
+      Entry: 10
+      Data: 0
+    - Name: attackTimer
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 7
+      Data: 5|EnemyNormalDieState, Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: enemy
+      Entry: 10
+      Data: 1
+    - Name: currentState
+      Entry: 6
+      Data: 
   active: 1
 --- !u!114 &7832614591336046447
 MonoBehaviour:
@@ -1210,18 +1358,18 @@ PrefabInstance:
     - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
     - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
       propertyPath: serializationData.SerializedFormat
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
       propertyPath: serializationData.SerializedBytes.Array.size
-      value: 16
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
       propertyPath: serializationData.SerializationNodes.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2029143931142063291, guid: 76bc3120130fbde40a14d05286daf76d, type: 3}
       propertyPath: serializationData.SerializedBytes.Array.data[0]
@@ -1407,13 +1555,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
-    SerializedBytes: 0b010500000065006e0065006d00790000000000
+    SerializedFormat: 2
+    SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 7832614591336046447}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: enemy
+      Entry: 10
+      Data: 0
   slider: {fileID: 1832622906998091219}

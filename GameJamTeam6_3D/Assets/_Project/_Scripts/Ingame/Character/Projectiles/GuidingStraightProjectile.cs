@@ -1,4 +1,5 @@
 ﻿using System;
+using _Project._Scripts.Ingame.Manager;
 using UnityEngine;
 
 public class GuidingStraightProjectile : MonoBehaviour, IProjectile
@@ -89,6 +90,7 @@ public class GuidingStraightProjectile : MonoBehaviour, IProjectile
             {
                 ProjectilePooling.instance.DeactivateProjectile(this);
                 other.GetComponent<IEnemy>().AddHealth(-damage);
+                SoundManager.Instance.PlaySFX(Sound.HitEnemy);
                 pop = true;
             }
         }

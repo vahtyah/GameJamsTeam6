@@ -70,8 +70,11 @@ public class InputHandler : MonoBehaviour
     {
         return Input.GetMouseButtonDown(1);
     }
-
-
+    
+    public bool PressHealSkill()
+    {
+        return Input.GetKeyDown(KeyCode.Alpha1);
+    }
 
 }
 
