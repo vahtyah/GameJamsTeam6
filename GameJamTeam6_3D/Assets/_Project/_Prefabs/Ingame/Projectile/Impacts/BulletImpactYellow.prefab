@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 410510}
   - component: {fileID: 19982894}
   - component: {fileID: 19824418}
+  - component: {fileID: 6096671258552267343}
   m_Layer: 0
   m_Name: BulletImpactYellow
   m_TagString: Untagged
@@ -1309,7 +1310,7 @@ ParticleSystem:
     enabled: 1
     x:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 0
       maxCurve:
@@ -1362,7 +1363,7 @@ ParticleSystem:
         m_RotationOrder: 4
     y:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 0
       maxCurve:
@@ -4851,6 +4852,18 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &6096671258552267343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 727a58a5689446e468a7f4f440501056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &142486
 GameObject:
   m_ObjectHideFlags: 0

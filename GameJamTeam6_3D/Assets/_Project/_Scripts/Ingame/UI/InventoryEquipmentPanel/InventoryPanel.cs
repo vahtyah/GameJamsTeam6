@@ -10,40 +10,57 @@ public class InventoryPanel : SerializedMonoBehaviour, IEnhancedScrollerDelegate
     public const int totalItemInRow = 4;
     [SerializeField] InventoryItemRowUI prefab;
     [Space][SerializeField] GameObject activePanel;
-    public void SetActivePanel(bool _check) { activePanel.SetActive(_check); }
+   
     public GameObject GetActivePanel() { return activePanel; }  
     [SerializeField] EnhancedScroller scroller;
     [Header("Debug")]
     [SerializeField] List<EquipmentDataRowUI> data = new List<EquipmentDataRowUI>();
 
+    bool firstLoad = true;
 
     private void Awake()
     {
         scroller.Delegate = this;
+        SetData();
     }
 
     void Start()
     {
         InventorySystem.instance.onAddedItemInventory += OnAddingItem;
+        //SetData();
         activePanel.SetActive(false);
     }
 
-    void OnEnable()
-    {
-        SetData();
-    }
+    //void OnEnable()
+    //{
+    //    if (firstLoad) return;
+    //    scroller.ReloadData();
+    //}
 
-    void OnDestroy()
-    {
-        InventorySystem.instance.onAddedItemInventory -= OnAddingItem;
+    //void OnDestroy()
+    //{
+    //    InventorySystem.instance.onAddedItemInventory -= OnAddingItem;
+    //}
+
+    public void SetActivePanel(bool _check) { 
+        activePanel.SetActive(_check);
+        scroller.ReloadData();
     }
 
     void OnAddingItem(int _inventoryIndex)
     {
         int rowIndex = _inventoryIndex % totalItemInRow;
-        data[Mathf.FloorToInt(_inventoryIndex / totalItemInRow)].rows[rowIndex].itemID = InventorySystem.instance.GetItemInventory()[_inventoryIndex] != null ?
-            InventorySystem.instance.GetItemInventory()[_inventoryIndex].GetItemID() 
-            : -1;
+        if (InventorySystem.instance.GetItemInventory()[_inventoryIndex] != null)
+        {
+            data[Mathf.FloorToInt(_inventoryIndex / totalItemInRow)].rows[rowIndex].itemID 
+                = InventorySystem.instance.GetItemInventory()[_inventoryIndex].GetItemID();
+            data[Mathf.FloorToInt(_inventoryIndex / totalItemInRow)].rows[rowIndex].itemType
+                = InventorySystem.instance.GetItemInventory()[_inventoryIndex].GetItemType();
+        }
+        else
+        {
+            data[Mathf.FloorToInt(_inventoryIndex / totalItemInRow)].rows[rowIndex].itemID = -1;
+        }
     }
 
     void SetData()
@@ -72,6 +89,7 @@ public class InventoryPanel : SerializedMonoBehaviour, IEnhancedScrollerDelegate
             countItemInRow++;
             if (countItemInRow == totalItemInRow) countItemInRow = 0;
         }
+        firstLoad = false;
     }
 
     InventoryItemRowUI tempRow;
@@ -107,7 +125,6 @@ public class EquipmentDataRowUI
 
 public class EquipmentDataCellUI
 {
-
     public int inventoryIndex;
     public ItemType itemType;
     public int itemID;

@@ -25,6 +25,11 @@ public class IngameManager : SerializedMonoBehaviour
         StartGame();
     }
 
+    private void Update()
+    {
+        ColorDebug.DebugGreen(Time.time);
+    }
+
     public void AddSignal(IGameSignal _newSignal)
     {
         signals.Add(_newSignal);

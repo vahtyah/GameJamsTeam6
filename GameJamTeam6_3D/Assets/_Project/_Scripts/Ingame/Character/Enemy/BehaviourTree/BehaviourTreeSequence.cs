@@ -1,13 +1,14 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BehaviourTreeSequence : MonoBehaviour, IBehaviourTree
+public class BehaviourTreeSequence : SerializedMonoBehaviour, IBehaviourTree
 {
     [SerializeField] bool disabled = false;
-    IBehaviourTree lastChild;
+    [SerializeField] IBehaviourTree lastChild;
     BehaviourTreeBossBlackboard blackboard;
-    List<IBehaviourTree> childs = new List<IBehaviourTree>();
+    [SerializeField] List<IBehaviourTree> childs = new List<IBehaviourTree>();
 
     void Start()
     {
@@ -29,6 +30,7 @@ public class BehaviourTreeSequence : MonoBehaviour, IBehaviourTree
 
     public BehaviourTreeResult Tick(BehaviourTreeBossBlackboard _blackboard)
     {
+        name = "Tick";
         if (_blackboard.LastResult == BehaviourTreeResult.Running)
         {
             return lastChild.Tick(_blackboard);
@@ -36,6 +38,7 @@ public class BehaviourTreeSequence : MonoBehaviour, IBehaviourTree
         for (int i = 0; i < childs.Count; i++)
         {
             BehaviourTreeResult result = childs[i].Tick(_blackboard);
+            ColorDebug.DebugRed("run");
             lastChild = childs[i];
             switch (result)
             {
@@ -44,9 +47,8 @@ public class BehaviourTreeSequence : MonoBehaviour, IBehaviourTree
                 case BehaviourTreeResult.Running:
                     return result;
                 case BehaviourTreeResult.Fail:
-                    break;
+                    return BehaviourTreeResult.Fail;
             }
-            break;
         }
         return BehaviourTreeResult.Sucess;
     }

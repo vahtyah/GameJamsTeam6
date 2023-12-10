@@ -7,11 +7,14 @@ public class ChestController : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private Transform topTransform;
     [SerializeField] private float distanceCanOpen = 2f;
+    [SerializeField] EquipmentItemDropReward reward;
+
 
     public void OnPointerDown(PointerEventData eventData)
     {
         if (Vector3.Distance(IngameManager.instance.player.position, transform.position) > distanceCanOpen) return;
-        topTransform.DOLocalRotate(new Vector3(-30, 0, 0), 2f).SetEase(Ease.OutBounce);
+        topTransform.DOLocalRotate(new Vector3(-30, 0, 0), 2f).SetEase(Ease.OutBounce).OnComplete(() => gameObject.SetActive(false));
+        reward.DoGacha();
     }
 
     private void OnDrawGizmos()

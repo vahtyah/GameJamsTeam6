@@ -14,7 +14,7 @@ public class ArmorData : ScriptableObject, IItemEquipmentData
 
     public string GetItemDescription()
     {
-        return description;
+        return StringBuilderSpecialist.SetAndGet( description + " + " + addDefValue.ToString());
     }
 
     public Sprite GetItemIcon()

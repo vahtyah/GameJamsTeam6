@@ -92,7 +92,6 @@ public class MeleeEnemy : MonoBehaviour, IEnemy
         EnemySpawner.instance.OnEnemyDie(atWave);
         //enabled = false;
         enemyStateHandler.ForceState(EnemyAnimState.Die);
-        ColorDebug.DebugOrange("deo hieu");
     }
 }
 

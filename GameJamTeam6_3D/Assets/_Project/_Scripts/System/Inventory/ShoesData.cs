@@ -12,7 +12,7 @@ public class ShoesData : ScriptableObject, IItemEquipmentData
 
     public string GetItemDescription()
     {
-        return description;
+        return StringBuilderSpecialist.SetAndGet(description + " + " + addSpeed.ToString());
     }
 
     public Sprite GetItemIcon()

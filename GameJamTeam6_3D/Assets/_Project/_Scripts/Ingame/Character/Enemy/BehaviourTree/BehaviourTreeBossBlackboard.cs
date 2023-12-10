@@ -13,7 +13,7 @@ public class BehaviourTreeBossBlackboard : SerializedMonoBehaviour
     }
     [SerializeField] Dictionary<BehaviourTreeBlackboardInfo, Func<bool>> agentInfo;
 
-    BehaviourTreeResult lastResult;
+    [SerializeField] BehaviourTreeResult lastResult;
     public BehaviourTreeResult LastResult => lastResult;
 
 

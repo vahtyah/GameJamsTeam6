@@ -61,6 +61,7 @@ public class DraggableEquipmentItem : MonoBehaviour
         {
             inventoryUI.SetActive();
         }
+        gameObject.SetActive(false);
     }
 
 }

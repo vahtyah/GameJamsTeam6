@@ -65,7 +65,7 @@ public class InventorySystem : SerializedMonoBehaviour
         StartCoroutine(inventoryEquipmentSaveLoadHandler.IESaveInventory(_inventoryIndexSlot));
     }
 
-    void RemoveInventory(int _inventoryIndexSlot)
+    public void RemoveInventory(int _inventoryIndexSlot)
     {
         StartCoroutine(inventoryEquipmentSaveLoadHandler.IESaveInventoryRemoved(_inventoryIndexSlot));
     }
@@ -78,8 +78,13 @@ public class InventorySystem : SerializedMonoBehaviour
     public void InitEquipment(Dictionary<ItemType, IItemEquipmentData> _equipments)
     {
         itemEquipment = _equipments;
+    }
+
+    public void InitPlayerEquip()
+    {
         foreach (var value in itemEquipment.Values)
         {
+            if (value == null) continue;
             value.OnEquip();
         }
     }
@@ -88,14 +93,14 @@ public class InventorySystem : SerializedMonoBehaviour
     public void SwapEquipmentInventoryItem(int _inventoryIndexSlot, ItemType _equipmentType)
     {
         tempItemData = itemInventory[_inventoryIndexSlot];
-        if (itemEquipment[_equipmentType] != null)
-        {
+        //if (itemEquipment[_equipmentType] != null)
+        //{
             itemInventory[_inventoryIndexSlot] = itemEquipment[_equipmentType];
             onAddedItemInventory?.Invoke(_inventoryIndexSlot);
-        }
+        //}
         if (itemEquipment[_equipmentType] != null) itemEquipment[_equipmentType].OnUnEquip();
         itemEquipment[_equipmentType] = tempItemData as IItemEquipmentData;
-        itemEquipment[_equipmentType].OnEquip();
+        if (itemEquipment[_equipmentType] != null) itemEquipment[_equipmentType].OnEquip();
         inventoryEquipmentSaveLoadHandler.SaveEquipment();
         onEquip?.Invoke(_equipmentType);
     }
@@ -198,17 +203,6 @@ public class InventoryEquipmentSaveLoadHandler
         }
         InventorySystem.instance.InitInventory(inventory);
     }
-
-    //public void SaveInventory()
-    //{
-    //    for (int i = 0; i < InventorySystem.instance.GetItemInventory().Count; i++)
-    //    {
-
-    //        inventorySaveLoad[i] = (InventorySystem.instance.GetItemInventory()[i].GetItemType()
-    //            , InventorySystem.instance.GetItemInventory()[i].GetItemID()).ToTuple();
-    //    }
-    //    IOSystemic.SaveData(inventorySaveLoad, inventorySaveString);
-    //}
 
     public IEnumerator IESaveInventory()
     {

@@ -6,7 +6,6 @@ public class BehaviourTreeBTCheckInfo : MonoBehaviour, IBehaviourTree
 {
     [SerializeField] bool disabled;
     [SerializeField] BehaviourTreeBlackboardInfo info;
-    BehaviourTreeBossBlackboard blackboard;
 
     public bool IsDisabled()
     {
@@ -16,7 +15,8 @@ public class BehaviourTreeBTCheckInfo : MonoBehaviour, IBehaviourTree
 
     public BehaviourTreeResult Tick(BehaviourTreeBossBlackboard _blackboard)
     {
-        return blackboard.GetInfo(info)? BehaviourTreeResult.Sucess : BehaviourTreeResult.Fail;
+        name = "tick";
+        return _blackboard.GetInfo(info)? BehaviourTreeResult.Sucess : BehaviourTreeResult.Fail;
     }
 
 }
