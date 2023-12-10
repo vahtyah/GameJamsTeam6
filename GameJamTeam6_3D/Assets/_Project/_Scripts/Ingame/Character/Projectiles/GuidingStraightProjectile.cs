@@ -89,7 +89,7 @@ public class GuidingStraightProjectile : MonoBehaviour, IProjectile
             if (other.gameObject.CompareTag(GlobalInfo.enemyTagAndLayer))
             {
                 ProjectilePooling.instance.DeactivateProjectile(this);
-                other.GetComponent<IEnemy>().AddHealth(-damage);
+                other.GetComponent<IEnemyHealth>().AddHealth(-damage);
                 SoundManager.Instance.PlaySFX(Sound.HitEnemy);
                 pop = true;
             }

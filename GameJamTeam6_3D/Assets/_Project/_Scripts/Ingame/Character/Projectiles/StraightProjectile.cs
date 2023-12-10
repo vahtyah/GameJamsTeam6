@@ -44,7 +44,7 @@ public class StraightProjectile : MonoBehaviour, IProjectile
         }
         else if (other.gameObject.CompareTag(GlobalInfo.enemyTagAndLayer))
         {
-                other.GetComponent<IEnemy>().AddHealth(-damage);
+                other.GetComponent<IEnemyHealth>().AddHealth(-damage);
                 SoundManager.Instance.PlaySFX(Sound.HitEnemy);
                 pop = true;
         }

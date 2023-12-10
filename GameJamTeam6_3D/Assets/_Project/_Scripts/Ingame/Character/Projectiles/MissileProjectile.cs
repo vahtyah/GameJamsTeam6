@@ -31,7 +31,7 @@ public class MissileProjectile : MonoBehaviour, IProjectile
             {
                 if (collider.gameObject.CompareTag(GlobalInfo.enemyTagAndLayer))
                 {
-                    collider.GetComponent<IEnemy>().AddHealth(-damage);
+                    collider.GetComponent<IEnemyHealth>().AddHealth(-damage);
                     SoundManager.Instance.PlaySFX(Sound.HitEnemy);
                 }
             }

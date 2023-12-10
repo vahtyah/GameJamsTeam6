@@ -2219,9 +2219,9 @@ GameObject:
   - component: {fileID: 4869651776697842596}
   - component: {fileID: 4869651776697842597}
   - component: {fileID: 4869651776697842602}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstBoss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2338,7 +2338,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 3.8, y: 3.7, z: 1.88}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4869651776834115581
 GameObject:

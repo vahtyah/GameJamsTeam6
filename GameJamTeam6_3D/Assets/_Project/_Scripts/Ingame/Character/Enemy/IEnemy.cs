@@ -1,14 +1,14 @@
 
 using UnityEngine;
 
-public interface IEnemy 
+public interface IEnemy : IEnemyHealth
 {
     public IEnemy Setup();
 
     public GameObject GetGameObject();
     public IEnemy SetThisEnemyFromWave(int _wave);
 
-    public void AddHealth(int _input);
+    
 
     public EnemyNav GetEnemyNav();
     public int GetWave();
@@ -26,9 +26,12 @@ public interface IRangeEnemy : IEnemy
     public Transform GetShootTransform();
 }
 
+public interface IEnemyHealth
+{
+    public void AddHealth(int _input);
+}
 
-
-public interface IBoss
+public interface IBoss : IEnemyHealth
 {
     public void Setup();
     public GameObject GetGameObject();
