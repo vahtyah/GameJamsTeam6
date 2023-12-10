@@ -49,4 +49,4 @@ MonoBehaviour:
   - {fileID: 8052685360150357421, guid: 5d9640aa6a9a6e44e9cc8f88f1cd3f76, type: 3}
   - {fileID: 9205441977117072148, guid: c1172eef99ed39b4e8e9085b331b9044, type: 3}
   currentMap: {fileID: 0}
-  firstSceneIndex: 2
+  firstSceneIndex: 0
