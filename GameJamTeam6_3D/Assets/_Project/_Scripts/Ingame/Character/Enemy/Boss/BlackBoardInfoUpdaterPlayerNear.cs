@@ -11,7 +11,7 @@ public class BlackBoardInfoUpdaterPlayerNear : MonoBehaviour
     private void Awake()
     {
         blackboard = GetComponent<BehaviourTreeBossBlackboard>();
-        belowDistance = Mathf.Sqrt(belowDistance);
+        belowDistance *= belowDistance;
     }
 
     void Update()
