@@ -21,6 +21,7 @@ public class FirstBoss : SerializedMonoBehaviour, IBoss
 
     void Awake()
     {
+        characterHealth.Setup(1000);
         characterHealth.onCurHealthChange = (this as IBoss).OnCurrentHealthChange;
         characterHealth.onDead += OnDie;
     }
